@@ -128,7 +128,7 @@ namespace DS
             }
         };
 
-        static public List<Order> order = new List<Order>
+        static public List<Order> orders = new List<Order>
         {
             new Order()
             {
