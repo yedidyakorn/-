@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public interface IDal
+    public interface IDAL
     {
         void AddGuestRequest(GuestRequest guestRequest); //הוספת דרישת לקוח 
 
-        void UpdateGuestRequestStatus(RequestStatus requestStatus);//עדכון דרישת לקוח
+        void UpdateGuestRequestStatus(long GuestRequestKey, RequestStatus requestStatus);//עדכון דרישת לקוח
 
         void AddHostingUnit(HostingUnit hostingUnit);//הוספת יחידת אירוח
 
@@ -21,7 +21,7 @@ namespace DAL
 
         void AddOrder(Order order);
 
-        void UpdateOrder(OrderStatuses orderStatuses);
+        void UpdateOrder(long orderKey, OrderStatuses orderStatuses);
 
         List<HostingUnit> GetHostingUnitsList();
 

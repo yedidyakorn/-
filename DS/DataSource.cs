@@ -57,6 +57,8 @@ namespace DS
         {
             new HostingUnit()
             {
+                HostingUnitKey= 10000000_,
+
                 HostingUnitName = "חלום של צימר",
 
                 Owner = new Host()
@@ -93,6 +95,8 @@ namespace DS
 
             new HostingUnit()
             {
+                HostingUnitKey= 10000001,
+
                 HostingUnitName = "לילה בצימר",
 
                 Owner = new Host()

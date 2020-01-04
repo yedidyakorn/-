@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="config.cs" />
+    <Compile Include="Cloning.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="Dal_imp.cs" />
-    <Compile Include="Idal.cs" />
+    <Compile Include="DAL_Singletone.cs" />
+    <Compile Include="IDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
