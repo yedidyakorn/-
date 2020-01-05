@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class Order
+    public class Order : IClonable
     {
         public long HostingUnitKey { get; set; }
 

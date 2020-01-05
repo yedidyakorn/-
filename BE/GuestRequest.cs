@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class GuestRequest
+    public class GuestRequest : IClonable
     {
         public long GuestRequestKey { get; set; }
+
+        public long Id { get; set; }
 
         public String PrivateName { get; set; }
 

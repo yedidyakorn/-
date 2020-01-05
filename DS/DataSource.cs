@@ -57,6 +57,8 @@ namespace DS
         {
             new HostingUnit()
             {
+                HostingUnitKey= 10000000_,
+
                 HostingUnitName = "חלום של צימר",
 
                 Owner = new Host()
@@ -93,6 +95,8 @@ namespace DS
 
             new HostingUnit()
             {
+                HostingUnitKey= 10000001,
+
                 HostingUnitName = "לילה בצימר",
 
                 Owner = new Host()
@@ -128,7 +132,7 @@ namespace DS
             }
         };
 
-        static public List<Order> order = new List<Order>
+        static public List<Order> orders = new List<Order>
         {
             new Order()
             {

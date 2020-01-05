@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace BL
 {
-    public interface IDAL
+    interface IBL
     {
         void AddGuestRequest(GuestRequest guestRequest); //הוספת דרישת לקוח 
 
@@ -15,11 +15,11 @@ namespace DAL
 
         void AddHostingUnit(HostingUnit hostingUnit);//הוספת יחידת אירוח
 
-        void DeleteHostingUnit(long HostingUnitKey);
+        bool DeleteHostingUnit(long HostingUnitKey);
 
-        void UpdateHostingUnit(HostingUnit hostingUnit);
+        bool UpdateHostingUnit(HostingUnit hostingUnit);
 
-        void AddOrder(Order order);
+        bool AddOrder(Order order);
 
         void UpdateOrder(long orderKey, OrderStatuses orderStatuses);
 
