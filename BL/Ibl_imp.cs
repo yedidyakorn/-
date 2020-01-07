@@ -229,5 +229,15 @@ namespace BL
             return DAL_Singletone.Instance.GetHostingUnitsList().GroupBy(hu => hu.Area).ToList();
         }
 
+        public delegate bool HostHasPred(HostingUnit hu);
+
+        public List<HostingUnit> getAllHostUnitsByPredicate(HostHasPred hostHasPred )
+        {
+          return  DAL_Singletone.Instance.GetHostingUnitsList().TakeWhile(hu => hostHasPred(hu)).ToList();
+        }
+
+        public List<HostingUnit> getAllHostUnitsWithPool() {
+           return getAllHostUnitsByPredicate(delegate (HostingUnit hu) { return hu.HasPool; });
+        }
     }
 }
