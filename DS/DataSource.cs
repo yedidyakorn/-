@@ -13,7 +13,7 @@ namespace DS
         {
             new GuestRequest()
             {
-
+                GuestRequestKey = 1,
                 Adults=2,
                 Children= 15,
                 EntryDate= DateTime.Now.AddDays(8),
@@ -34,7 +34,7 @@ namespace DS
 
             new GuestRequest()
             {
-
+                GuestRequestKey = 2,
                 Adults=2,
                 Children= 10,
                 EntryDate= DateTime.Now.AddDays(8),
@@ -57,9 +57,11 @@ namespace DS
         {
             new HostingUnit()
             {
-                HostingUnitKey= 10000000_,
+                HostingUnitKey= 10000000,
 
                 HostingUnitName = "חלום של צימר",
+
+                HasPool =true,
 
                 Owner = new Host()
                 {

@@ -9,7 +9,7 @@ using DAL;
 
 namespace BL
 {
-    class Ibl_imp : IBL
+    public class Ibl_imp : IBL
     {
         public void AddGuestRequest(GuestRequest guestRequest)
         {
@@ -29,9 +29,16 @@ namespace BL
         {
             var hostingUnit = DAL_Singletone.Instance.GetHostingUnitByKey(order.HostingUnitKey);
 
-            if (hostingUnit.Owner.CollectionClearance == true)
-            {
+            if (hostingUnit == null)
+                throw new Exception("host unit does not exist");
+
+            if (hostingUnit.Owner.CollectionClearance == false)
+                return false;
+           
                 var guestRequest = DAL_Singletone.Instance.GetGuestRequestByKey(order.GuestRequestKey);
+
+                if (guestRequest == null)
+                    throw new Exception("guest Request does not exist");
 
                 DateTime cureentTate = guestRequest.RegistrationDate;
 
@@ -46,7 +53,7 @@ namespace BL
                 order.CreateDate = DateTime.Now;
 
                 DAL_Singletone.Instance.AddOrder(order);
-            }
+            
             return true;
 
         }
@@ -66,7 +73,7 @@ namespace BL
         {
             return DAL_Singletone.Instance.GetBankBranchesList();
         }
-
+        
         public List<GuestRequest> GetGuestRequestsList()
         {
             return DAL_Singletone.Instance.GetGuestRequestsList();
@@ -97,18 +104,18 @@ namespace BL
             return true;
         }
 
-        public void UpdateOrder(long orderKey, OrderStatuses orderStatuses)
+        public bool UpdateOrder(long orderKey, OrderStatuses orderStatuses)
         {
             Order order = DAL_Singletone.Instance.GetOrderByKey(orderKey);
 
-            if (order.OrderKey != 0 && order.Status != OrderStatuses.Closed_ApprovedByCustomer)
-            {
-                switch (orderStatuses)
+            if (order.OrderKey == 0 && order.Status == OrderStatuses.Closed_ApprovedByCustomer)
+                return false;
+
+            switch (orderStatuses)
                 {
 
                     case OrderStatuses.MailSent:
-
-                        throw new Exception("mail sent");
+                        //send mail
 
                     case OrderStatuses.Closed_ApprovedByCustomer:
 
@@ -143,39 +150,20 @@ namespace BL
                     default:
                         DAL_Singletone.Instance.UpdateOrder(orderKey, orderStatuses);
                         break;
+
+                       
                 }
 
-            }
-        }
-
-        private bool HostHasOpenOrders(long hostingUnitKey)
-        {
-            var ordersNum = DAL_Singletone.Instance.GetOrderList().
-             Where(o => o.HostingUnitKey == hostingUnitKey
-             && o.Status != OrderStatuses.Closed_ApprovedByCustomer
-             && o.Status != OrderStatuses.Closed_NoCustomerResponse).Count();
-
-            if (ordersNum > 0)
-                return false;
 
             return true;
-        }
 
-        private bool IsUnitAvailableForDates(HostingUnit hu,  DateTime startDate, int daysNum)
-        {
-            while(daysNum != 0)
-            {
-                var currDate = startDate.AddDays(daysNum--);
-                if (hu.Diary[currDate.Month - 1, currDate.Day - 1] == true)
-                    return false;
-            }
-            return true;
+        }
         }
 
         public List<HostingUnit> GetAllAvailableUnitsForDate(DateTime startDate, int daysNum)
         {
             return (from unit in DAL_Singletone.Instance.GetHostingUnitsList()
-                               let available = isUnitAvailableForDates(unit, startDate, daysNum)
+                               let available = IsUnitAvailableForDates(unit, startDate, daysNum)
                                where available
                                select unit).ToList();                           
 
@@ -193,13 +181,13 @@ namespace BL
             (DateTime.Now - o.CreateDate).Days >= days).ToList();
         }
 
-        public int getOrdersNumForGR(GuestRequest guestRequest)
+        public int GetOrdersNumForGR(GuestRequest guestRequest)
         {
            return DAL_Singletone.Instance.GetOrderList()
                 .Where(o => o.GuestRequestKey == guestRequest.GuestRequestKey).Count();        
         }
 
-        public int getApprovedOrdersNumForHU(HostingUnit hostingUnit)
+        public int GetApprovedOrdersNumForHU(HostingUnit hostingUnit)
         {
             return DAL_Singletone.Instance.GetOrderList()
                   .Where(o => o.HostingUnitKey == hostingUnit.HostingUnitKey
@@ -216,28 +204,55 @@ namespace BL
             return DAL_Singletone.Instance.GetGuestRequestsList().GroupBy(gr => gr.Adults + gr.Children).ToList();
         }
 
-        public List<dynamic> getHostsByHUNum()
+        public List<dynamic> getHostsByUnitsNum()
         {
             return DAL_Singletone.Instance.GetHostingUnitsList()
                 .GroupBy(h => new { Host = h.Owner, id = h.Owner.HostKey })
-                .Select(h => new { host = h.Count(), count = h.Key }).ToList<dynamic>();
+                .Select(h => new { count = h.Count(), host = h.Key }).ToList<dynamic>();
                 
         }
 
         public List<IGrouping<VecationAreas, HostingUnit>> getHUListGroupByArea()
         {
-            return DAL_Singletone.Instance.GetHostingUnitsList().GroupBy(hu => hu.Area).ToList();
-        }
-
-        public delegate bool HostHasPred(HostingUnit hu);
-
-        public List<HostingUnit> getAllHostUnitsByPredicate(HostHasPred hostHasPred )
-        {
-          return  DAL_Singletone.Instance.GetHostingUnitsList().TakeWhile(hu => hostHasPred(hu)).ToList();
-        }
+            return DAL_Singletone.Instance.GetHostingUnitsList().GroupBy(hu => hu.Area).
+                ToList();
+        }     
 
         public List<HostingUnit> getAllHostUnitsWithPool() {
            return getAllHostUnitsByPredicate(delegate (HostingUnit hu) { return hu.HasPool; });
         }
+
+        #region Private methods
+        private bool HostHasOpenOrders(long hostingUnitKey)
+        {
+            var ordersNum = DAL_Singletone.Instance.GetOrderList().
+             Where(o => o.HostingUnitKey == hostingUnitKey
+             && o.Status != OrderStatuses.Closed_ApprovedByCustomer
+             && o.Status != OrderStatuses.Closed_NoCustomerResponse).Count();
+
+            if (ordersNum > 0)
+                return true;
+
+            return false;
+        }
+
+        private bool IsUnitAvailableForDates(HostingUnit hu, DateTime startDate, int daysNum)
+        {
+            while (daysNum != 0)
+            {
+                var currDate = startDate.AddDays(daysNum--);
+                if (hu.Diary[currDate.Month - 1, currDate.Day - 1] == true)
+                    return false;
+            }
+            return true;
+        }
+
+        private delegate bool HostHasPred(HostingUnit hu);
+
+        private List<HostingUnit> getAllHostUnitsByPredicate(HostHasPred hostHasPred)
+        {
+            return DAL_Singletone.Instance.GetHostingUnitsList().TakeWhile(hu => hostHasPred(hu)).ToList();
+        }
+        #endregion
     }
 }

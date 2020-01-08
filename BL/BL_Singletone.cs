@@ -4,23 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace BL
 {
-   public static class DAL_Singletone
+     public class BL_Singletone
     {
-        private static Lazy<IDAL> _instance;
+        private static Lazy<IBL> _instance;
 
-        public static IDAL Instance
+        public static IBL Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new Lazy<IDAL>(() => new Dal_imp());
+                    _instance = new Lazy<IBL>(() => new Ibl_imp());
                 }
-                return _instance.Value;           
+                return _instance.Value;
             }
         }
-
     }
 }

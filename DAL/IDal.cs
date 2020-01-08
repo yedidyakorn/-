@@ -30,5 +30,13 @@ namespace DAL
         List<Order> GetOrderList();
 
         List<BankBranch> GetBankBranchesList();
+
+        Order GetOrderByKey(long orderKey);
+
+        GuestRequest GetGuestRequestByKey(long guestRequestKey);
+
+        List<GuestRequest> GetGuestRequestsById(long id);
+
+        HostingUnit GetHostingUnitByKey(long hostingUnitKey);
     }
 }

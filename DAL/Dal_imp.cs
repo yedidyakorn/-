@@ -86,7 +86,7 @@ namespace DAL
                    BranchCity = "בני ברק",
                    BranchNumber = 593,
                },
-            }.Select(b => (BankBranch)Cloning.clone(b)).ToList();
+            }.Select(b => (BankBranch)b.clone()).ToList();
         }
 
         public List<GuestRequest> GetGuestRequestsList()
