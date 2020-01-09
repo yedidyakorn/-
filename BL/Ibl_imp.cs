@@ -73,6 +73,10 @@ namespace BL
 
                 DAL_Singletone.Instance.AddOrder(order);
             }
+            catch(LogicException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 throw new LogicException(ex);
@@ -96,6 +100,10 @@ namespace BL
 
                 DAL_Singletone.Instance.DeleteHostingUnit(HostingUnitKey);
             }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 throw new LogicException(ex);
@@ -110,6 +118,10 @@ namespace BL
             {
                 return DAL_Singletone.Instance.GetBankBranchesList();
             }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 throw new LogicException(ex);
@@ -121,6 +133,10 @@ namespace BL
             try
             {
                 return DAL_Singletone.Instance.GetGuestRequestsList();
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -134,6 +150,10 @@ namespace BL
             {
                 return DAL_Singletone.Instance.GetHostingUnitsList();
             }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 throw new LogicException(ex);
@@ -145,6 +165,10 @@ namespace BL
             try
             {
                 return DAL_Singletone.Instance.GetOrderList();
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -158,6 +182,10 @@ namespace BL
             {
                 DAL_Singletone.Instance.UpdateGuestRequestStatus(GuestRequestKey, requestStatus);
 
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -175,6 +203,10 @@ namespace BL
                     return false;
 
                 DAL_Singletone.Instance.UpdateHostingUnit(hostingUnit);
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -241,6 +273,10 @@ namespace BL
                 }
 
             }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 throw new LogicException(ex);
@@ -259,6 +295,10 @@ namespace BL
                         where available
                         select unit).ToList();
             }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 throw new LogicException(ex);
@@ -273,11 +313,17 @@ namespace BL
                 endDate = endDate ?? DateTime.Now;
                 return (endDate.Value - startDate).Days;
             }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 throw new LogicException(ex);
             }
         }
+
+        #region order manager
 
         public List<Order> GetOrdersForDays(int days)
         {
@@ -285,6 +331,10 @@ namespace BL
             {
                 return DAL_Singletone.Instance.GetOrderList().TakeWhile(o =>
                  (DateTime.Now - o.CreateDate).Days >= days).ToList();
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -298,6 +348,10 @@ namespace BL
             {
                 return DAL_Singletone.Instance.GetOrderList()
                      .Where(o => o.GuestRequestKey == guestRequest.GuestRequestKey).Count();
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -313,17 +367,27 @@ namespace BL
                       .Where(o => o.HostingUnitKey == hostingUnit.HostingUnitKey
                       && o.Status == OrderStatuses.Closed_ApprovedByCustomer).Count();
             }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 throw new LogicException(ex);
             }
         }
 
+        #endregion
+
         public List<IGrouping<VecationAreas, GuestRequest>> GetGRListGroupByArea()
         {
             try
             {
                 return DAL_Singletone.Instance.GetGuestRequestsList().GroupBy(gr => gr.Area).ToList();
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -336,6 +400,10 @@ namespace BL
             try
             {
                 return DAL_Singletone.Instance.GetGuestRequestsList().GroupBy(gr => gr.Adults + gr.Children).ToList();
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -351,6 +419,10 @@ namespace BL
                 .GroupBy(h => new { Host = h.Owner, id = h.Owner.HostKey })
                 .Select(h => new { count = h.Count(), host = h.Key }).ToList<dynamic>();
             }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 throw new LogicException(ex);
@@ -365,6 +437,10 @@ namespace BL
                 return DAL_Singletone.Instance.GetHostingUnitsList().GroupBy(hu => hu.Area).
                     ToList();
             }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 throw new LogicException(ex);
@@ -376,6 +452,10 @@ namespace BL
             try
             {
                 return GetAllHostUnitsByPredicate(delegate (HostingUnit hu) { return hu.HasPool; });
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -398,6 +478,10 @@ namespace BL
                 if (ordersNum > 0)
                     return true;
             }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 throw new LogicException(ex);
@@ -417,6 +501,10 @@ namespace BL
                         return false;
                 }
             }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
             catch (Exception ex)
             {
                 throw new LogicException(ex);
@@ -431,6 +519,10 @@ namespace BL
             try
             {
                 return DAL_Singletone.Instance.GetHostingUnitsList().TakeWhile(hu => hostHasPred(hu)).ToList();
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
