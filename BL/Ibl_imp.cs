@@ -59,14 +59,16 @@ namespace BL
                 if (guestRequest == null)
                     throw new LogicException($"guest Request {order.GuestRequestKey} does not exist");
 
-                DateTime cureentTate = guestRequest.RegistrationDate;
+                DateTime cureentDate = guestRequest.RegistrationDate;
 
-                while (cureentTate.Date != guestRequest.ReleaseDate.Date.AddDays(1))
+                while (cureentDate.Date != guestRequest.ReleaseDate.Date.AddDays(1))
                 {
 
-                    if (hostingUnit.Diary[cureentTate.Month - 1, cureentTate.Day - 1] == true)
+                    if (hostingUnit.Diary[cureentDate.Month - 1, cureentDate.Day - 1] == true)
 
                         return false;
+
+                    cureentDate = cureentDate.AddDays(1);
                 }
 
                 order.CreateDate = DateTime.Now;
@@ -250,13 +252,13 @@ namespace BL
 
                         var hostingUnit = DAL_Singletone.Instance.GetHostingUnitByKey(order.HostingUnitKey);
 
-                        DateTime cureentTate = guestRequest.RegistrationDate;
+                        DateTime cureentDate = guestRequest.RegistrationDate;
 
-                        while (cureentTate.Date != guestRequest.ReleaseDate.Date.AddDays(1))
+                        while (cureentDate.Date != guestRequest.ReleaseDate.Date.AddDays(1))
                         {
-                            hostingUnit.Diary[cureentTate.Month - 1, cureentTate.Day - 1] = true;
+                            hostingUnit.Diary[cureentDate.Month - 1, cureentDate.Day - 1] = true;
 
-                            cureentTate.AddDays(1);
+                            cureentDate = cureentDate.AddDays(1);
                         }
 
                         var fee = Config.FEE_RATE * (guestRequest.ReleaseDate - guestRequest.RegistrationDate).TotalDays;

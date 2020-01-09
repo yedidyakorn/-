@@ -140,11 +140,11 @@ namespace DS
             {
                 CreateDate = DateTime.Now,
                 
-                GuestRequestKey = 1234,
+                GuestRequestKey = 1,
 
-                HostingUnitKey = 123456,
+                HostingUnitKey = 10000000,
 
-                OrderDate = DateTime.Now.AddDays(1),
+                OrderDate = DateTime.Now.AddDays(5),
 
                 OrderKey = 123,
 

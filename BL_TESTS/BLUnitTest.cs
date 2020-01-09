@@ -84,7 +84,7 @@ namespace BL_TESTS
             { 
                 CreateDate = DateTime.Now,
 
-                GuestRequestKey = 1234,
+                GuestRequestKey = 2,
 
                 HostingUnitKey = 10000000,
 
@@ -144,9 +144,9 @@ namespace BL_TESTS
         public void UpdateOrder()
         {
             var order = BL_Singletone.Instance.GetOrderList().First();
-            BL_Singletone.Instance.UpdateOrder(order.OrderKey , OrderStatuses.NotYetAddressed);
+            BL_Singletone.Instance.UpdateOrder(order.OrderKey , OrderStatuses.Closed_ApprovedByCustomer);
             order = BL_Singletone.Instance.GetOrderList().First();
-            Assert.IsTrue(order.Status ==OrderStatuses.NotYetAddressed);
+            Assert.IsTrue(order.Status ==OrderStatuses.Closed_ApprovedByCustomer);
         }
 
         [TestMethod]

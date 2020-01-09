@@ -39,7 +39,7 @@ namespace DAL
 
         public void DeleteHostingUnit(long HostingUnitKey)
         {
-            if (DataSource.hostingUnits.Any(o => o.HostingUnitKey == HostingUnitKey))
+            if (!DataSource.hostingUnits.Any(o => o.HostingUnitKey == HostingUnitKey))
             {
                 throw new LogicException($"hosting {HostingUnitKey} does not exist");
             }
@@ -107,7 +107,7 @@ namespace DAL
 
         public GuestRequest GetGuestRequestByKey(long guestRequestKey)
         {
-            return (GuestRequest)DataSource.guestRequests.Where(gr => gr.Id == guestRequestKey)
+            return (GuestRequest)DataSource.guestRequests.Where(gr => gr.GuestRequestKey == guestRequestKey)
                 .FirstOrDefault().clone();
         }
 
@@ -136,7 +136,7 @@ namespace DAL
 
         public void UpdateGuestRequestStatus(long GuestRequestKey, RequestStatus requestStatus)
         {
-            if (DataSource.guestRequests.Any(gr => gr.GuestRequestKey == GuestRequestKey))
+            if (!DataSource.guestRequests.Any(gr => gr.GuestRequestKey == GuestRequestKey))
             {
                 throw new LogicException($"Guest Requests {GuestRequestKey} does not exist");
             }
@@ -149,7 +149,7 @@ namespace DAL
         public void UpdateHostingUnit(HostingUnit hostingUnit)
         {
 
-            if (DataSource.hostingUnits.Any(hu => hu.HostingUnitKey == hostingUnit.HostingUnitKey))
+            if (!DataSource.hostingUnits.Any(hu => hu.HostingUnitKey == hostingUnit.HostingUnitKey))
             {
                 throw new LogicException($"Hosting Unit {hostingUnit.HostingUnitKey} does not exist");
             }
@@ -162,7 +162,7 @@ namespace DAL
         public void UpdateOrder(long orderKey, OrderStatuses orderStatuses)
         {
         
-            if (DataSource.orders.Any(o => o.OrderKey == orderKey))
+            if (!DataSource.orders.Any(o => o.OrderKey == orderKey))
             {
                 throw new LogicException($"Order {orderKey} does not exist");
             }
