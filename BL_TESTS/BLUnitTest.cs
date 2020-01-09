@@ -35,7 +35,6 @@ namespace BL_TESTS
             });
 
         }
-
         [TestMethod]
         public void AddHostingUnit()
         {

@@ -17,7 +17,7 @@ namespace DAL
             
             if (DataSource.hostingUnits.Any(hu => hu.HostingUnitKey == hostingUnit.HostingUnitKey))
             {
-                throw new LogicException("ID already exists");
+                throw new LogicException("HostingUnit ID already exists");
             }
 
             DataSource.hostingUnits.Add(hostingUnit);
@@ -30,7 +30,7 @@ namespace DAL
 
             if (DataSource.orders.Any(o => o.OrderKey == order.OrderKey))
             {
-                throw new LogicException("ID already exists");
+                throw new LogicException("Order ID already exists");
             }
 
             DataSource.orders.Add(order);

@@ -11,5 +11,7 @@ namespace BE
         public LogicException(string error) : base(error) { } 
 
         public LogicException( string field, string error) : base($"error {error} in field {field}"){}
+
+        public LogicException(Exception error) : base("something went worng") { }
     }
 }
