@@ -14,11 +14,11 @@ namespace DAL
         public void AddHostingUnit(HostingUnit hostingUnit)
         {
             hostingUnit.HostingUnitKey = Config.HOSTING_UNIT_COUNTER;
-
-            int exist = DataSource.hostingUnits.Where(hu => hu.HostingUnitKey == hostingUnit.HostingUnitKey).Count();
-
-            if (exist > 0)
-                throw new Exception("ID already exists");
+            
+            if (DataSource.hostingUnits.Any(hu => hu.HostingUnitKey == hostingUnit.HostingUnitKey))
+            {
+                throw new LogicException("ID already exists");
+            }
 
             DataSource.hostingUnits.Add(hostingUnit);
 
@@ -28,10 +28,10 @@ namespace DAL
         {
             order.OrderKey = Config.ORDER_COUNTER;
 
-            int exist = DataSource.orders.Where(o => o.OrderKey == order.OrderKey).Count();
-
-            if (exist > 0)
-                throw new Exception("ID already exists");
+            if (DataSource.orders.Any(o => o.OrderKey == order.OrderKey))
+            {
+                throw new LogicException("ID already exists");
+            }
 
             DataSource.orders.Add(order);
 
@@ -39,6 +39,11 @@ namespace DAL
 
         public void DeleteHostingUnit(long HostingUnitKey)
         {
+            if (DataSource.hostingUnits.Any(o => o.HostingUnitKey == HostingUnitKey))
+            {
+                throw new LogicException($"hosting {HostingUnitKey} does not exist");
+            }
+
             DataSource.hostingUnits.Remove(DataSource.hostingUnits.Where(hu => hu.HostingUnitKey == HostingUnitKey).FirstOrDefault());
         }
 
@@ -131,6 +136,11 @@ namespace DAL
 
         public void UpdateGuestRequestStatus(long GuestRequestKey, RequestStatus requestStatus)
         {
+            if (DataSource.guestRequests.Any(gr => gr.GuestRequestKey == GuestRequestKey))
+            {
+                throw new LogicException($"Guest Requests {GuestRequestKey} does not exist");
+            }
+
             DataSource.guestRequests
                .Where(gr => gr.GuestRequestKey == GuestRequestKey).ToList()
                .ForEach(gr => gr.Status = requestStatus);
@@ -138,6 +148,12 @@ namespace DAL
 
         public void UpdateHostingUnit(HostingUnit hostingUnit)
         {
+
+            if (DataSource.hostingUnits.Any(hu => hu.HostingUnitKey == hostingUnit.HostingUnitKey))
+            {
+                throw new LogicException($"Hosting Unit {hostingUnit.HostingUnitKey} does not exist");
+            }
+
             DataSource.hostingUnits
                .Where(hu => hu.HostingUnitKey == hostingUnit.HostingUnitKey).ToList()
                .ForEach(hu => hu = hostingUnit);
@@ -145,22 +161,38 @@ namespace DAL
 
         public void UpdateOrder(long orderKey, OrderStatuses orderStatuses)
         {
+        
+            if (DataSource.orders.Any(o => o.OrderKey == orderKey))
+            {
+                throw new LogicException($"Order {orderKey} does not exist");
+            }
+
             DataSource.orders
              .Where(o => o.OrderKey == orderKey).ToList()
              .ForEach(o => o.Status = orderStatuses);
         }
 
-        public void AddGuestRequest(GuestRequest guestRequest)
+        public bool AddGuestRequest(GuestRequest guestRequest)
         {
             guestRequest.GuestRequestKey = Config.GUEST_REQUEST_COUNTER;
 
-            int exist = DataSource.guestRequests.Where(gr => gr.GuestRequestKey == guestRequest.GuestRequestKey).Count();
+            try
+            {
+                int exist = DataSource.guestRequests.Where(gr => gr.GuestRequestKey == guestRequest.GuestRequestKey).Count();
 
-            if (exist > 0)
+                if (exist > 0)
 
-                throw new Exception("ID already exists");         
+                    throw new LogicException("ID already exists");
 
-            DataSource.guestRequests.Add(guestRequest);
+                DataSource.guestRequests.Add(guestRequest);
+
+            }
+            catch {
+                return false;
+            }
+
+            return true;
+            
         }
 
     }

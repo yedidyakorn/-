@@ -188,35 +188,35 @@ namespace BL_TESTS
         [TestMethod]
         public void getGRListGroupByArea()
         {
-            var gr = BL_Singletone.Instance.getGRListGroupByArea();
+            var gr = BL_Singletone.Instance.GetGRListGroupByArea();
             Assert.IsTrue(gr.Count()>0);
         }
 
         [TestMethod]
         public void getGRListGroupByVacationers()
         {
-            var gr = BL_Singletone.Instance.getGRListGroupByVacationers();
+            var gr = BL_Singletone.Instance.GetGRListGroupByVacationers();
             Assert.IsTrue(gr.Count() > 0);
         }
 
         [TestMethod]
         public void getHostsByUnitsNum()
         {
-            var gr = BL_Singletone.Instance.getHostsByUnitsNum();
+            var gr = BL_Singletone.Instance.GetHostsByUnitsNum();
             Assert.IsTrue(gr.Count() > 0);
         }
 
         [TestMethod]
         public void getHUListGroupByArea()
         {
-            var gr = BL_Singletone.Instance.getHUListGroupByArea();
+            var gr = BL_Singletone.Instance.GetHUListGroupByArea();
             Assert.IsTrue(gr.Count() > 0);
         }
 
         [TestMethod]
         public void getAllHostUnitsWithPool()
         {
-            var gr = BL_Singletone.Instance.getAllHostUnitsWithPool();
+            var gr = BL_Singletone.Instance.GetAllHostUnitsWithPool();
            Assert.IsTrue(gr.Count() > 0);
         }
     }

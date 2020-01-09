@@ -9,7 +9,7 @@ namespace DAL
 {
     public interface IDAL
     {
-        void AddGuestRequest(GuestRequest guestRequest); //הוספת דרישת לקוח 
+        bool AddGuestRequest(GuestRequest guestRequest); //הוספת דרישת לקוח 
 
         void UpdateGuestRequestStatus(long GuestRequestKey, RequestStatus requestStatus);//עדכון דרישת לקוח
 

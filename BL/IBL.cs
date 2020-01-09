@@ -10,11 +10,11 @@ namespace BL
 {
     public interface IBL
     {
-        void AddGuestRequest(GuestRequest guestRequest); //הוספת דרישת לקוח 
+        bool AddGuestRequest(GuestRequest guestRequest); //הוספת דרישת לקוח 
 
-        void UpdateGuestRequestStatus(long GuestRequestKey, RequestStatus requestStatus);//עדכון דרישת לקוח
+        bool UpdateGuestRequestStatus(long GuestRequestKey, RequestStatus requestStatus);//עדכון דרישת לקוח
 
-        void AddHostingUnit(HostingUnit hostingUnit);//הוספת יחידת אירוח
+        bool AddHostingUnit(HostingUnit hostingUnit);//הוספת יחידת אירוח
 
         bool DeleteHostingUnit(long HostingUnitKey);
 
@@ -22,7 +22,7 @@ namespace BL
 
         bool AddOrder(Order order);
 
-        void UpdateOrder(long orderKey, OrderStatuses orderStatuses);
+        bool UpdateOrder(long orderKey, OrderStatuses orderStatuses);
 
         List<HostingUnit> GetHostingUnitsList();
 
@@ -42,14 +42,14 @@ namespace BL
 
         int GetApprovedOrdersNumForHU(HostingUnit hostingUnit);
 
-        List<IGrouping<VecationAreas, GuestRequest>> getGRListGroupByArea();
+        List<IGrouping<VecationAreas, GuestRequest>> GetGRListGroupByArea();
 
-        List<IGrouping<int, GuestRequest>> getGRListGroupByVacationers();
+        List<IGrouping<int, GuestRequest>> GetGRListGroupByVacationers();
 
-        List<dynamic> getHostsByUnitsNum();
+        List<dynamic> GetHostsByUnitsNum();
 
-        List<IGrouping<VecationAreas, HostingUnit>> getHUListGroupByArea();
+        List<IGrouping<VecationAreas, HostingUnit>> GetHUListGroupByArea();
    
-        List<HostingUnit> getAllHostUnitsWithPool();
+        List<HostingUnit> GetAllHostUnitsWithPool();
     }
 }
