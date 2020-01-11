@@ -124,14 +124,54 @@ namespace DS
 
                     FhoneNumber = 0527684344,
 
-                    HostKey = 12345678,
+                    HostKey = 123456789,
 
                     MailAddress = "haya@gmail.com",
 
                     PrivateName = "chaya",
 
                 }
-            }
+            },
+            
+            new HostingUnit()
+            {
+                HostingUnitKey= 10000002,
+
+                HostingUnitName = "חלום של צימר",
+
+                HasPool =true,
+
+                Owner = new Host()
+                {
+                    BankAccountNumber = 12345,
+
+                    BankBranchDetails = new BankBranch()
+                    {
+                        BankName = "לאומי",
+
+                        BankNumber = 10,
+
+                        BranchAddress = "חזון איש 80",
+
+                        BranchCity = "בני ברק",
+
+                        BranchNumber = 856,
+                    },
+
+                    CollectionClearance = true,
+
+                    FamilyName = "Goldberg",
+
+                    FhoneNumber = 0527684344,
+
+                    HostKey = 12345678,
+
+                    MailAddress = "dubon@gmail.com",
+
+                    PrivateName = "Israel Dov",
+
+                }
+            },
         };
 
         static public List<Order> orders = new List<Order>

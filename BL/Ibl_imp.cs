@@ -11,6 +11,9 @@ namespace BL
 {
     public class Ibl_imp : IBL
     {
+
+        #region guest request manager
+        
         public bool AddGuestRequest(GuestRequest guestRequest)
         {
             try
@@ -20,7 +23,7 @@ namespace BL
 
                 DAL_Singletone.Instance.AddGuestRequest(guestRequest);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new LogicException(ex);
             }
@@ -28,11 +31,32 @@ namespace BL
             return true;
         }
 
-        public bool AddHostingUnit(HostingUnit hostingUnit)
+        public List<GuestRequest> GetGuestRequestsList()
         {
             try
             {
-                DAL_Singletone.Instance.AddHostingUnit(hostingUnit);
+                return DAL_Singletone.Instance.GetGuestRequestsList();
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
+        }
+
+        public bool UpdateGuestRequestStatus(long GuestRequestKey, RequestStatus requestStatus)
+        {
+            try
+            {
+                DAL_Singletone.Instance.UpdateGuestRequestStatus(GuestRequestKey, requestStatus);
+
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -40,6 +64,58 @@ namespace BL
             }
 
             return true;
+        }
+
+        public List<IGrouping<VecationAreas, GuestRequest>> GetGRListGroupByArea()
+        {
+            try
+            {
+                return DAL_Singletone.Instance.GetGuestRequestsList().GroupBy(gr => gr.Area).ToList();
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
+        }
+
+        public List<IGrouping<int, GuestRequest>> GetGRListGroupByVacationers()
+        {
+            try
+            {
+                return DAL_Singletone.Instance.GetGuestRequestsList().GroupBy(gr => gr.Adults + gr.Children).ToList();
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
+        }
+
+        #endregion
+      
+        #region order manager
+
+        public List<Order> GetOrderList()
+        {
+            try
+            {
+                return DAL_Singletone.Instance.GetOrderList();
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
         }
 
         public bool AddOrder(Order order)
@@ -75,7 +151,7 @@ namespace BL
 
                 DAL_Singletone.Instance.AddOrder(order);
             }
-            catch(LogicException ex)
+            catch (LogicException ex)
             {
                 throw ex;
             }
@@ -91,16 +167,12 @@ namespace BL
 
         }
 
-        public bool DeleteHostingUnit(long HostingUnitKey)
+        public List<Order> GetOrdersForDays(int days)
         {
             try
             {
-                var hostingUnit = DAL_Singletone.Instance.GetHostingUnitByKey(HostingUnitKey);
-
-                if (HostHasOpenOrders(HostingUnitKey))
-                    return false;
-
-                DAL_Singletone.Instance.DeleteHostingUnit(HostingUnitKey);
+                return DAL_Singletone.Instance.GetOrderList().TakeWhile(o =>
+                 (DateTime.Now - o.CreateDate).Days >= days).ToList();
             }
             catch (LogicException ex)
             {
@@ -110,111 +182,6 @@ namespace BL
             {
                 throw new LogicException(ex);
             }
-
-            return true;
-        }
-
-        public List<BankBranch> GetBankBranchesList()
-        {
-            try
-            {
-                return DAL_Singletone.Instance.GetBankBranchesList();
-            }
-            catch (LogicException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw new LogicException(ex);
-            }
-        }
-        
-        public List<GuestRequest> GetGuestRequestsList()
-        {
-            try
-            {
-                return DAL_Singletone.Instance.GetGuestRequestsList();
-            }
-            catch (LogicException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw new LogicException(ex);
-            }
-        }
-
-        public List<HostingUnit> GetHostingUnitsList()
-        {
-            try
-            {
-                return DAL_Singletone.Instance.GetHostingUnitsList();
-            }
-            catch (LogicException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw new LogicException(ex);
-            }
-        }
-
-        public List<Order> GetOrderList()
-        {
-            try
-            {
-                return DAL_Singletone.Instance.GetOrderList();
-            }
-            catch (LogicException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw new LogicException(ex);
-            }
-        }
-
-        public bool UpdateGuestRequestStatus(long GuestRequestKey, RequestStatus requestStatus)
-        {
-            try
-            {
-                DAL_Singletone.Instance.UpdateGuestRequestStatus(GuestRequestKey, requestStatus);
-
-            }
-            catch (LogicException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw new LogicException(ex);
-            }
-
-            return true;
-        }
-
-        public bool UpdateHostingUnit(HostingUnit hostingUnit)
-        {
-            try
-            {
-                if (hostingUnit.Owner.CollectionClearance == false && HostHasOpenOrders(hostingUnit.HostingUnitKey))
-                    return false;
-
-                DAL_Singletone.Instance.UpdateHostingUnit(hostingUnit);
-            }
-            catch (LogicException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw new LogicException(ex);
-            }
-            return true;
         }
 
         public bool UpdateOrder(long orderKey, OrderStatuses orderStatuses)
@@ -230,7 +197,7 @@ namespace BL
                 {
 
                     case OrderStatuses.MailSent:
-                       
+
 
                     case OrderStatuses.Closed_ApprovedByCustomer:
 
@@ -238,9 +205,9 @@ namespace BL
 
                         var guestRequest = DAL_Singletone.Instance.GetGuestRequestByKey(order.GuestRequestKey);
 
-                        if(guestRequest == null)
+                        if (guestRequest == null)
                         {
-                            throw new LogicException($"Guest Request {order.GuestRequestKey} does not exist"); 
+                            throw new LogicException($"Guest Request {order.GuestRequestKey} does not exist");
                         }
 
                         DAL_Singletone.Instance.GetGuestRequestsById(guestRequest.Id).ForEach(gr =>
@@ -287,62 +254,6 @@ namespace BL
             return true;
 
         }
-       
-        public List<HostingUnit> GetAllAvailableUnitsForDate(DateTime startDate, int daysNum)
-        {
-            try
-            {
-                return (from unit in DAL_Singletone.Instance.GetHostingUnitsList()
-                        let available = IsUnitAvailableForDates(unit, startDate, daysNum)
-                        where available
-                        select unit).ToList();
-            }
-            catch (LogicException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw new LogicException(ex);
-            }
-
-        }
-
-        public int GetDaysBetweenDates(DateTime startDate , [Optional]DateTime? endDate)
-        {
-            try
-            {
-                endDate = endDate ?? DateTime.Now;
-                return (endDate.Value - startDate).Days;
-            }
-            catch (LogicException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw new LogicException(ex);
-            }
-        }
-
-        #region order manager
-
-        public List<Order> GetOrdersForDays(int days)
-        {
-            try
-            {
-                return DAL_Singletone.Instance.GetOrderList().TakeWhile(o =>
-                 (DateTime.Now - o.CreateDate).Days >= days).ToList();
-            }
-            catch (LogicException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw new LogicException(ex);
-            }
-        }
 
         public int GetOrdersNumForGR(GuestRequest guestRequest)
         {
@@ -381,11 +292,27 @@ namespace BL
 
         #endregion
 
-        public List<IGrouping<VecationAreas, GuestRequest>> GetGRListGroupByArea()
+        #region host unit manager
+
+        public bool AddHostingUnit(HostingUnit hostingUnit)
         {
             try
             {
-                return DAL_Singletone.Instance.GetGuestRequestsList().GroupBy(gr => gr.Area).ToList();
+                DAL_Singletone.Instance.AddHostingUnit(hostingUnit);
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
+
+            return true;
+        }
+
+        public List<HostingUnit> GetHostingUnitsList()
+        {
+            try
+            {
+                return DAL_Singletone.Instance.GetHostingUnitsList();
             }
             catch (LogicException ex)
             {
@@ -397,11 +324,16 @@ namespace BL
             }
         }
 
-        public List<IGrouping<int, GuestRequest>> GetGRListGroupByVacationers()
+        public bool DeleteHostingUnit(long HostingUnitKey)
         {
             try
             {
-                return DAL_Singletone.Instance.GetGuestRequestsList().GroupBy(gr => gr.Adults + gr.Children).ToList();
+                var hostingUnit = DAL_Singletone.Instance.GetHostingUnitByKey(HostingUnitKey);
+
+                if (HostHasOpenOrders(HostingUnitKey))
+                    return false;
+
+                DAL_Singletone.Instance.DeleteHostingUnit(HostingUnitKey);
             }
             catch (LogicException ex)
             {
@@ -411,6 +343,48 @@ namespace BL
             {
                 throw new LogicException(ex);
             }
+
+            return true;
+        }
+
+        public bool UpdateHostingUnit(HostingUnit hostingUnit)
+        {
+            try
+            {
+                if (hostingUnit.Owner.CollectionClearance == false && HostHasOpenOrders(hostingUnit.HostingUnitKey))
+                    return false;
+
+                DAL_Singletone.Instance.UpdateHostingUnit(hostingUnit);
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
+            return true;
+        }
+
+        public List<HostingUnit> GetAllAvailableUnitsForDate(DateTime startDate, int daysNum)
+        {
+            try
+            {
+                return (from unit in DAL_Singletone.Instance.GetHostingUnitsList()
+                        let available = IsUnitAvailableForDates(unit, startDate, daysNum)
+                        where available
+                        select unit).ToList();
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
+
         }
 
         public List<dynamic> GetHostsByUnitsNum()
@@ -418,8 +392,12 @@ namespace BL
             try
             {
                 return DAL_Singletone.Instance.GetHostingUnitsList()
-                .GroupBy(h => new { Host = h.Owner, id = h.Owner.HostKey })
-                .Select(h => new { count = h.Count(), host = h.Key }).ToList<dynamic>();
+                    .Select(hu => hu.Owner)
+                    .GroupBy(o => o.HostKey)
+                    .Select(g => new { count = g.Count(), hosts = g })
+                    .OrderBy(u => u.count)
+                    .ToList<dynamic>();
+
             }
             catch (LogicException ex)
             {
@@ -447,9 +425,10 @@ namespace BL
             {
                 throw new LogicException(ex);
             }
-        }     
+        }
 
-        public List<HostingUnit> GetAllHostUnitsWithPool() {
+        public List<HostingUnit> GetAllHostUnitsWithPool()
+        {
 
             try
             {
@@ -465,6 +444,45 @@ namespace BL
             }
 
         }
+
+        #endregion
+
+        #region general
+
+        public List<BankBranch> GetBankBranchesList()
+        {
+            try
+            {
+                return DAL_Singletone.Instance.GetBankBranchesList();
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
+        }
+
+        public int GetDaysBetweenDates(DateTime startDate, [Optional]DateTime? endDate)
+        {
+            try
+            {
+                endDate = endDate ?? DateTime.Now;
+                return (endDate.Value - startDate).Days;
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
+        }
+
+        #endregion
 
         #region Private methods
 
@@ -533,5 +551,6 @@ namespace BL
         }
        
         #endregion
+
     }
 }

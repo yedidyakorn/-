@@ -12,6 +12,7 @@ namespace DAL
 {
     public static class Cloning 
     {
+
         public static IClonable clone(this IClonable original) {
             
             return original != null ? cloneT(original) : null;
@@ -34,8 +35,6 @@ namespace DAL
 
             return t;
         }
-
-
        
     }
 }
