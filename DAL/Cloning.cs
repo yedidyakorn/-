@@ -27,7 +27,8 @@ namespace DAL
             foreach (PropertyInfo prop in props)
             {
                 var fieldValue = prop.GetValue(t);
-                    if (prop.GetType().Namespace != t.GetType().Namespace)
+                    if (fieldValue.GetType().Namespace.Contains("System") 
+                    || fieldValue.GetType().GetProperties().Count() == 0)
                         prop.SetValue(target, fieldValue);
                 else
                     prop.SetValue(target, cloneT(fieldValue));

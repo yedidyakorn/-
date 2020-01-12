@@ -57,6 +57,8 @@ namespace DS
         {
             new HostingUnit()
             {
+                Area = VecationAreas.North,
+
                 HostingUnitKey= 10000000,
 
                 HostingUnitName = "חלום של צימר",
