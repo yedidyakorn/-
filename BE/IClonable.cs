@@ -8,6 +8,5 @@ namespace BE
 {
     public interface IClonable
     {
-
     }
 }

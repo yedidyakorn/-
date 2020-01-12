@@ -13,7 +13,7 @@ namespace DS
         {
             new GuestRequest()
             {
-
+                GuestRequestKey = 1,
                 Adults=2,
                 Children= 15,
                 EntryDate= DateTime.Now.AddDays(8),
@@ -34,7 +34,7 @@ namespace DS
 
             new GuestRequest()
             {
-
+                GuestRequestKey = 2,
                 Adults=2,
                 Children= 10,
                 EntryDate= DateTime.Now.AddDays(8),
@@ -57,9 +57,13 @@ namespace DS
         {
             new HostingUnit()
             {
-                HostingUnitKey= 10000000_,
+                Area = VecationAreas.North,
+
+                HostingUnitKey= 10000000,
 
                 HostingUnitName = "חלום של צימר",
+
+                HasPool =true,
 
                 Owner = new Host()
                 {
@@ -122,14 +126,54 @@ namespace DS
 
                     FhoneNumber = 0527684344,
 
-                    HostKey = 12345678,
+                    HostKey = 123456789,
 
                     MailAddress = "haya@gmail.com",
 
                     PrivateName = "chaya",
 
                 }
-            }
+            },
+            
+            new HostingUnit()
+            {
+                HostingUnitKey= 10000002,
+
+                HostingUnitName = "חלום של צימר",
+
+                HasPool =true,
+
+                Owner = new Host()
+                {
+                    BankAccountNumber = 12345,
+
+                    BankBranchDetails = new BankBranch()
+                    {
+                        BankName = "לאומי",
+
+                        BankNumber = 10,
+
+                        BranchAddress = "חזון איש 80",
+
+                        BranchCity = "בני ברק",
+
+                        BranchNumber = 856,
+                    },
+
+                    CollectionClearance = true,
+
+                    FamilyName = "Goldberg",
+
+                    FhoneNumber = 0527684344,
+
+                    HostKey = 12345678,
+
+                    MailAddress = "dubon@gmail.com",
+
+                    PrivateName = "Israel Dov",
+
+                }
+            },
         };
 
         static public List<Order> orders = new List<Order>
@@ -138,11 +182,11 @@ namespace DS
             {
                 CreateDate = DateTime.Now,
                 
-                GuestRequestKey = 1234,
+                GuestRequestKey = 1,
 
-                HostingUnitKey = 123456,
+                HostingUnitKey = 10000000,
 
-                OrderDate = DateTime.Now.AddDays(1),
+                OrderDate = DateTime.Now.AddDays(5),
 
                 OrderKey = 123,
 

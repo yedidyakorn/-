@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BL_Singletone.cs" />
     <Compile Include="IBL.cs" />
     <Compile Include="Ibl_imp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
