@@ -21,19 +21,19 @@ namespace DAL
 
         public static T cloneT<T>(this T t)
         {
-            var target = Activator.CreateInstance(t.GetType());
+            var target = (T)Activator.CreateInstance(t.GetType());
 
-            FieldInfo[] fis = t.GetType().GetFields();
-            foreach (FieldInfo fi in fis)
+            PropertyInfo[] props = t.GetType().GetProperties();
+            foreach (PropertyInfo prop in props)
             {
-                var fieldValue = fi.GetValue(t);
-                if (fi.FieldType.Namespace != t.GetType().Namespace)
-                    fi.SetValue(t, fieldValue);
+                var fieldValue = prop.GetValue(t);
+                    if (prop.GetType().Namespace != t.GetType().Namespace)
+                        prop.SetValue(target, fieldValue);
                 else
-                    fi.SetValue(t, cloneT(t));
+                    prop.SetValue(target, cloneT(fieldValue));
             }
 
-            return t;
+            return target;
         }
        
     }
