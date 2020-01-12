@@ -41,13 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Idal.cs" />
+    <Compile Include="Cloning.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="Dal_imp.cs" />
+    <Compile Include="DAL_Singletone.cs" />
+    <Compile Include="IDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">
       <Project>{6ab0e9e9-4347-42ab-a7be-5c5c0ec9bbe9}</Project>
       <Name>BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DS\DS.csproj">
+      <Project>{45a92c34-b763-4390-9a11-4c9b4dda56da}</Project>
+      <Name>DS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

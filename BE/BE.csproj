@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankBranch.cs" />
+    <Compile Include="CustomExeption.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="GuestRequest.cs" />
     <Compile Include="Host.cs" />
     <Compile Include="HostingUnit.cs" />
+    <Compile Include="IClonable.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

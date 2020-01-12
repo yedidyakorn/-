@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public class BankBranch
+    public class BankBranch :IClonable
     {
         public int BankNumber { get; set; }
 

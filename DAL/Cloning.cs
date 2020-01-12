@@ -12,24 +12,30 @@ namespace DAL
 {
     public static class Cloning 
     {
+
         public static IClonable clone(this IClonable original) {
+            
+            return original != null ? cloneT(original) : null;
 
+        }
 
-            IClonable target = (IClonable)Activator.CreateInstance(original.GetType());
+        public static T cloneT<T>(this T t)
+        {
+            var target = (T)Activator.CreateInstance(t.GetType());
 
-            FieldInfo[] fis = original.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
-            foreach (FieldInfo fi in fis)
+            PropertyInfo[] props = t.GetType().GetProperties();
+            foreach (PropertyInfo prop in props)
             {
-                IClonable fieldValue = (IClonable)fi.GetValue(original);
-                if (fi.FieldType.Namespace != original.GetType().Namespace)
-                    fi.SetValue(target, fieldValue);
+                var fieldValue = prop.GetValue(t);
+                    if (fieldValue.GetType().Namespace.Contains("System") 
+                    || fieldValue.GetType().GetProperties().Count() == 0)
+                        prop.SetValue(target, fieldValue);
                 else
-                    fi.SetValue(target, clone(fieldValue));
+                    prop.SetValue(target, cloneT(fieldValue));
             }
 
             return target;
         }
-
        
     }
 }
