@@ -28,6 +28,20 @@ namespace BL
         /// <returns>bool</returns>
         bool UpdateGuestRequestStatus(long GuestRequestKey, RequestStatus requestStatus);
 
+
+        /// <summary>
+        /// guest request by ID
+        /// </summary>
+        /// <returns>guest request</returns>
+        List<GuestRequest> GetGuestRequestsById(long id);
+
+        /// <summary>
+        /// Update Guest Request
+        /// </summary>
+        /// <param name="GuestRequest"></param>
+        /// <returns>bool</returns>
+        bool UpdateGuestRequest(GuestRequest guestRequest);
+
         /// <summary>
         /// Add Hosting Unit
         /// </summary>

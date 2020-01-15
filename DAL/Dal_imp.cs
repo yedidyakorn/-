@@ -106,9 +106,9 @@ namespace DAL
                 throw new LogicException($"Hosting Unit {hostingUnit.HostingUnitKey} does not exist");
             }
 
-            DataSource.hostingUnits
-               .Where(hu => hu.HostingUnitKey == hostingUnit.HostingUnitKey).ToList()
-               .ForEach(hu => hu = hostingUnit);
+            DataSource.hostingUnits[
+                DataSource.hostingUnits.FindIndex(hu => hu.HostingUnitKey == hostingUnit.HostingUnitKey)] = hostingUnit;
+
         }
 
         #endregion
@@ -185,6 +185,19 @@ namespace DAL
         {
             return (GuestRequest)DataSource.guestRequests.Where(gr => gr.GuestRequestKey == guestRequestKey)
                 .FirstOrDefault().clone();
+        }
+
+        public bool UpdateGuestRequest(GuestRequest guestRequest) {
+
+            if (!DataSource.guestRequests.Any(gr => gr.GuestRequestKey == guestRequest.GuestRequestKey))
+            {
+                throw new LogicException($"Guest Requests {guestRequest.GuestRequestKey} does not exist");
+            }
+
+            DataSource.guestRequests
+             [DataSource.guestRequests.FindIndex(gr => gr.GuestRequestKey == guestRequest.GuestRequestKey)] = guestRequest;
+
+            return true;
         }
 
         public void UpdateGuestRequestStatus(long GuestRequestKey, RequestStatus requestStatus)

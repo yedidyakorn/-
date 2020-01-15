@@ -8,6 +8,8 @@ namespace BE
 {
     public class Host
     {
+        public long ID { get; set; }
+
         public long HostKey { get; set; }
 
         public String PrivateName { get; set; }

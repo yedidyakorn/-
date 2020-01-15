@@ -17,6 +17,13 @@ namespace DAL
         bool AddGuestRequest(GuestRequest guestRequest);
 
         /// <summary>
+        /// update Guest Request
+        /// </summary>
+        /// <param name="guestRequest"></param>
+        /// <returns>bool</returns>
+        bool UpdateGuestRequest(GuestRequest guestRequest);
+
+        /// <summary>
         /// Update Guest Request Status
         /// </summary>
         /// <param name="GuestRequestKey"></param>

@@ -1,0 +1,15 @@
+﻿<Window x:Class="PLWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="orderBtn" Content="Order" HorizontalAlignment="Left" Margin="336,119,0,0" VerticalAlignment="Top" Width="142" RenderTransformOrigin="-2.417,-0.008" Click="orderBtn_Click"/>
+        <Button x:Name="grBtn" Content="Guest Request" HorizontalAlignment="Left" Margin="336,201,0,0" VerticalAlignment="Top" Width="142" Click="grBtn_Click"/>
+        <Button x:Name="huBtn" Content="Host Unit" HorizontalAlignment="Left" Margin="336,288,0,0" VerticalAlignment="Top" Width="142" RenderTransformOrigin="0.619,-1.355"/>
+
+    </Grid>
+</Window>
