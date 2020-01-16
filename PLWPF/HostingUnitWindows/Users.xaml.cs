@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PLWPF
+namespace PLWPF.HostingUnitWindows
 {
     /// <summary>
     /// Interaction logic for Users.xaml
@@ -22,6 +22,18 @@ namespace PLWPF
         public Users()
         {
             InitializeComponent();
+        }
+
+        private void newUsButton_Click(object sender, RoutedEventArgs e)
+        {
+            HostingUnit hostingUnit = new HostingUnit();
+            hostingUnit.ShowDialog();
+        }
+
+        private void oldUsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Id id = new Id();
+            id.ShowDialog();
         }
     }
 }

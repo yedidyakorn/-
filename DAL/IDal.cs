@@ -67,6 +67,13 @@ namespace DAL
         /// <returns>bool</returns>
         void UpdateOrder(long orderKey, OrderStatuses orderStatuses);
 
+
+        /// <summary>
+        /// Get Hosting Units By Owner ID
+        /// </summary>
+        /// <returns>Hosting Unit list</returns>
+        List<HostingUnit> GetHostingUnitsByOwnerId(long id);
+
         /// <summary>
         /// Get Hosting Units List
         /// </summary>

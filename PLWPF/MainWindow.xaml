@@ -9,7 +9,7 @@
     <Grid>
         <Button x:Name="orderBtn" Content="Order" HorizontalAlignment="Left" Margin="336,119,0,0" VerticalAlignment="Top" Width="142" RenderTransformOrigin="-2.417,-0.008" Click="orderBtn_Click"/>
         <Button x:Name="grBtn" Content="Guest Request" HorizontalAlignment="Left" Margin="336,201,0,0" VerticalAlignment="Top" Width="142" Click="grBtn_Click"/>
-        <Button x:Name="huBtn" Content="Host Unit" HorizontalAlignment="Left" Margin="336,288,0,0" VerticalAlignment="Top" Width="142" RenderTransformOrigin="0.619,-1.355"/>
+        <Button x:Name="huBtn" Content="Host Unit" HorizontalAlignment="Left" Margin="336,288,0,0" VerticalAlignment="Top" Width="142" RenderTransformOrigin="0.619,-1.355" Click="huBtn_Click"/>
 
     </Grid>
 </Window>

@@ -89,7 +89,13 @@ namespace DAL
 
         public List<HostingUnit> GetHostingUnitsList()
         {
-            return DataSource.hostingUnits.Select(hu => (HostingUnit)Cloning.clone(hu)).ToList();
+            return DataSource.hostingUnits.Select(hu => (HostingUnit)hu.clone()).ToList();
+        }
+ 
+        public List<HostingUnit> GetHostingUnitsByOwnerId(long id)
+        {
+            return DataSource.hostingUnits.Where(hu => hu.Owner.ID == id)
+                .Select(hu => (HostingUnit)hu.clone()).ToList();
         }
 
         public HostingUnit GetHostingUnitByKey(long hostingUnitKey)

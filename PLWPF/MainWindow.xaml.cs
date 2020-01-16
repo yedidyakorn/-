@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLWPF.HostingUnitWindows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,12 @@ namespace PLWPF
         private void orderBtn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void huBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Users users = new Users();
+            users.ShowDialog();
         }
     }
 }

@@ -62,13 +62,13 @@
       <DependentUpon>GuestRequestMng.xaml</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Class1.cs" />
-    <Compile Include="Id.xaml.cs">
+    <Compile Include="HostingUnitWindows\Id.xaml.cs">
       <DependentUpon>Id.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PersonalArea.xaml.cs">
+    <Compile Include="HostingUnitWindows\PersonalArea.xaml.cs">
       <DependentUpon>PersonalArea.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Users.xaml.cs">
+    <Compile Include="HostingUnitWindows\Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
     </Compile>
     <Page Include="GuestRequestWindows\GuestRequestGrid.xaml">
@@ -83,11 +83,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HostingUnit.xaml">
+    <Page Include="HostingUnitWindows\HostingUnit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Id.xaml">
+    <Page Include="HostingUnitWindows\Id.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -102,7 +102,7 @@
     <Compile Include="GuestRequestWindows\GuestRequestWindow.xaml.cs">
       <DependentUpon>GuestRequestWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HostingUnit.xaml.cs">
+    <Compile Include="HostingUnitWindows\HostingUnit.xaml.cs">
       <DependentUpon>HostingUnit.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
@@ -113,11 +113,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PersonalArea.xaml">
+    <Page Include="HostingUnitWindows\PersonalArea.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Users.xaml">
+    <Page Include="HostingUnitWindows\Users.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -73,6 +73,8 @@ namespace PLWPF.GuestRequestWindows
 
         }
 
+        #region events
+
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -88,7 +90,7 @@ namespace PLWPF.GuestRequestWindows
 
                 Close();
             }
-            catch(LogicException ex)
+            catch (LogicException ex)
             {
                 MessageBox.Show(ex.Message, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -122,8 +124,8 @@ namespace PLWPF.GuestRequestWindows
         {
             try
             {
-                
-               var grList  = BL_Singletone.Instance.GetGuestRequestsById(guestRequest.Id);
+
+                var grList = BL_Singletone.Instance.GetGuestRequestsById(guestRequest.Id);
 
                 if (grList.Count() == 0)
                 {
@@ -211,6 +213,8 @@ namespace PLWPF.GuestRequestWindows
 
             addBtn.IsEnabled = !_errors.Any();
         }
+
+        #endregion
 
     }
 }

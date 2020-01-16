@@ -12,16 +12,26 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PLWPF
+namespace PLWPF.HostingUnitWindows
 {
     /// <summary>
     /// Interaction logic for PersonalArea.xaml
     /// </summary>
     public partial class PersonalArea : Window
     {
-        public PersonalArea()
+        BE.HostingUnit currHostingUnit;
+
+        public PersonalArea(BE.HostingUnit hostingUnit)
         {
+            currHostingUnit = hostingUnit;
+
             InitializeComponent();
+        }
+
+        private void addHobutton_Click(object sender, RoutedEventArgs e)
+        {
+            HostingUnit hostingUnit = new HostingUnit(currHostingUnit);
+            hostingUnit.ShowDialog();
         }
     }
 }

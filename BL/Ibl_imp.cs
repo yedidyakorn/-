@@ -367,6 +367,22 @@ namespace BL
             }
         }
 
+        public List<HostingUnit> GetHostingUnitsByOwnerId(long id)
+        {
+            try
+            {
+                return DAL_Singletone.Instance.GetHostingUnitsByOwnerId(id);                   
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
+        }
+
         public bool DeleteHostingUnit(long HostingUnitKey)
         {
             try

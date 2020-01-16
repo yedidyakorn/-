@@ -64,6 +64,12 @@ namespace BL
         bool UpdateHostingUnit(HostingUnit hostingUnit);
 
         /// <summary>
+        /// Get Hosting Units By Owner ID
+        /// </summary>
+        /// <returns>Hosting Unit list</returns>
+        List<HostingUnit> GetHostingUnitsByOwnerId(long id);
+
+        /// <summary>
         /// Add Order
         /// </summary>
         /// <param name="order"></param>
