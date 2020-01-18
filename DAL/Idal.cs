@@ -17,6 +17,13 @@ namespace DAL
         bool AddGuestRequest(GuestRequest guestRequest);
 
         /// <summary>
+        /// update Guest Request
+        /// </summary>
+        /// <param name="guestRequest"></param>
+        /// <returns>bool</returns>
+        bool UpdateGuestRequest(GuestRequest guestRequest);
+
+        /// <summary>
         /// Update Guest Request Status
         /// </summary>
         /// <param name="GuestRequestKey"></param>
@@ -59,6 +66,13 @@ namespace DAL
         /// <param name="orderStatuses"></param>
         /// <returns>bool</returns>
         void UpdateOrder(long orderKey, OrderStatuses orderStatuses);
+
+
+        /// <summary>
+        /// Get Hosting Units By Owner ID
+        /// </summary>
+        /// <returns>Hosting Unit list</returns>
+        List<HostingUnit> GetHostingUnitsByOwnerId(long id);
 
         /// <summary>
         /// Get Hosting Units List

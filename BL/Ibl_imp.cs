@@ -18,10 +18,19 @@ namespace BL
         {
             try
             {
-                if (guestRequest.RegistrationDate >= guestRequest.ReleaseDate)
-                    throw new LogicException("Release date must be greater then registration date", "guestRequest.RegistrationDate");
+                guestRequest.RegistrationDate = DateTime.Now;
+
+                if (guestRequest.EntryDate.Date < DateTime.Now.Date)
+                    throw new LogicException("guestRequest.EntryDate", "Date not valid");
+
+                if (guestRequest.EntryDate.Date >= guestRequest.ReleaseDate.Date)
+                    throw new LogicException("guestRequest.EntryDate", "Release date must be greater then Entry Date date");
 
                 DAL_Singletone.Instance.AddGuestRequest(guestRequest);
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -29,6 +38,25 @@ namespace BL
             }
 
             return true;
+        }
+
+        public bool UpdateGuestRequest(GuestRequest guestRequest)
+        {
+            try
+            {
+                DAL_Singletone.Instance.UpdateGuestRequest(guestRequest);           
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
+
+            return true;
+
         }
 
         public List<GuestRequest> GetGuestRequestsList()
@@ -64,6 +92,21 @@ namespace BL
             }
 
             return true;
+        }
+
+        public List<GuestRequest> GetGuestRequestsById(long id) {
+            try
+            {
+                return DAL_Singletone.Instance.GetGuestRequestsById(id);
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
         }
 
         public List<IGrouping<VecationAreas, GuestRequest>> GetGRListGroupByArea()
@@ -324,6 +367,22 @@ namespace BL
             }
         }
 
+        public List<HostingUnit> GetHostingUnitsByOwnerId(long id)
+        {
+            try
+            {
+                return DAL_Singletone.Instance.GetHostingUnitsByOwnerId(id);                   
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
+        }
+
         public bool DeleteHostingUnit(long HostingUnitKey)
         {
             try
@@ -393,9 +452,9 @@ namespace BL
             {
                 return DAL_Singletone.Instance.GetHostingUnitsList()
                     .Select(hu => hu.Owner)
-                    .GroupBy(o => o.HostKey)
+                    .GroupBy(o => o.ID)
                     .Select(g => new { count = g.Count(), hosts = g })
-                    .OrderBy(u => u.count)
+                    .GroupBy(u => u.count)
                     .ToList<dynamic>();
 
             }
