@@ -34,6 +34,7 @@ namespace DS
 
             new GuestRequest()
             {
+                Id =204282560,
                 GuestRequestKey = 2,
                 Adults=2,
                 Children= 10,
@@ -67,6 +68,8 @@ namespace DS
 
                 Owner = new Host()
                 {
+                     ID=1234567894,
+
                     BankAccountNumber = 12345,
 
                     BankBranchDetails = new BankBranch()
@@ -105,6 +108,8 @@ namespace DS
 
                 Owner = new Host()
                 {
+                    ID=1234567894,
+
                     BankAccountNumber = 12345,
 
                     BankBranchDetails = new BankBranch()
@@ -134,7 +139,47 @@ namespace DS
 
                 }
             },
-            
+
+              new HostingUnit()
+            {
+                HostingUnitKey= 10000005,
+
+                HostingUnitName = "לילה בצימר",
+
+                Owner = new Host()
+                {
+                    ID=123456789,
+
+                    BankAccountNumber = 12345,
+
+                    BankBranchDetails = new BankBranch()
+                    {
+                        BankName = "דיסקונט",
+
+                        BankNumber = 11,
+
+                        BranchAddress = "השלושה 3",
+
+                        BranchCity = "בני ברק",
+
+                        BranchNumber = 856,
+                    },
+
+                    CollectionClearance = true,
+
+                    FamilyName = "Goldberg",
+
+                    FhoneNumber = 0527684344,
+
+                    HostKey = 123456789,
+
+                    MailAddress = "haya@gmail.com",
+
+                    PrivateName = "chaya",
+
+                }
+            },
+
             new HostingUnit()
             {
                 HostingUnitKey= 10000002,
@@ -145,6 +190,8 @@ namespace DS
 
                 Owner = new Host()
                 {
+                    ID=123456789, 
+
                     BankAccountNumber = 12345,
 
                     BankBranchDetails = new BankBranch()
