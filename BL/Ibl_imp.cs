@@ -109,6 +109,22 @@ namespace BL
             }
         }
 
+        public GuestRequest GetGuestRequestsByKey(long key)
+        {
+            try
+            {
+                return DAL_Singletone.Instance.GetGuestRequestByKey(key);
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
+        }
+
         public List<IGrouping<VecationAreas, GuestRequest>> GetGRListGroupByArea()
         {
             try

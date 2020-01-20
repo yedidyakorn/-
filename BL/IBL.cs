@@ -36,6 +36,12 @@ namespace BL
         List<GuestRequest> GetGuestRequestsById(long id);
 
         /// <summary>
+        /// guest request by Key
+        /// </summary>
+        /// <returns>guest request</returns>
+        GuestRequest GetGuestRequestsByKey(long key);
+
+        /// <summary>
         /// Update Guest Request
         /// </summary>
         /// <param name="GuestRequest"></param>

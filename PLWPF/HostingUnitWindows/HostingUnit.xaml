@@ -8,7 +8,7 @@
         Title="HostingUnit" Height="450" Width="800">
     <Grid>
         <Label x:Name="hoNameLbl" Content="שם יחידת אירוח" HorizontalAlignment="Left" Margin="680,58,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="hoNameBox" HorizontalAlignment="Left" Height="23" Margin="535,62,0,0" TextWrapping="Wrap" Text="{Binding HostingUnitName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="hoNameBox" Validation.Error="Validation_OnError" HorizontalAlignment="Left" Height="23" Margin="535,62,0,0" TextWrapping="Wrap" Text="{Binding HostingUnitName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  VerticalAlignment="Top" Width="120"/>
         <Label x:Name="diaryLbl" Content="תאריכים פנויים" HorizontalAlignment="Left" Margin="580,118,0,0" VerticalAlignment="Top"/>
         <Calendar x:Name="clndr"  HorizontalAlignment="Left" Margin="535,144,0,0" VerticalAlignment="Top"/>
         <Label x:Name="areaLbl" Content="איזור" HorizontalAlignment="Left" Margin="443,62,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.46,0.58"/>
@@ -16,19 +16,19 @@
         <CheckBox x:Name="poolCheckBox" Content="בריכה" IsChecked="{Binding HasPool, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Margin="387,183,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.161,1.145"/>
         <CheckBox x:Name="jzzicheckBox" Content="ג'קוזי" IsChecked="{Binding HasJacuzzi, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Margin="392,132,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="gadecheckBox" Content="גינת חצר" IsChecked="{Binding HasGarden, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Margin="371,233,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="chuldAttrcheckBox" Content="אטרקציות ילדים" IsChecked="{Binding HasChildrenAttractions, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Margin="335,295,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="chuldAttrcheckBox" Content="אטרקציות ילדים" IsChecked="{Binding HasChildrensAttractions, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Margin="335,295,0,0" VerticalAlignment="Top"/>
         <Label x:Name="idLbl" Content="ת.ז" HorizontalAlignment="Left" Margin="189,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="idBox"  Text="{Binding Owner.ID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="51,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="idBox" Validation.Error="Validation_OnError" Text="{Binding Owner.ID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="51,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="pnameLbl" Content="שם פרטי" HorizontalAlignment="Left" Margin="176,45,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="pnameBox" Text="{Binding Owner.PrivateName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="51,48,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="pnameBox" Validation.Error="Validation_OnError" Text="{Binding Owner.PrivateName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="51,48,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <Label x:Name="fanameLbl" Content="שם משפחה" HorizontalAlignment="Left" Margin="176,76,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="fanameBox" Text="{Binding Owner.FamilyName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="51,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="fanameBox" Validation.Error="Validation_OnError" Text="{Binding Owner.FamilyName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="51,80,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
         <Label x:Name="fonumLbl" Content="מספר פלאפון" HorizontalAlignment="Left" Margin="176,118,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="fonumBox" Text="{Binding Owner.FhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="51,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="fonumBox" Validation.Error="Validation_OnError" Text="{Binding Owner.FhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="51,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="maAddreLbl"  Content="כתובת מייל" HorizontalAlignment="Left" Margin="180,149,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="maAddreBox" Text="{Binding Owner.MailAddress, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="51,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="maAddreBox" Validation.Error="Validation_OnError" Text="{Binding Owner.MailAddress, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="51,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="baAccoNumLbl" Content="מספר חשבון" HorizontalAlignment="Left" Margin="182,183,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="baAccoNumBox" Text="{Binding Owner.BankAccountNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="51,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="baAccoNumBox" Validation.Error="Validation_OnError" Text="{Binding Owner.BankAccountNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="51,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <CheckBox x:Name="collClearBox" IsChecked="{Binding Owner.CollectionClearance, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Content="אישור עמלה" HorizontalAlignment="Left" Margin="51,373,0,0" VerticalAlignment="Top"/>
         <Label x:Name="banNumLbl" Content="מספר בנק" HorizontalAlignment="Left" Margin="182,214,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.827,0.279"/>
         <ComboBox x:Name="banNumBox" HorizontalAlignment="Left" Margin="51,218,0,0" VerticalAlignment="Top" Width="120"/>
@@ -40,7 +40,8 @@
         <ComboBox x:Name="braAddBox" HorizontalAlignment="Left" Margin="51,311,0,0" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="braCitiLbl" Content="עיר הסניף" HorizontalAlignment="Left" Margin="183,338,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="braCitiBox" HorizontalAlignment="Left" Margin="51,342,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="addBtn" Content="Add" Visibility="Hidden" IsEnabled="False" HorizontalAlignment="Left" Margin="555,364,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="addBtn" Content="Add" Visibility="Hidden" IsEnabled="True" HorizontalAlignment="Left" Margin="555,364,0,0" VerticalAlignment="Top" Width="75" Click="addBtn_Click"/>
+        <Button x:Name="updateBtn" Content="Update" Visibility="Hidden" IsEnabled="True" HorizontalAlignment="Left" Margin="555,364,0,0" VerticalAlignment="Top" Width="75" Click="updateBtn_Click"/>
 
     </Grid>
 </Window>

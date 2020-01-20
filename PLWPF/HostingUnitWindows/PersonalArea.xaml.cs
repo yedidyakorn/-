@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BL;
+using PLWPF.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,19 +21,36 @@ namespace PLWPF.HostingUnitWindows
     /// </summary>
     public partial class PersonalArea : Window
     {
-        BE.HostingUnit currHostingUnit;
+        List<BE.HostingUnit> hostingUnits;
 
-        public PersonalArea(BE.HostingUnit hostingUnit)
+        public PersonalArea(List<BE.HostingUnit> HostingUnits)
         {
-            currHostingUnit = hostingUnit;
+            hostingUnits = HostingUnits;
 
             InitializeComponent();
         }
 
         private void addHobutton_Click(object sender, RoutedEventArgs e)
         {
-            HostingUnit hostingUnit = new HostingUnit(currHostingUnit);
+            BE.HostingUnit host = new BE.HostingUnit
+            {
+                Owner = hostingUnits.First().Owner
+            };
+
+            HostingUnit hostingUnit = new HostingUnit(Mode.Add, host);
             hostingUnit.ShowDialog();
+        }
+
+        private void updatHoButton_Click(object sender, RoutedEventArgs e)
+        {
+            HostUnitGrid hostUnitGrid = new HostUnitGrid(hostingUnits);
+            hostUnitGrid.ShowDialog();
+
+            if (hostUnitGrid.DialogResult == true)
+            {
+                HostingUnit hostingUnit = new HostingUnit(Mode.Update, hostUnitGrid.selectedHU);
+                hostingUnit.ShowDialog();
+            }
         }
     }
 }

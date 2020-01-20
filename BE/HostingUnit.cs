@@ -14,7 +14,7 @@ namespace BE
        
         public string HostingUnitName { get; set; }
 
-        public bool[,] Diary = new bool[12,31];
+        public bool[,] Diary { get; set; } = new bool[12,31];
 
         public VecationAreas Area { get; set; }
 

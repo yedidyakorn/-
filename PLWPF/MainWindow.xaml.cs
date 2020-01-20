@@ -23,6 +23,8 @@ namespace PLWPF
     {
         public MainWindow()
         {
+            Helpers.Methods.LoadHostingUnitsDairy();
+
             InitializeComponent();
         }
 
@@ -39,6 +41,7 @@ namespace PLWPF
 
         }
 
+        //host unit
         private void huBtn_Click(object sender, RoutedEventArgs e)
         {
             Users users = new Users();

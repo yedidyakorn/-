@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLWPF.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace PLWPF.HostingUnitWindows
 
         private void newUsButton_Click(object sender, RoutedEventArgs e)
         {
-            HostingUnit hostingUnit = new HostingUnit();
+            HostingUnit hostingUnit = new HostingUnit(Mode.Add);
             hostingUnit.ShowDialog();
         }
 
