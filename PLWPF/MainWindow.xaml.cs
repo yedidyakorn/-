@@ -1,4 +1,5 @@
 ﻿using PLWPF.HostingUnitWindows;
+using PLWPF.Orders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,8 @@ namespace PLWPF
         //order
         private void orderBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            OrderMng orderMng = new OrderMng();
+            orderMng.ShowDialog();
         }
 
         //host unit

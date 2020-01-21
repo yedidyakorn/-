@@ -43,7 +43,7 @@ namespace PLWPF.Orders
 
                 List<BE.HostingUnit> hostingUnits = BL_Singletone.Instance.GetHostingUnitsByOwnerId(id);
 
-                Orders = BL_Singletone.Instance.GetOrderList().TakeWhile(o =>
+                Orders = BL_Singletone.Instance.GetOrderList().Where(o =>
                 {
                     return hostingUnits.Any(hu => hu.HostingUnitKey == o.HostingUnitKey);
                 }).ToList();
@@ -54,7 +54,7 @@ namespace PLWPF.Orders
 
                 List<BE.GuestRequest> guestRequests = BL_Singletone.Instance.GetGuestRequestsById(id);
 
-                Orders = BL_Singletone.Instance.GetOrderList().TakeWhile(o =>
+                Orders = BL_Singletone.Instance.GetOrderList().Where(o =>
                 {
                     return guestRequests.Any(gr => gr.GuestRequestKey == o.GuestRequestKey);
                 }).ToList();

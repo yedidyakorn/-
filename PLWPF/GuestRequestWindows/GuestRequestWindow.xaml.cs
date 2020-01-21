@@ -33,19 +33,7 @@ namespace PLWPF.GuestRequestWindows
 
             InitializeComponent();
 
-            areaBox.ItemsSource = Enum.GetValues(typeof(VecationAreas));
-            areaBox.SelectedIndex = 0;
-            typeBox.ItemsSource = Enum.GetValues(typeof(HostingUnitTypes));
-            typeBox.SelectedIndex = 0;
-            poolBox.ItemsSource = Enum.GetValues(typeof(Additions));
-            poolBox.SelectedIndex = 0;
-            jzziBox.ItemsSource = Enum.GetValues(typeof(Additions));
-            jzziBox.SelectedIndex = 0;
-            gardBox.ItemsSource = Enum.GetValues(typeof(Additions));
-            gardBox.SelectedIndex = 0;
-            chilAttrBox.ItemsSource = Enum.GetValues(typeof(Additions));
-            chilAttrBox.SelectedIndex = 0;
-
+            setDataInEnums();
 
             if (mode == Mode.Add)
                 Add();
@@ -70,6 +58,24 @@ namespace PLWPF.GuestRequestWindows
 
             updateBtn.Visibility = Visibility.Visible;
             findBtn.Visibility = Visibility.Visible;
+
+        }
+
+        private void setDataInEnums()
+        {
+
+            areaBox.ItemsSource = Enum.GetValues(typeof(VecationAreas));
+            areaBox.SelectedIndex = 0;
+            typeBox.ItemsSource = Enum.GetValues(typeof(HostingUnitTypes));
+            typeBox.SelectedIndex = 0;
+            poolBox.ItemsSource = Enum.GetValues(typeof(Additions));
+            poolBox.SelectedIndex = 0;
+            jzziBox.ItemsSource = Enum.GetValues(typeof(Additions));
+            jzziBox.SelectedIndex = 0;
+            gardBox.ItemsSource = Enum.GetValues(typeof(Additions));
+            gardBox.SelectedIndex = 0;
+            chilAttrBox.ItemsSource = Enum.GetValues(typeof(Additions));
+            chilAttrBox.SelectedIndex = 0;
 
         }
 
