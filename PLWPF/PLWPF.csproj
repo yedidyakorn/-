@@ -129,10 +129,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Orders\OrderMng.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Orders\OrdersGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Orders\OrdersSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Orders\Order.xaml.cs">
       <DependentUpon>Order.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\OrderMng.xaml.cs">
+      <DependentUpon>OrderMng.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\OrdersGrid.xaml.cs">
+      <DependentUpon>OrdersGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Orders\OrdersSearch.xaml.cs">
+      <DependentUpon>OrdersSearch.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

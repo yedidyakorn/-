@@ -13,29 +13,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PLWPF
+namespace PLWPF.Orders
 {
     /// <summary>
-    /// Interaction logic for Order.xaml
+    /// Interaction logic for OrderMng.xaml
     /// </summary>
-    public partial class Order : Window
+    public partial class OrderMng : Window
     {
-        BE.Order order = new BE.Order();
-
-        public Order(Mode mode)
+        public OrderMng()
         {
             InitializeComponent();
-
-            this.DataContext = order;
         }
 
-        public Order(Mode mode, BE.Order foundOrder)
+        private void addBtn_Click(object sender, RoutedEventArgs e)
         {
-            order = foundOrder;
+            Order order = new Order(Mode.Add);
+            order.ShowDialog();
+        }
 
-            InitializeComponent();
-
-            this.DataContext = order;
+        private void updateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OrdersSearch ordersSearch = new OrdersSearch();
+            ordersSearch.ShowDialog();
         }
     }
 }
