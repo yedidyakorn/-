@@ -1,4 +1,7 @@
-﻿using System;
+﻿using BE;
+using BL;
+using PLWPF.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,33 +24,122 @@ namespace PLWPF.HostingUnitWindows
     {
         BE.HostingUnit hostingUnit = new BE.HostingUnit();
 
-        public HostingUnit()
+        public List<ValidationError> _errors = new List<ValidationError>();
+
+        public HostingUnit(Mode mode)
         {
             InitializeComponent();
+
+            if (mode == Mode.Add)
+                Add();
+
+            SetEnumsValues(); 
 
             this.DataContext = hostingUnit;
+
+        }
+        
+        public HostingUnit(Mode mode, BE.HostingUnit host): this(mode)
+        {
+            hostingUnit = host;
+
+            if (mode == Mode.Update)
+                Update();
+          
+            SetTakenDatesInCalender();
+
+            this.DataContext = hostingUnit;
+
         }
 
-        public HostingUnit(BE.HostingUnit hostingWithOwner)
+        public void Add()
         {
-            InitializeComponent();
- 
-            for(var i = 0; i< 12; i++)
+            addBtn.Visibility = Visibility.Visible;
+        }
+
+        public void Update()
+        {
+            for (var i = 0; i < areaBox.Items.Count; i++)
             {
-                for(var j =0; j< 31; i++)
+                if ((VecationAreas)areaBox.Items[i] == hostingUnit.Area)
                 {
-                    if (hostingUnit.Diary[i, j])
-                    {
-                      // clndr.BlackoutDates.Add(new)
-                    }
+                    areaBox.SelectedIndex = i;
                 }
             }
 
-
-                //foreach (DateTime date in CurrentHostingUnit._allOrders)
-                //    MyCalendar.BlackoutDates.Add(new CalendarDateRange(date));
-
-                this.DataContext = hostingWithOwner;
+            updateBtn.Visibility = Visibility.Visible;
         }
+
+        public void SetTakenDatesInCalender()
+        {
+            DateTime curDate = DateTime.Now;
+
+            for (var i = 0; i < 12; i++)
+            {
+                for (var j = 0; j < 31; j++)
+                {
+                    if (hostingUnit.Diary[i, j])
+                    {
+                        int calcYear = i > curDate.Month ? curDate.Year + 1 : curDate.Year;
+                        clndr.BlackoutDates.Add(new CalendarDateRange(new DateTime(calcYear, i + 1, j + 1)));
+                    }
+                }
+            }
+        }
+
+        public void GetValueFromEnums() {
+
+            hostingUnit.Area = (VecationAreas)areaBox.SelectedItem;
+
+            //int.TryParse(banNumBox.SelectedItem.ToString(), out int bankNum);
+            //hostingUnit.Owner.BankBranchDetails.BankNumber = bankNum;
+
+            //int.TryParse(braNumBox.SelectedItem.ToString(), out int branchNum);
+            //hostingUnit.Owner.BankBranchDetails.BranchNumber = branchNum;
+
+            //hostingUnit.Owner.BankBranchDetails.BankName = bnNameBox.SelectedItem.ToString();
+            //hostingUnit.Owner.BankBranchDetails.BranchAddress = braAddBox.SelectedItem.ToString();
+            //hostingUnit.Owner.BankBranchDetails.BranchCity = braCitiBox.SelectedItem.ToString();
+
+        }
+
+        public void SetEnumsValues()
+        {
+            areaBox.ItemsSource = Enum.GetValues(typeof(VecationAreas));
+            areaBox.SelectedIndex = 0;
+        }
+
+        #region events
+
+        private void addBtn_Click(object sender, RoutedEventArgs e)
+        {
+             GetValueFromEnums();
+
+             DialogResult = BL_Singletone.Instance.AddHostingUnit(hostingUnit);
+
+             Close();
+        }
+
+        private void updateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GetValueFromEnums();
+
+            DialogResult = BL_Singletone.Instance.UpdateHostingUnit(hostingUnit);
+
+            Close();
+        }
+
+        private void Validation_OnError(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                _errors.Add(e.Error);
+            else
+                _errors.Remove(e.Error);
+
+            addBtn.IsEnabled = updateBtn.IsEnabled = !_errors.Any();
+        }
+
+        #endregion
+
     }
 }

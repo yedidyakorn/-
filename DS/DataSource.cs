@@ -38,19 +38,19 @@ namespace DS
                 GuestRequestKey = 2,
                 Adults=2,
                 Children= 10,
-                EntryDate= DateTime.Now.AddDays(8),
+                EntryDate= DateTime.Now.AddDays(-5),
                 FamilyName= "goldberg",
                 Garden =Additions.Necessary,
                 Jacuzzi =Additions.Necessary,
                 Pool=Additions.Necessary,
                 ChildrensAttractions = Additions.NotInterested,
                 PrivateName="Chaya",
-                RegistrationDate=DateTime.Now,
+                RegistrationDate = DateTime.Now,
                 MailAddress="chaya1771@gmail.com",
                 Area= VecationAreas.North,
                 Status=RequestStatus.Active,
                 Type=HostingUnitTypes.Hotel,
-                ReleaseDate=  DateTime.Now.AddDays(1)
+                ReleaseDate=  DateTime.Now.AddDays(7)
             },
         };
 
@@ -140,7 +140,7 @@ namespace DS
                 }
             },
 
-              new HostingUnit()
+            new HostingUnit()
             {
                 HostingUnitKey= 10000005,
 
@@ -221,6 +221,7 @@ namespace DS
 
                 }
             },
+
         };
 
         static public List<Order> orders = new List<Order>
@@ -253,7 +254,23 @@ namespace DS
                 OrderKey = 456,
 
                 Status = OrderStatuses.NotYetAddressed,
+            },
+
+            new Order()
+            {
+                CreateDate = DateTime.Now,
+
+                GuestRequestKey = 2,
+
+                HostingUnitKey = 10000001,
+
+                OrderDate = DateTime.Now.AddDays(1),
+
+                OrderKey = 4568,
+
+                Status = OrderStatuses.Closed_ApprovedByCustomer,
             }
         };
+
     }
 }

@@ -52,12 +52,12 @@ namespace PLWPF.HostingUnitWindows
                 return;
             }
 
-            BE.HostingUnit host = new BE.HostingUnit
-            {
-                Owner = hostingUnits.First().Owner
-            };
+            //BE.HostingUnit host = new BE.HostingUnit
+            //{
+            //    Owner = hostingUnits.First().Owner
+            //};
 
-            PersonalArea personalArea = new PersonalArea(host);
+            PersonalArea personalArea = new PersonalArea(hostingUnits);
             personalArea.ShowDialog();
 
         }

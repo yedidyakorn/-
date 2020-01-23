@@ -13,28 +13,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PLWPF.HostingUnitWindows
+namespace PLWPF.Orders
 {
     /// <summary>
-    /// Interaction logic for Users.xaml
+    /// Interaction logic for OrderMng.xaml
     /// </summary>
-    public partial class Users : Window
+    public partial class OrderMng : Window
     {
-        public Users()
+        public OrderMng()
         {
             InitializeComponent();
         }
 
-        private void newUsButton_Click(object sender, RoutedEventArgs e)
+        private void addBtn_Click(object sender, RoutedEventArgs e)
         {
-            HostingUnit hostingUnit = new HostingUnit(Mode.Add);
-            hostingUnit.ShowDialog();
+            Order order = new Order(Mode.Add);
+            order.ShowDialog();
         }
 
-        private void oldUsButton_Click(object sender, RoutedEventArgs e)
+        private void updateBtn_Click(object sender, RoutedEventArgs e)
         {
-            Id id = new Id();
-            id.ShowDialog();
+            OrdersSearch ordersSearch = new OrdersSearch();
+            ordersSearch.ShowDialog();
         }
     }
 }

@@ -109,6 +109,22 @@ namespace BL
             }
         }
 
+        public GuestRequest GetGuestRequestsByKey(long key)
+        {
+            try
+            {
+                return DAL_Singletone.Instance.GetGuestRequestByKey(key);
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
+        }
+
         public List<IGrouping<VecationAreas, GuestRequest>> GetGRListGroupByArea()
         {
             try
@@ -233,7 +249,7 @@ namespace BL
             {
                 Order order = DAL_Singletone.Instance.GetOrderByKey(orderKey);
 
-                if (order.OrderKey == 0 && order.Status == OrderStatuses.Closed_ApprovedByCustomer)
+                if (order.OrderKey == 0 || order.Status == OrderStatuses.Closed_ApprovedByCustomer)
                     return false;
 
                 switch (orderStatuses)
