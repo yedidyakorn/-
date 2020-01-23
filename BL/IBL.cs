@@ -180,5 +180,11 @@ namespace BL
         /// </summary>
         /// <returns></returns>
         List<HostingUnit> GetAllHostUnitsWithPool();
+
+        /// <summary>
+        /// find all Guest Requests for Host Unit
+        /// </summary>
+        /// <returns></returns>
+        List<GuestRequest> GetAllGuestRequestsForHostUnit(HostingUnit hostingUnit);
     }
 }

@@ -137,9 +137,17 @@ namespace PLWPF.HostingUnitWindows
                 _errors.Remove(e.Error);
 
             addBtn.IsEnabled = updateBtn.IsEnabled = !_errors.Any();
+        }     
+
+        private void findGRBtn_Click(object sender, RoutedEventArgs e)
+        {
+            List<GuestRequest> guestRequests = BL_Singletone.Instance.GetAllGuestRequestsForHostUnit(hostingUnit);
+
+            GRforHU gRforHU = new GRforHU(guestRequests, hostingUnit.HostingUnitKey);
+
+            gRforHU.ShowDialog();
         }
 
         #endregion
-
     }
 }

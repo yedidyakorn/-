@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PLWPF.HostingUnitWindows"
         mc:Ignorable="d"
         Title="HostingUnit" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="0,0,0,-52" Height="471" VerticalAlignment="Top">
         <Label x:Name="hoNameLbl" Content="שם יחידת אירוח" HorizontalAlignment="Left" Margin="680,58,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="hoNameBox" Validation.Error="Validation_OnError" HorizontalAlignment="Left" Height="23" Margin="535,62,0,0" TextWrapping="Wrap" Text="{Binding HostingUnitName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  VerticalAlignment="Top" Width="120"/>
         <Label x:Name="diaryLbl" Content="תאריכים פנויים" HorizontalAlignment="Left" Margin="580,118,0,0" VerticalAlignment="Top"/>
@@ -42,6 +42,7 @@
         <ComboBox x:Name="braCitiBox" HorizontalAlignment="Left" Margin="51,342,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="addBtn" Content="Add" Visibility="Hidden" IsEnabled="True" HorizontalAlignment="Left" Margin="555,364,0,0" VerticalAlignment="Top" Width="75" Click="addBtn_Click"/>
         <Button x:Name="updateBtn" Content="Update" Visibility="Hidden" IsEnabled="True" HorizontalAlignment="Left" Margin="555,364,0,0" VerticalAlignment="Top" Width="75" Click="updateBtn_Click"/>
+        <Button x:Name="findGRBtn" Content="מצא בקשות לקוח רלוונטיות" HorizontalAlignment="Left" Margin="594,384,0,0" VerticalAlignment="Top" Width="178" Height="24" Click="findGRBtn_Click"/>
 
     </Grid>
 </Window>
