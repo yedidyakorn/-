@@ -21,20 +21,23 @@ namespace PLWPF.HostingUnitWindows
     /// </summary>
     public partial class PersonalArea : Window
     {
-        List<BE.HostingUnit> hostingUnits;
+        //List<BE.HostingUnit> hostingUnits;
 
-        public PersonalArea(List<BE.HostingUnit> HostingUnits)
+        long Id;
+
+        public PersonalArea(long id)
         {
-            hostingUnits = HostingUnits;
+            Id = id;
 
             InitializeComponent();
         }
 
         private void addHobutton_Click(object sender, RoutedEventArgs e)
         {
+
             BE.HostingUnit host = new BE.HostingUnit
             {
-                Owner = hostingUnits.First().Owner
+                Owner = BL_Singletone.Instance.GetHostingUnitsByOwnerId(Id).First().Owner
             };
 
             HostingUnit hostingUnit = new HostingUnit(Mode.Add, host);
@@ -43,6 +46,8 @@ namespace PLWPF.HostingUnitWindows
 
         private void updatHoButton_Click(object sender, RoutedEventArgs e)
         {
+            List<BE.HostingUnit> hostingUnits = BL_Singletone.Instance.GetHostingUnitsByOwnerId(Id);
+
             HostUnitGrid hostUnitGrid = new HostUnitGrid(hostingUnits);
             hostUnitGrid.ShowDialog();
 

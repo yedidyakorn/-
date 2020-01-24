@@ -58,6 +58,7 @@ namespace PLWPF.GuestRequestWindows
 
             updateBtn.Visibility = Visibility.Visible;
             findBtn.Visibility = Visibility.Visible;
+            delBtn.Visibility = Visibility.Visible;
 
         }
 
@@ -222,7 +223,22 @@ namespace PLWPF.GuestRequestWindows
 
         }
 
-        #endregion
+        private void delBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (guestRequest.GuestRequestKey == 0)
+                return;
 
+            try
+            {
+                BL_Singletone.Instance.DeleteGuestRequestsByKey(guestRequest.GuestRequestKey);
+            }
+            catch { }
+
+            MessageBox.Show("guest request successfully deleted.");
+
+            Close();
+        }
+
+        #endregion
     }
 }

@@ -9,7 +9,6 @@
     <Grid>
         <Button x:Name="addHobutton" Content="הוספת יחידת אירוח" HorizontalAlignment="Left" Margin="358,85,0,0" VerticalAlignment="Top" Width="155" Click="addHobutton_Click"/>
         <Button x:Name="updatHoButton" Content="עדכון יחידת אירוח" HorizontalAlignment="Left" Margin="358,177,0,0" VerticalAlignment="Top" Width="155" Click="updatHoButton_Click"/>
-        <Button x:Name="deleButton" Content="מחיקת יחידת אירוח" HorizontalAlignment="Left" Margin="358,273,0,0" VerticalAlignment="Top" Width="155"/>
         <Label x:Name="ownerNameLbl" Content="" HorizontalAlignment="Left" Margin="587,50,0,0" VerticalAlignment="Top"/>
 
     </Grid>

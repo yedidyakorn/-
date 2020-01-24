@@ -125,6 +125,22 @@ namespace BL
             }
         }
 
+        public bool DeleteGuestRequestsByKey(long key)
+        {
+            try
+            {
+                return DAL_Singletone.Instance.DeleteGuestRequestByKey(key);
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
+        }
+
         public List<IGrouping<VecationAreas, GuestRequest>> GetGRListGroupByArea()
         {
             try
@@ -297,6 +313,8 @@ namespace BL
 
                         DAL_Singletone.Instance.UpdateHostingUnit(hostingUnit);
 
+                        BL_Singletone.Instance.UpdateGuestRequestStatus(guestRequest.GuestRequestKey, RequestStatus.Inactive);
+
                         break;
 
                     default:
@@ -412,7 +430,7 @@ namespace BL
                 var hostingUnit = DAL_Singletone.Instance.GetHostingUnitByKey(HostingUnitKey);
 
                 if (HostHasOpenOrders(HostingUnitKey))
-                    return false;
+                    throw new LogicException("Unit has open orders and cannot be deleted.");
 
                 DAL_Singletone.Instance.DeleteHostingUnit(HostingUnitKey);
             }

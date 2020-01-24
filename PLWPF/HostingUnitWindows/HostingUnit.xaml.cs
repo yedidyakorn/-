@@ -68,6 +68,10 @@ namespace PLWPF.HostingUnitWindows
             }
 
             updateBtn.Visibility = Visibility.Visible;
+
+            findGRBtn.Visibility = Visibility.Visible;
+
+            deleteBtn.Visibility = Visibility.Visible;
         }
 
         public void SetTakenDatesInCalender()
@@ -148,6 +152,22 @@ namespace PLWPF.HostingUnitWindows
             gRforHU.ShowDialog();
         }
 
+        private void delBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                BL_Singletone.Instance.DeleteHostingUnit(hostingUnit.HostingUnitKey);
+
+                MessageBox.Show("Host Unit successfully deleted.");
+            }
+            catch (LogicException ex){
+                MessageBox.Show(ex.Message);
+            }
+
+            Close();
+
+        }
+        
         #endregion
     }
 }
