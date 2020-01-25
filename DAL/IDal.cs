@@ -24,6 +24,13 @@ namespace DAL
         bool UpdateGuestRequest(GuestRequest guestRequest);
 
         /// <summary>
+        /// Delete Guest Request
+        /// </summary>
+        /// <param name="guestRequestKey"></param>
+        /// <returns>bool</returns>
+        bool DeleteGuestRequestByKey(long guestRequestKey);
+
+        /// <summary>
         /// Update Guest Request Status
         /// </summary>
         /// <param name="GuestRequestKey"></param>

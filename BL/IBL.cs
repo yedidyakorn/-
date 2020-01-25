@@ -28,6 +28,13 @@ namespace BL
         /// <returns>bool</returns>
         bool UpdateGuestRequestStatus(long GuestRequestKey, RequestStatus requestStatus);
 
+        /// <summary>
+        /// Delete Guest Request Status
+        /// </summary>
+        /// <param name="GuestRequestKey"></param>
+        /// <param name="requestStatus"></param>
+        /// <returns>bool</returns>
+        bool DeleteGuestRequestsByKey(long key);
 
         /// <summary>
         /// guest request by ID
@@ -180,5 +187,11 @@ namespace BL
         /// </summary>
         /// <returns></returns>
         List<HostingUnit> GetAllHostUnitsWithPool();
+
+        /// <summary>
+        /// find all Guest Requests for Host Unit
+        /// </summary>
+        /// <returns></returns>
+        List<GuestRequest> GetAllGuestRequestsForHostUnit(HostingUnit hostingUnit);
     }
 }

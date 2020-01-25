@@ -89,7 +89,13 @@ namespace PLWPF.Orders
         {
             GetDataFromEnums();
 
-            DialogResult = BL_Singletone.Instance.UpdateOrder(order.OrderKey, order.Status);
+            try
+            {
+                DialogResult = BL_Singletone.Instance.UpdateOrder(order.OrderKey, order.Status);
+            }
+            catch (LogicException ex) {
+                MessageBox.Show(ex.Message);
+            }
 
             Close();
         }

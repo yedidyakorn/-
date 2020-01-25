@@ -22,7 +22,11 @@ namespace BE
 
         public bool HasJacuzzi { get; set; }
 
+        public int NumberOfBeds { get; set; }
+
         public bool HasGarden { get; set; }
+
+        public HostingUnitTypes Type { get; set; }
 
         public bool HasChildrensAttractions { get; set; }
 

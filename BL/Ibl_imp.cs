@@ -125,6 +125,22 @@ namespace BL
             }
         }
 
+        public bool DeleteGuestRequestsByKey(long key)
+        {
+            try
+            {
+                return DAL_Singletone.Instance.DeleteGuestRequestByKey(key);
+            }
+            catch (LogicException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException(ex);
+            }
+        }
+
         public List<IGrouping<VecationAreas, GuestRequest>> GetGRListGroupByArea()
         {
             try
@@ -194,6 +210,10 @@ namespace BL
                 if (guestRequest == null)
                     throw new LogicException($"guest Request {order.GuestRequestKey} does not exist");
 
+                if(DAL_Singletone.Instance.GetOrderList().Any(o => o.GuestRequestKey == order.GuestRequestKey
+                && o.HostingUnitKey == order.HostingUnitKey))
+                    throw new LogicException($"order has been created.");
+
                 DateTime cureentDate = guestRequest.RegistrationDate;
 
                 while (cureentDate.Date != guestRequest.ReleaseDate.Date.AddDays(1))
@@ -209,6 +229,8 @@ namespace BL
                 order.CreateDate = DateTime.Now;
 
                 DAL_Singletone.Instance.AddOrder(order);
+
+                return SendMail(guestRequest.MailAddress);
             }
             catch (LogicException ex)
             {
@@ -219,10 +241,7 @@ namespace BL
                 throw new LogicException(ex);
             }
 
-
-
-
-            return true;
+            //return true;
 
         }
 
@@ -275,10 +294,13 @@ namespace BL
 
                         });
 
-
                         var hostingUnit = DAL_Singletone.Instance.GetHostingUnitByKey(order.HostingUnitKey);
 
-                        DateTime cureentDate = guestRequest.RegistrationDate;
+                        if (!IsUnitAvailableForDates(hostingUnit, guestRequest.EntryDate, (guestRequest.ReleaseDate - guestRequest.EntryDate).Days)){
+                            throw new LogicException($"Unit no longer available for these dates.");
+                        }
+
+                        DateTime cureentDate = guestRequest.EntryDate;
 
                         while (cureentDate.Date != guestRequest.ReleaseDate.Date.AddDays(1))
                         {
@@ -290,6 +312,8 @@ namespace BL
                         var fee = Config.FEE_RATE * (guestRequest.ReleaseDate - guestRequest.RegistrationDate).TotalDays;
 
                         DAL_Singletone.Instance.UpdateHostingUnit(hostingUnit);
+
+                        BL_Singletone.Instance.UpdateGuestRequestStatus(guestRequest.GuestRequestKey, RequestStatus.Inactive);
 
                         break;
 
@@ -406,7 +430,7 @@ namespace BL
                 var hostingUnit = DAL_Singletone.Instance.GetHostingUnitByKey(HostingUnitKey);
 
                 if (HostHasOpenOrders(HostingUnitKey))
-                    return false;
+                    throw new LogicException("Unit has open orders and cannot be deleted.");
 
                 DAL_Singletone.Instance.DeleteHostingUnit(HostingUnitKey);
             }
@@ -520,6 +544,23 @@ namespace BL
 
         }
 
+        public List<GuestRequest> GetAllGuestRequestsForHostUnit(HostingUnit hostingUnit)
+        {
+            return DAL_Singletone.Instance.GetGuestRequestsList().Where(gr => {
+
+                return gr.Status == RequestStatus.Active
+                 && CheckAdditionRelevance(gr.Pool, hostingUnit.HasPool)
+                 && CheckAdditionRelevance(gr.Jacuzzi, hostingUnit.HasJacuzzi)
+                 && CheckAdditionRelevance(gr.ChildrensAttractions, hostingUnit.HasChildrensAttractions)
+                 && CheckAdditionRelevance(gr.Garden, hostingUnit.HasGarden)
+                 && (gr.Adults + gr.Children) <= hostingUnit.NumberOfBeds
+                 && IsUnitAvailableForDates(hostingUnit, gr.EntryDate, (gr.ReleaseDate - gr.EntryDate).Days)
+                 && gr.Type == hostingUnit.Type
+                 && (gr.Area == hostingUnit.Area || gr.Area == VecationAreas.All);
+
+            }).ToList(); 
+        }
+
         #endregion
 
         #region general
@@ -624,7 +665,17 @@ namespace BL
                 throw new LogicException(ex);
             }
         }
-       
+
+        private bool CheckAdditionRelevance(Additions addition , bool hostUnitHas)
+        {
+            return ((addition == Additions.Necessary) == hostUnitHas) || (addition == Additions.Possible);
+        }
+
+        private bool SendMail(string mailAddress)
+        {
+            return true;
+        }
+
         #endregion
 
     }

@@ -1,0 +1,30 @@
+﻿<Window x:Class="PLWPF.HostingUnitWindows.GRforHU"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF.HostingUnitWindows"
+        mc:Ignorable="d"
+        Title="GRforHU" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="GrGrid"
+         ItemsSource="{Binding guestRequests}" Margin="0,0,0,244" Height="123" VerticalAlignment="Bottom"
+            AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="PrivateName" Binding="{Binding PrivateName}"/>
+                <DataGridTextColumn Header="FamilyName" Binding="{Binding FamilyName}"/>
+                <DataGridTextColumn Header="EntryDate" Binding="{Binding EntryDate , StringFormat=d}"/>
+                <DataGridTextColumn Header="ReleaseDate" Binding="{Binding ReleaseDate, StringFormat=d}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="orderBtn" Click="orderBtn_Click">הזמן</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

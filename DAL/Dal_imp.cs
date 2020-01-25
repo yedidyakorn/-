@@ -229,6 +229,17 @@ namespace DAL
                 .Select(gr => (GuestRequest)gr.clone()).ToList();
         }
 
+        public bool DeleteGuestRequestByKey(long guestRequestKey)
+        {
+            if (!DataSource.guestRequests.Any(gr => gr.GuestRequestKey == guestRequestKey))
+            {
+                throw new LogicException($"Guest Request {guestRequestKey} does not exist");
+            }
+
+            return DataSource.guestRequests.Remove(DataSource.guestRequests.Where(gr => gr.GuestRequestKey == guestRequestKey).FirstOrDefault());
+
+        }
+
         #endregion
     }
 }
