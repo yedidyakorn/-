@@ -25,17 +25,28 @@ namespace PLWPF.DataGrids
 
         public GrByArea()
         {
+            try
+            {
 
-            guestRequests = BL_Singletone.Instance.GetGuestRequestsList();
+                guestRequests = BL_Singletone.Instance.GetGuestRequestsList();
 
-            InitializeComponent();
+                InitializeComponent();
 
-            ListCollectionView col = new ListCollectionView(guestRequests);
-            col.GroupDescriptions.Add(new PropertyGroupDescription("Area"));
+                ListCollectionView col = new ListCollectionView(guestRequests);
+                col.GroupDescriptions.Add(new PropertyGroupDescription("Area"));
 
-            GRdataGrid.ItemsSource = col;
+                GRdataGrid.ItemsSource = col;
 
-            this.DataContext = guestRequests;
+                this.DataContext = guestRequests;
+            }
+            catch (LogicException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
+            }
 
             InitializeComponent();
 

@@ -1,4 +1,5 @@
-﻿using BL;
+﻿using BE;
+using BL;
 using OxyPlot;
 using OxyPlot.Series;
 using System;
@@ -26,26 +27,37 @@ namespace PLWPF.DataGrids
 
         public OrdersChart()
         {
-            var tmp = new PlotModel();
-            tmp.Title = "Orders status chart";
-
-            var ps = new PieSeries();
-
-            BL_Singletone.Instance.GetOrderList().GroupBy(o => o.Status).Select(o => new { status = o.Key, count = o.Count() }).ToList().ForEach(o =>
+            try
             {
-                ps.Slices.Add(new PieSlice(o.status.ToString(), o.count) { IsExploded = true });
-            });
+                var tmp = new PlotModel();
+                tmp.Title = "Orders status chart";
 
-            ps.InnerDiameter = 0;
-            ps.ExplodedDistance = 0;
-            ps.Stroke = OxyColors.Black;
-            ps.StrokeThickness = 1.0;
-            ps.AngleSpan = 360;
-            ps.StartAngle = 0;
-            tmp.Series.Add(ps);
+                var ps = new PieSeries();
 
-            PieModel = tmp;
-            DataContext = this;
+                BL_Singletone.Instance.GetOrderList().GroupBy(o => o.Status).Select(o => new { status = o.Key, count = o.Count() }).ToList().ForEach(o =>
+                {
+                    ps.Slices.Add(new PieSlice(o.status.ToString(), o.count) { IsExploded = true });
+                });
+
+                ps.InnerDiameter = 0;
+                ps.ExplodedDistance = 0;
+                ps.Stroke = OxyColors.Black;
+                ps.StrokeThickness = 1.0;
+                ps.AngleSpan = 360;
+                ps.StartAngle = 0;
+                tmp.Series.Add(ps);
+
+                PieModel = tmp;
+                DataContext = this;
+            }
+            catch (LogicException ex){
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {   
+                MessageBox.Show("general error");
+            }
+
             InitializeComponent();
         }
     }

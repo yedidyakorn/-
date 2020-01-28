@@ -1,4 +1,5 @@
-﻿using BL;
+﻿using BE;
+using BL;
 using PLWPF.Helpers;
 using System;
 using System.Collections.Generic;
@@ -51,13 +52,24 @@ namespace PLWPF.Orders
             }
             else if (guestRadio.IsChecked.Value)
             {
-
-                List<BE.GuestRequest> guestRequests = BL_Singletone.Instance.GetGuestRequestsById(id);
-
-                Orders = BL_Singletone.Instance.GetOrderList().Where(o =>
+                try
                 {
-                    return guestRequests.Any(gr => gr.GuestRequestKey == o.GuestRequestKey);
-                }).ToList();
+
+                    List<BE.GuestRequest> guestRequests = BL_Singletone.Instance.GetGuestRequestsById(id);
+
+                    Orders = BL_Singletone.Instance.GetOrderList().Where(o =>
+                    {
+                        return guestRequests.Any(gr => gr.GuestRequestKey == o.GuestRequestKey);
+                    }).ToList();
+                }
+                catch (LogicException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("general error");
+                }
 
             }
 

@@ -1,4 +1,5 @@
-﻿using BL;
+﻿using BE;
+using BL;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
@@ -66,7 +67,14 @@ namespace PLWPF.DataGrids
                 modelTest = model;
                 DataContext = this;
             }
-            catch { }
+            catch (LogicException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
+            }
 
             InitializeComponent();
         }
