@@ -98,6 +98,12 @@ namespace BL
         bool UpdateOrder(long orderKey, OrderStatuses orderStatuses);
 
         /// <summary>
+        /// Get Orders Status Count
+        /// </summary>
+        /// <returns>dynamic</returns>
+        List<dynamic> GetOrdersStatusCount();
+
+        /// <summary>
         /// Get Hosting Units List
         /// </summary>
         /// <returns>Hosting Unit list</returns>

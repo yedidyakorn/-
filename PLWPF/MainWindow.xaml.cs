@@ -1,4 +1,5 @@
-﻿using PLWPF.HostingUnitWindows;
+﻿using PLWPF.DataGrids;
+using PLWPF.HostingUnitWindows;
 using PLWPF.Orders;
 using System;
 using System.Collections.Generic;
@@ -48,6 +49,12 @@ namespace PLWPF
         {
             Users users = new Users();
             users.ShowDialog();
+        }
+
+        private void qrBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Queries queries = new Queries();
+            queries.ShowDialog();
         }
     }
 }

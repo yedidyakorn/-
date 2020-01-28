@@ -25,7 +25,7 @@ namespace DS
                 PrivateName="Dooobi",
                 RegistrationDate=DateTime.Now,
                 MailAddress="dovi4344@gmail.com",
-                Area= VecationAreas.North,
+                Area= VecationAreas.All,
                 Status=RequestStatus.Active,
                 Type=HostingUnitTypes.Hotel,
                 ReleaseDate=  DateTime.Now.AddDays(10)
@@ -89,7 +89,7 @@ namespace DS
                 PrivateName="Chaya",
                 RegistrationDate = DateTime.Now,
                 MailAddress="chaya1771@gmail.com",
-                Area= VecationAreas.North,
+                Area= VecationAreas.All,
                 Status=RequestStatus.Active,
                 Type=HostingUnitTypes.Zimmer,
                 ReleaseDate=  DateTime.Now.AddDays(13)
@@ -101,7 +101,7 @@ namespace DS
         {
             new HostingUnit()
             {
-                Area = VecationAreas.North,
+                Area = VecationAreas.Center,
 
                 HostingUnitKey= 10000000,
 
@@ -334,7 +334,7 @@ namespace DS
 
             new Order()
             {
-                CreateDate = DateTime.Now,
+                CreateDate = DateTime.Now.AddMonths(-5),
 
                 GuestRequestKey = 5678,
 
@@ -349,7 +349,7 @@ namespace DS
 
             new Order()
             {
-                CreateDate = DateTime.Now,
+                CreateDate =  DateTime.Now.AddMonths(-10),
 
                 GuestRequestKey = 2,
 
@@ -358,6 +358,50 @@ namespace DS
                 OrderDate = DateTime.Now.AddDays(1),
 
                 OrderKey = 4568,
+
+                Status = OrderStatuses.Closed_ApprovedByCustomer,
+            },
+              new Order()
+            {
+                CreateDate =  DateTime.Now.AddMonths(-10),
+
+                GuestRequestKey = 2,
+
+                HostingUnitKey = 10000001,
+
+                OrderDate = DateTime.Now.AddDays(1),
+
+                OrderKey = 456899,
+
+                Status = OrderStatuses.Closed_ApprovedByCustomer,
+            }
+              ,
+              new Order()
+            {
+                CreateDate =  DateTime.Now.AddMonths(10),
+
+                GuestRequestKey = 2,
+
+                HostingUnitKey = 10000001,
+
+                OrderDate = DateTime.Now.AddDays(1),
+
+                OrderKey = 45687799,
+
+                Status = OrderStatuses.Closed_ApprovedByCustomer,
+            }
+               ,
+              new Order()
+            {
+                CreateDate =  DateTime.Now,
+
+                GuestRequestKey = 2,
+
+                HostingUnitKey = 10000001,
+
+                OrderDate = DateTime.Now.AddDays(1),
+
+                OrderKey = 45687799,
 
                 Status = OrderStatuses.Closed_ApprovedByCustomer,
             }
