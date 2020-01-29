@@ -41,10 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BE_Extensions.cs" />
     <Compile Include="Cloning.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="DalXML.cs" />
     <Compile Include="Dal_imp.cs" />
     <Compile Include="DAL_Singletone.cs" />
+    <Compile Include="DAL_XML_imp.cs" />
     <Compile Include="IDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
