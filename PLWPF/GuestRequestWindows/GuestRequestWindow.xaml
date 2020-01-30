@@ -23,7 +23,7 @@
         <Label x:Name="areaLbl" Content="איזור" HorizontalAlignment="Left" Margin="416,68,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="areaBox" HorizontalAlignment="Left" Margin="267,72,0,0" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="typeLbl" Content="סוג  נופש" HorizontalAlignment="Left" Margin="416,121,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="typeBox"  HorizontalAlignment="Left" Margin="267,125,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="TypeBox_SelectionChanged"/>
+        <ComboBox x:Name="typeBox"  HorizontalAlignment="Left" Margin="267,125,0,0" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="aduLbl" Content="מבוגרים" HorizontalAlignment="Left" Margin="703,337,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.538,-0.031"/>
         <TextBox x:Name="aduBox" Validation.Error="Validation_OnError"  Text="{Binding Adults, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="521,340,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
         <Label x:Name="childLbl" Content="ילדים" HorizontalAlignment="Left" Margin="718,383,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.73,3.038"/>
