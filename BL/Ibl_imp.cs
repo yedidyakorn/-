@@ -9,7 +9,7 @@ using DAL;
 
 namespace BL
 {
-    public class Ibl_imp : IBL
+    internal class Ibl_imp : IBL
     {
 
         #region guest request manager

@@ -10,7 +10,6 @@ namespace DAL
 {
     public class Dal_imp : IDAL
     {
-
         #region general
 
         public List<BankBranch> GetBankBranchesList()
@@ -242,4 +241,5 @@ namespace DAL
 
         #endregion
     }
+
 }

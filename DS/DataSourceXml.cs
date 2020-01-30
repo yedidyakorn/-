@@ -12,7 +12,7 @@ namespace DS
     {
         private static string solutionDirectory = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName;
 
-        private static string filePath = System.IO.Path.Combine(solutionDirectory, "DataSource", "DataXML");
+        private static string filePath = System.IO.Path.Combine(solutionDirectory, "DS", "XML_DATA");
 
 
         private static XElement orderRoot = null;
