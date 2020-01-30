@@ -240,5 +240,10 @@ namespace PLWPF.GuestRequestWindows
         }
 
         #endregion
+
+        private void TypeBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
