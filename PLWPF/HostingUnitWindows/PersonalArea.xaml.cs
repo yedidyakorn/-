@@ -1,4 +1,5 @@
-﻿using BL;
+﻿using BE;
+using BL;
 using PLWPF.Helpers;
 using System;
 using System.Collections.Generic;
@@ -34,27 +35,48 @@ namespace PLWPF.HostingUnitWindows
 
         private void addHobutton_Click(object sender, RoutedEventArgs e)
         {
-
-            BE.HostingUnit host = new BE.HostingUnit
+            try
             {
-                Owner = BL_Singletone.Instance.GetHostingUnitsByOwnerId(Id).First().Owner
-            };
+                BE.HostingUnit host = new BE.HostingUnit
+                {
+                    Owner = BL_Singletone.Instance.GetHostingUnitsByOwnerId(Id).First().Owner
+                };
 
-            HostingUnit hostingUnit = new HostingUnit(Mode.Add, host);
-            hostingUnit.ShowDialog();
+                HostingUnit hostingUnit = new HostingUnit(Mode.Add, host);
+                hostingUnit.ShowDialog();
+            }
+            catch (LogicException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
+            }
         }
 
         private void updatHoButton_Click(object sender, RoutedEventArgs e)
         {
-            List<BE.HostingUnit> hostingUnits = BL_Singletone.Instance.GetHostingUnitsByOwnerId(Id);
-
-            HostUnitGrid hostUnitGrid = new HostUnitGrid(hostingUnits);
-            hostUnitGrid.ShowDialog();
-
-            if (hostUnitGrid.DialogResult == true)
+            try
             {
-                HostingUnit hostingUnit = new HostingUnit(Mode.Update, hostUnitGrid.selectedHU);
-                hostingUnit.ShowDialog();
+                List<BE.HostingUnit> hostingUnits = BL_Singletone.Instance.GetHostingUnitsByOwnerId(Id);
+
+                HostUnitGrid hostUnitGrid = new HostUnitGrid(hostingUnits);
+                hostUnitGrid.ShowDialog();
+
+                if (hostUnitGrid.DialogResult == true)
+                {
+                    HostingUnit hostingUnit = new HostingUnit(Mode.Update, hostUnitGrid.selectedHU);
+                    hostingUnit.ShowDialog();
+                }
+            }
+            catch (LogicException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
             }
         }
     }

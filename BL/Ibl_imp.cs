@@ -373,6 +373,14 @@ namespace BL
             }
         }
 
+        public List<dynamic> GetOrdersStatusCount()
+        {
+            return DAL_Singletone.Instance.GetOrderList()
+                .GroupBy(o => o.Status)
+                .Select(o => new { status = o.Key.ToString(), count = o.Count() }).ToList<dynamic>();
+        }
+   
+
         #endregion
 
         #region host unit manager

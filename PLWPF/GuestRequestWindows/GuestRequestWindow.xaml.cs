@@ -107,6 +107,10 @@ namespace PLWPF.GuestRequestWindows
             {
                 MessageBox.Show(ex.Message, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
+            }
 
         }
 
@@ -124,6 +128,10 @@ namespace PLWPF.GuestRequestWindows
             catch (LogicException ex)
             {
                 MessageBox.Show(ex.Message, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
             }
 
         }
@@ -209,7 +217,10 @@ namespace PLWPF.GuestRequestWindows
             {
                 MessageBox.Show(ex.Message, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
+            }
         }
 
         private void Validation_OnError(object sender, ValidationErrorEventArgs e)
@@ -231,12 +242,20 @@ namespace PLWPF.GuestRequestWindows
             try
             {
                 BL_Singletone.Instance.DeleteGuestRequestsByKey(guestRequest.GuestRequestKey);
+
+                MessageBox.Show("guest request successfully deleted.");
+
+                Close();
             }
-            catch { }
-
-            MessageBox.Show("guest request successfully deleted.");
-
-            Close();
+            catch (LogicException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
+            }      
+     
         }
 
         #endregion
