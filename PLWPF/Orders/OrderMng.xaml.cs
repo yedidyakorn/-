@@ -25,12 +25,6 @@ namespace PLWPF.Orders
             InitializeComponent();
         }
 
-        private void addBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Order order = new Order(Mode.Add);
-            order.ShowDialog();
-        }
-
         private void updateBtn_Click(object sender, RoutedEventArgs e)
         {
             OrdersSearch ordersSearch = new OrdersSearch();

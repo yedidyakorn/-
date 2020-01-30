@@ -117,20 +117,42 @@ namespace PLWPF.HostingUnitWindows
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
-             GetValueFromEnums();
+            try
+            {
+                GetValueFromEnums();
 
-             DialogResult = BL_Singletone.Instance.AddHostingUnit(hostingUnit);
+                DialogResult = BL_Singletone.Instance.AddHostingUnit(hostingUnit);
 
-             Close();
+                Close();
+            }
+            catch (LogicException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
+            }
         }
 
         private void updateBtn_Click(object sender, RoutedEventArgs e)
         {
-            GetValueFromEnums();
+            try
+            {
+                GetValueFromEnums();
 
-            DialogResult = BL_Singletone.Instance.UpdateHostingUnit(hostingUnit);
+                DialogResult = BL_Singletone.Instance.UpdateHostingUnit(hostingUnit);
 
-            Close();
+                Close();
+            }
+            catch (LogicException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
+            }
         }
 
         private void Validation_OnError(object sender, ValidationErrorEventArgs e)
@@ -145,11 +167,22 @@ namespace PLWPF.HostingUnitWindows
 
         private void findGRBtn_Click(object sender, RoutedEventArgs e)
         {
-            List<GuestRequest> guestRequests = BL_Singletone.Instance.GetAllGuestRequestsForHostUnit(hostingUnit);
+            try
+            {
+                List<GuestRequest> guestRequests = BL_Singletone.Instance.GetAllGuestRequestsForHostUnit(hostingUnit);
 
-            GRforHU gRforHU = new GRforHU(guestRequests, hostingUnit.HostingUnitKey);
+                GRforHU gRforHU = new GRforHU(guestRequests, hostingUnit.HostingUnitKey);
 
-            gRforHU.ShowDialog();
+                gRforHU.ShowDialog();
+            }
+            catch (LogicException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
+            }
         }
 
         private void delBtn_Click(object sender, RoutedEventArgs e)
