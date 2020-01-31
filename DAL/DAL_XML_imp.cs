@@ -57,13 +57,37 @@ namespace DAL
 
         public bool DeleteGuestRequestByKey(long guestRequestKey)
         {
-            throw new NotImplementedException();
-        }//todo
+
+            XElement findGuestRequest = (from o in DataSourceXml.GuestRequests.Elements("GuestRequest")
+                                         where Int32.Parse(o.Element("GuestRequestKey").Value) == guestRequestKey
+                                         select o).FirstOrDefault();
+
+            if (findGuestRequest == null)
+            {
+                return false;
+            }
+
+            findGuestRequest.Remove();
+
+            DataSourceXml.SaveGuestRequests();
+            return true;
+        }
 
         public void DeleteHostingUnit(long HostingUnitKey)
         {
-            throw new NotImplementedException();
-        }//todo
+
+            XElement findHostUnit = (from hu in DataSourceXml.HostingUnits.Elements("HostingUnit")
+                                     where Int32.Parse(hu.Element("HostingUnitKey").Value) == hostingUnitKey
+                                     select hu).FirstOrDefault();
+            if (findHostUnit == null)
+            {
+                return;
+            }
+
+            findHostUnit.Remove();
+            DataSourceXml.SaveHostingUnits();
+
+        }
 
         public List<BankBranch> GetBankBranchesList()
         {

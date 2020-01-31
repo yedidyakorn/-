@@ -14,7 +14,6 @@ namespace DS
 
         private static string filePath = System.IO.Path.Combine(solutionDirectory, "DS", "XML_DATA");
 
-
         private static XElement orderRoot = null;
         private static XElement guestRequestRoot = null;
         private static XElement hostRoot = null;
@@ -42,13 +41,6 @@ namespace DS
             }
             orderRoot = LoadData(orderPath);
 
-            if (!File.Exists(hostPath))
-            {
-                CreateFile("Hosts", hostPath);
-
-            }
-            hostRoot = LoadData(hostPath);
-
             if (!File.Exists(hostingUnitPath))
             {
                 CreateFile("HostingUnits", hostingUnitPath);
@@ -63,8 +55,6 @@ namespace DS
 
             }
             guestRequestRoot = LoadData(guestRequestPath);
-
-
 
         }
 
@@ -82,11 +72,6 @@ namespace DS
         public static void SaveHostingUnits()
         {
             hostingUnitRoot.Save(hostingUnitPath);
-        }
-
-        public static void SaveHosts()
-        {
-            hostRoot.Save(hostPath);
         }
 
         public static void SaveGuestRequests()
