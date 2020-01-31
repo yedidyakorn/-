@@ -2,6 +2,7 @@
 using System.Linq;
 using BE;
 using BL;
+using DAL;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BL_TESTS
@@ -85,13 +86,11 @@ namespace BL_TESTS
             { 
                 CreateDate = DateTime.Now,
 
-                GuestRequestKey = 2,
+                GuestRequestKey = 20000003,
 
-                HostingUnitKey = 10000000,
+                HostingUnitKey = 20000003,
 
                 OrderDate = DateTime.Now.AddDays(1),
-
-                OrderKey = 1234,
 
                 Status = OrderStatuses.MailSent,
             });
@@ -218,6 +217,29 @@ namespace BL_TESTS
         {
             var gr = BL_Singletone.Instance.GetAllHostUnitsWithPool();
            Assert.IsTrue(gr.Count() > 0);
+        }
+
+        [TestMethod]
+        public void createXmlData() {
+
+            Dal_imp dal_Imp = new Dal_imp();
+            DAL_XML_imp DAL_XML_imp = new DAL_XML_imp();
+
+            dal_Imp.GetGuestRequestsList().ForEach(gr =>
+            {
+                DAL_XML_imp.AddGuestRequest(gr);
+            });
+
+            dal_Imp.GetHostingUnitsList().ForEach(hu =>
+            {
+                DAL_XML_imp.AddHostingUnit(hu);
+            });
+
+            dal_Imp.GetOrderList().ForEach(o =>
+            {
+                DAL_XML_imp.AddOrder(o);
+            });
+
         }
     }
 }

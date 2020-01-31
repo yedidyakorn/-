@@ -268,8 +268,11 @@ namespace BL
             {
                 Order order = DAL_Singletone.Instance.GetOrderByKey(orderKey);
 
-                if (order.OrderKey == 0 || order.Status == OrderStatuses.Closed_ApprovedByCustomer)
+                if (order.OrderKey == 0 )
                     return false;
+
+                if (order.Status == OrderStatuses.Closed_ApprovedByCustomer)
+                    throw new LogicException("Status cannot be updated after order has been approved");
 
                 switch (orderStatuses)
                 {

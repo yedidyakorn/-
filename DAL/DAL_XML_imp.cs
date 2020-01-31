@@ -9,19 +9,23 @@ using DS;
 
 namespace DAL
 {
-    class DAL_XML_imp : IDAL
+    public class DAL_XML_imp : IDAL
     {
         private static long serialGuestRequest;
         private static long serialOrder;
-        private static double commision; 
         private static long serialHostingUnit;
 
         public DAL_XML_imp()
         {
-            serialOrder = Int32.Parse(DataSourceXml.Orders.Element("lastSerial").Value);
+
+            serialOrder = Int32.Parse(DataSourceXml.Orders.Element("lastSerial").Value) ;
             serialGuestRequest = Int32.Parse(DataSourceXml.GuestRequests.Element("lastSerial").Value);
             serialHostingUnit = Int32.Parse(DataSourceXml.HostingUnits.Element("lastSerial").Value);
-            // TO DO  commision!!!
+
+            serialOrder = serialOrder == 0 ? Config.ORDER_COUNTER : serialOrder;
+            serialGuestRequest = serialGuestRequest == 0 ? Config.GUEST_REQUEST_COUNTER : serialGuestRequest;
+            serialHostingUnit = serialHostingUnit == 0 ? Config.HOSTING_UNIT_COUNTER : serialHostingUnit;
+
         }
 
         public bool AddGuestRequest(GuestRequest guestRequest)
@@ -39,7 +43,7 @@ namespace DAL
         {
             hostingUnit.HostingUnitKey = ++serialHostingUnit;
             XElement hostingUnitElement = XElement.Parse(hostingUnit.ToXMLstring());
-            DataSourceXml.HostingUnits.Element("lastSerial").Value = hostingUnitElement.Element("HostUnitKey").Value;
+            DataSourceXml.HostingUnits.Element("lastSerial").Value = hostingUnitElement.Element("HostingUnitKey").Value;
             DataSourceXml.SaveHostingUnits();
             DataSourceXml.HostingUnits.Add(hostingUnitElement);
             DataSourceXml.SaveHostingUnits();
@@ -49,9 +53,10 @@ namespace DAL
         public void AddOrder(Order order)
         {
             order.OrderKey = ++serialOrder;
-            DataSourceXml.Orders.Add(order.ToXMLstring());
+            XElement orderElement = XElement.Parse(order.ToXMLstring());
+            DataSourceXml.Orders.Element("lastSerial").Value = orderElement.Element("OrderKey").Value;
             DataSourceXml.SaveOrders();
-            DataSourceXml.Orders.Element("lastSerial").Value = order.OrderKey.ToString();
+            DataSourceXml.Orders.Add(orderElement);
             DataSourceXml.SaveOrders();
         }
 
@@ -73,7 +78,7 @@ namespace DAL
             return true;
         }
 
-        public void DeleteHostingUnit(long HostingUnitKey)
+        public void DeleteHostingUnit(long hostingUnitKey)
         {
 
             XElement findHostUnit = (from hu in DataSourceXml.HostingUnits.Elements("HostingUnit")
@@ -184,7 +189,7 @@ namespace DAL
                 return false;
             }
 
-            findGuestRequest.Value = guestRequest.ToXMLstring();
+            findGuestRequest.ReplaceWith(XElement.Parse(guestRequest.ToXMLstring())); 
             DataSourceXml.SaveGuestRequests();
 
             return true;
@@ -216,10 +221,9 @@ namespace DAL
                 return;
             }
 
-            findHostingUnit.Value = hostingUnit.ToXMLstring();
+            findHostingUnit.ReplaceWith(XElement.Parse(hostingUnit.ToXMLstring()));
             DataSourceXml.SaveHostingUnits();
-
-
+   
         }
 
         public void UpdateOrder(long orderKey, OrderStatuses orderStatuses)
