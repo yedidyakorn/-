@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
 using BL;
-using PLWPF.Helpers;
+using Util;
 
 namespace PLWPF.GuestRequestWindows
 {

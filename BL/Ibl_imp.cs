@@ -572,6 +572,45 @@ namespace BL
             }).ToList(); 
         }
 
+        public void LoadHostingUnitsDairy()
+        {
+                try
+                {
+                    DAL_Singletone.Instance.GetHostingUnitsList().ForEach(h =>
+
+                    DAL_Singletone.Instance.GetOrderList().Where(o => o.Status == BE.OrderStatuses.Closed_ApprovedByCustomer
+                    && o.HostingUnitKey == h.HostingUnitKey).ToList()
+                    .ForEach(o =>
+                    {
+                        var gr = GetGuestRequestsByKey(o.GuestRequestKey);
+
+                        if (gr.EntryDate.Date > DateTime.Now.AddMonths(-1).Date &&
+                        gr.EntryDate.Date < DateTime.Now.AddMonths(11).Date)
+                        {
+                            DateTime cureentDate = gr.EntryDate;
+
+                            while (cureentDate.Date != gr.ReleaseDate.Date.AddDays(1))
+                            {
+                                h.Diary[cureentDate.Month - 1, cureentDate.Day - 1] = true;
+
+                                cureentDate = cureentDate.AddDays(1);
+                            }
+
+                        }
+
+                        BL_Singletone.Instance.UpdateHostingUnit(h);
+                    }));
+                }
+                catch (LogicException ex)
+                {
+                    throw ex;
+                }
+                catch (Exception ex)
+                {
+                    throw new LogicException("General error while loading Hosting Units dairy");
+                }
+            }
+        
         #endregion
 
         #region general

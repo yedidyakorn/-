@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using BE;
 using DS;
+using Util;
 
 namespace DAL
 {
@@ -17,6 +18,8 @@ namespace DAL
 
         public DAL_XML_imp()
         {
+            Jobs jobs = new Jobs();
+            jobs.bankBranchesJob.RunWorkerAsync();
 
             serialOrder = Int32.Parse(DataSourceXml.Orders.Element("lastSerial").Value) ;
             serialGuestRequest = Int32.Parse(DataSourceXml.GuestRequests.Element("lastSerial").Value);
@@ -96,8 +99,15 @@ namespace DAL
 
         public List<BankBranch> GetBankBranchesList()
         {
-            throw new NotImplementedException();
-        }//todo
+            if (Data.BANK_BRANCHES.Count == 0 ) {
+
+                throw new LogicException("Data not loaded yet");
+
+            }
+
+            return Data.BANK_BRANCHES;
+
+        }
 
         public GuestRequest GetGuestRequestByKey(long guestRequestKey)
         {

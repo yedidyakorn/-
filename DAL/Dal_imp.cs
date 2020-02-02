@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BE;
 using DS;
+using Util;
 
 namespace DAL
 {
@@ -122,7 +123,7 @@ namespace DAL
 
         public List<Order> GetOrderList()
         {
-            return DataSource.orders.Select(o => (Order)Cloning.clone(o)).ToList();
+            return DataSource.orders.Select(o => (Order)o.clone()).ToList();
         }
 
         public Order GetOrderByKey(long orderKey)
@@ -219,7 +220,7 @@ namespace DAL
 
         public List<GuestRequest> GetGuestRequestsList()
         {
-            return DataSource.guestRequests.Select(gr => (GuestRequest)Cloning.clone(gr)).ToList();
+            return DataSource.guestRequests.Select(gr => (GuestRequest)gr.clone()).ToList();
         }
 
         public List<GuestRequest> GetGuestRequestsById(long id)
