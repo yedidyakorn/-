@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HostingUnitsXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <lastSerial>20000005</lastSerial>
-  <HostingUnits />
   <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostingUnitKey>20000001</HostingUnitKey>
     <Owner>
@@ -12,11 +11,11 @@
       <FhoneNumber>527684344</FhoneNumber>
       <MailAddress>dubon@gmail.com</MailAddress>
       <BankBranchDetails>
-        <BankNumber>10</BankNumber>
-        <BankName>לאומי</BankName>
-        <BranchNumber>856</BranchNumber>
-        <BranchAddress>חזון איש 80</BranchAddress>
-        <BranchCity>בני ברק</BranchCity>
+        <קוד_בנק>10</קוד_בנק>
+        <שם_בנק>לאומי</שם_בנק>
+        <קוד_סניף>856</קוד_סניף>
+        <כתובת_ה-ATM>חזון איש 80</כתובת_ה-ATM>
+        <ישוב>בני ברק</ישוב>
       </BankBranchDetails>
       <BankAccountNumber>12345</BankAccountNumber>
       <CollectionClearance>true</CollectionClearance>
@@ -40,11 +39,11 @@
       <FhoneNumber>527684344</FhoneNumber>
       <MailAddress>haya@gmail.com</MailAddress>
       <BankBranchDetails>
-        <BankNumber>11</BankNumber>
-        <BankName>דיסקונט</BankName>
-        <BranchNumber>856</BranchNumber>
-        <BranchAddress>השלושה 3</BranchAddress>
-        <BranchCity>בני ברק</BranchCity>
+        <קוד_בנק>11</קוד_בנק>
+        <שם_בנק>דיסקונט</שם_בנק>
+        <קוד_סניף>856</קוד_סניף>
+        <כתובת_ה-ATM>השלושה 3</כתובת_ה-ATM>
+        <ישוב>בני ברק</ישוב>
       </BankBranchDetails>
       <BankAccountNumber>12345</BankAccountNumber>
       <CollectionClearance>true</CollectionClearance>
@@ -68,11 +67,11 @@
       <FhoneNumber>527684344</FhoneNumber>
       <MailAddress>haya@gmail.com</MailAddress>
       <BankBranchDetails>
-        <BankNumber>11</BankNumber>
-        <BankName>דיסקונט</BankName>
-        <BranchNumber>856</BranchNumber>
-        <BranchAddress>השלושה 3</BranchAddress>
-        <BranchCity>בני ברק</BranchCity>
+        <קוד_בנק>11</קוד_בנק>
+        <שם_בנק>דיסקונט</שם_בנק>
+        <קוד_סניף>856</קוד_סניף>
+        <כתובת_ה-ATM>השלושה 3</כתובת_ה-ATM>
+        <ישוב>בני ברק</ישוב>
       </BankBranchDetails>
       <BankAccountNumber>12345</BankAccountNumber>
       <CollectionClearance>true</CollectionClearance>
@@ -96,11 +95,11 @@
       <FhoneNumber>527684344</FhoneNumber>
       <MailAddress>dubon@gmail.com</MailAddress>
       <BankBranchDetails>
-        <BankNumber>10</BankNumber>
-        <BankName>לאומי</BankName>
-        <BranchNumber>856</BranchNumber>
-        <BranchAddress>חזון איש 80</BranchAddress>
-        <BranchCity>בני ברק</BranchCity>
+        <קוד_בנק>10</קוד_בנק>
+        <שם_בנק>לאומי</שם_בנק>
+        <קוד_סניף>856</קוד_סניף>
+        <כתובת_ה-ATM>חזון איש 80</כתובת_ה-ATM>
+        <ישוב>בני ברק</ישוב>
       </BankBranchDetails>
       <BankAccountNumber>12345</BankAccountNumber>
       <CollectionClearance>true</CollectionClearance>
@@ -124,11 +123,11 @@
       <FhoneNumber>527684344</FhoneNumber>
       <MailAddress>dubon@gmail.com</MailAddress>
       <BankBranchDetails>
-        <BankNumber>10</BankNumber>
-        <BankName>לאומי</BankName>
-        <BranchNumber>856</BranchNumber>
-        <BranchAddress>חזון איש 80</BranchAddress>
-        <BranchCity>בני ברק</BranchCity>
+        <קוד_בנק>10</קוד_בנק>
+        <שם_בנק>לאומי</שם_בנק>
+        <קוד_סניף>856</קוד_סניף>
+        <כתובת_ה-ATM>חזון איש 80</כתובת_ה-ATM>
+        <ישוב>בני ברק</ישוב>
       </BankBranchDetails>
       <BankAccountNumber>12345</BankAccountNumber>
       <CollectionClearance>true</CollectionClearance>

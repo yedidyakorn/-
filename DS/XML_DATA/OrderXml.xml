@@ -1,53 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <OrdersXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <lastSerial>20000006</lastSerial>
-  <Orders />
   <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostingUnitKey>10000000</HostingUnitKey>
     <GuestRequestKey>1</GuestRequestKey>
     <OrderKey>20000001</OrderKey>
     <Status>MailSent</Status>
-    <CreateDate>2020-01-31T15:03:14.4599596+02:00</CreateDate>
-    <OrderDate>2020-02-05T15:03:14.4608893+02:00</OrderDate>
+    <CreateDate>2020-02-03T23:46:03.9274528+02:00</CreateDate>
+    <OrderDate>2020-02-08T23:46:03.9284485+02:00</OrderDate>
   </Order>
   <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostingUnitKey>345678</HostingUnitKey>
     <GuestRequestKey>5678</GuestRequestKey>
     <OrderKey>20000002</OrderKey>
     <Status>NotYetAddressed</Status>
-    <CreateDate>2019-08-31T15:03:14.4608893+03:00</CreateDate>
-    <OrderDate>2020-02-01T15:03:14.4608893+02:00</OrderDate>
+    <CreateDate>2019-09-03T23:46:03.9284485+03:00</CreateDate>
+    <OrderDate>2020-02-04T23:46:03.9284485+02:00</OrderDate>
   </Order>
   <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostingUnitKey>10000001</HostingUnitKey>
     <GuestRequestKey>2</GuestRequestKey>
     <OrderKey>20000003</OrderKey>
     <Status>Closed_ApprovedByCustomer</Status>
-    <CreateDate>2019-03-31T15:03:14.4608893+03:00</CreateDate>
-    <OrderDate>2020-02-01T15:03:14.4608893+02:00</OrderDate>
+    <CreateDate>2019-04-03T23:46:03.9284485+03:00</CreateDate>
+    <OrderDate>2020-02-04T23:46:03.9284485+02:00</OrderDate>
   </Order>
   <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostingUnitKey>10000001</HostingUnitKey>
     <GuestRequestKey>2</GuestRequestKey>
     <OrderKey>20000004</OrderKey>
     <Status>Closed_ApprovedByCustomer</Status>
-    <CreateDate>2019-03-31T15:03:14.4608893+03:00</CreateDate>
-    <OrderDate>2020-02-01T15:03:14.4608893+02:00</OrderDate>
+    <CreateDate>2019-04-03T23:46:03.9284485+03:00</CreateDate>
+    <OrderDate>2020-02-04T23:46:03.9284485+02:00</OrderDate>
   </Order>
   <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostingUnitKey>10000001</HostingUnitKey>
     <GuestRequestKey>2</GuestRequestKey>
     <OrderKey>20000005</OrderKey>
     <Status>Closed_ApprovedByCustomer</Status>
-    <CreateDate>2020-11-30T15:03:14.4608893+02:00</CreateDate>
-    <OrderDate>2020-02-01T15:03:14.4608893+02:00</OrderDate>
+    <CreateDate>2020-12-03T23:46:03.9284485+02:00</CreateDate>
+    <OrderDate>2020-02-04T23:46:03.9284485+02:00</OrderDate>
   </Order>
   <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostingUnitKey>10000001</HostingUnitKey>
     <GuestRequestKey>2</GuestRequestKey>
     <OrderKey>20000006</OrderKey>
     <Status>Closed_ApprovedByCustomer</Status>
-    <CreateDate>2020-01-31T15:03:14.4608893+02:00</CreateDate>
-    <OrderDate>2020-02-01T15:03:14.4608893+02:00</OrderDate>
+    <CreateDate>2020-02-03T23:46:03.9284485+02:00</CreateDate>
+    <OrderDate>2020-02-04T23:46:03.9284485+02:00</OrderDate>
   </Order>
 </OrdersXml>

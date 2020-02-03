@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <GuestRequestsXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <lastSerial>20000004</lastSerial>
-  <GuestRequests />
   <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <GuestRequestKey>20000001</GuestRequestKey>
     <Id>0</Id>
@@ -9,9 +8,9 @@
     <FamilyName>goldberg</FamilyName>
     <MailAddress>dovi4344@gmail.com</MailAddress>
     <Status>Active</Status>
-    <RegistrationDate>2020-01-31T15:03:14.4567724+02:00</RegistrationDate>
-    <EntryDate>2020-02-08T15:03:14.4539387+02:00</EntryDate>
-    <ReleaseDate>2020-02-10T15:03:14.4567724+02:00</ReleaseDate>
+    <RegistrationDate>2020-02-03T23:46:03.9264553+02:00</RegistrationDate>
+    <EntryDate>2020-02-11T23:46:03.9244598+02:00</EntryDate>
+    <ReleaseDate>2020-02-13T23:46:03.9264553+02:00</ReleaseDate>
     <Area>All</Area>
     <Type>Hotel</Type>
     <Adults>2</Adults>
@@ -28,9 +27,9 @@
     <FamilyName>goldberg</FamilyName>
     <MailAddress>chaya1771@gmail.com</MailAddress>
     <Status>Active</Status>
-    <RegistrationDate>2020-01-31T15:03:14.4577694+02:00</RegistrationDate>
-    <EntryDate>2020-01-26T15:03:14.4577694+02:00</EntryDate>
-    <ReleaseDate>2020-02-07T15:03:14.4577694+02:00</ReleaseDate>
+    <RegistrationDate>2020-02-03T23:46:03.9264553+02:00</RegistrationDate>
+    <EntryDate>2020-01-29T23:46:03.9264553+02:00</EntryDate>
+    <ReleaseDate>2020-02-10T23:46:03.9264553+02:00</ReleaseDate>
     <Area>North</Area>
     <Type>Hotel</Type>
     <Adults>2</Adults>
@@ -47,9 +46,9 @@
     <FamilyName>goldberg</FamilyName>
     <MailAddress>chaya1771@gmail.com</MailAddress>
     <Status>Active</Status>
-    <RegistrationDate>2020-01-31T15:03:14.4577694+02:00</RegistrationDate>
-    <EntryDate>2020-02-07T15:03:14.4577694+02:00</EntryDate>
-    <ReleaseDate>2020-02-13T15:03:14.4577694+02:00</ReleaseDate>
+    <RegistrationDate>2020-02-03T23:46:03.9264553+02:00</RegistrationDate>
+    <EntryDate>2020-02-10T23:46:03.9264553+02:00</EntryDate>
+    <ReleaseDate>2020-02-16T23:46:03.9264553+02:00</ReleaseDate>
     <Area>North</Area>
     <Type>Zimmer</Type>
     <Adults>2</Adults>
@@ -66,9 +65,9 @@
     <FamilyName>goldberg</FamilyName>
     <MailAddress>chaya1771@gmail.com</MailAddress>
     <Status>Active</Status>
-    <RegistrationDate>2020-01-31T15:03:14.4577694+02:00</RegistrationDate>
-    <EntryDate>2020-02-07T15:03:14.4577694+02:00</EntryDate>
-    <ReleaseDate>2020-02-13T15:03:14.4577694+02:00</ReleaseDate>
+    <RegistrationDate>2020-02-03T23:46:03.9264553+02:00</RegistrationDate>
+    <EntryDate>2020-02-10T23:46:03.9264553+02:00</EntryDate>
+    <ReleaseDate>2020-02-16T23:46:03.9264553+02:00</ReleaseDate>
     <Area>All</Area>
     <Type>Zimmer</Type>
     <Adults>2</Adults>

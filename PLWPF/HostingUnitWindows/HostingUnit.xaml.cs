@@ -41,10 +41,9 @@ namespace PLWPF.HostingUnitWindows
 
         public HostingUnit(Mode mode)
         {
-        
-            InitializeComponent();
-
             SetBankDetails();
+
+            InitializeComponent();
 
             if (mode == Mode.Add)
                 Add();
@@ -146,11 +145,11 @@ namespace PLWPF.HostingUnitWindows
                 }
                 catch (LogicException ex)
                 {
-                    if (counter == 3)
+                    if (counter == 10)
                     {
                         MessageBox.Show(ex.Message);
 
-                        DialogResult = false;
+               
                         Close();
                     }
                     Thread.Sleep(2 * 1000);
@@ -252,14 +251,15 @@ namespace PLWPF.HostingUnitWindows
         private void bnNameBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             List<BankBranch> bankBranch = bankBranches.Where(b => b.BankName == bnNameBox.SelectedValue.ToString()).ToList();
-            var branch =   bankBranch.Select(b => b.BranchNumber).ToList();
-            braNumBox.ItemsSource = branch;
-            braNumBox.SelectedValue = branch.First();
+            List<int> branches = bankBranch.Select(b => b.BranchNumber).ToList();
+            braNumBox.ItemsSource = branches;
+            braNumBox.SelectedValue = branches.First();
+            braNumBox.Text = branches.First().ToString() ;
         }    
 
         private void braNumBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            BankBranch bankBranch = bankBranches.Where(b => b.BankName == bnNameBox.SelectedValue.ToString() && b.BranchNumber.ToString() == braNumBox.SelectedItem.ToString()).FirstOrDefault();
+            BankBranch bankBranch = bankBranches.Where(b => b.BankName.Trim() == bnNameBox.SelectedValue.ToString().Trim() && b.BranchNumber.ToString() == braNumBox.SelectedItem.ToString()).FirstOrDefault();
 
             hostingUnit.Owner.BankBranchDetails.BankNumber = bankBranch.BankNumber;
             hostingUnit.Owner.BankBranchDetails.BranchCity = bankBranch.BranchCity;

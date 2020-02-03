@@ -7,24 +7,16 @@ using System.Threading.Tasks;
 
 namespace DS.XML_DATA
 {
-    public class OrdersXml
+    public class BaseXML
     {
+
         public long lastSerial { get; set; }
 
-        public List<Order> Orders { get; set; } = new List<Order>();
     }
 
-    public class GuestRequestsXml
-    {
-        public long lastSerial { get; set; }
+    public class OrdersXml : BaseXML { }
 
-        public List<GuestRequest> GuestRequests { get; set; } = new List<GuestRequest>();
-    }
+    public class GuestRequestsXml : BaseXML { }
 
-    public class HostingUnitsXml
-    {
-        public long lastSerial { get; set; }
-
-        public List<HostingUnit> HostingUnits { get; set; } = new List<HostingUnit>();
-    }
+    public class HostingUnitsXml : BaseXML { }
 }

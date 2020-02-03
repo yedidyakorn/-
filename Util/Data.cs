@@ -20,9 +20,9 @@ namespace Util
 
             const string xmlLocalPath = @"atm.xml";
 
-            bankXml = XElement.Load(xmlLocalPath);
-            BANK_BRANCHES = bankXml.Elements("ATM").Select(atm =>
-            atm.ToString().ToObject<BankBranch>()).ToList();
+       //    bankXml = XElement.Load(xmlLocalPath);
+         //  BANK_BRANCHES = bankXml.Elements("ATM").Select(atm =>
+         //  atm.ToString().ToObject<BankBranch>()).ToList();
 
 
             WebClient wc = new WebClient();
