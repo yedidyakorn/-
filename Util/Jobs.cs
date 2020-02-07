@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Util
@@ -18,6 +19,13 @@ namespace Util
             bankBranchesJob.RunWorkerCompleted += Bg_RunWorkerCompleted;
             bankBranchesJob.ProgressChanged += Bg_ProgressChanged;
             bankBranchesJob.WorkerReportsProgress = true;
+        }
+
+        public Jobs(Action func)
+        {
+
+            ScheduleThread(func);
+
         }
 
         private void Bg_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -37,5 +45,23 @@ namespace Util
             e.Result = Data.BANK_BRANCHES;
 
         }
+        void ScheduleThread(Action func)
+        {
+
+            var runAt = DateTime.Today + TimeSpan.FromHours(10);
+
+            if (runAt <= DateTime.Now)
+            {
+                func();
+            }
+            else
+            {
+                var delay = runAt - DateTime.Now;
+                Task.Delay(delay).ContinueWith(_ => func());
+            }
+
+        }
+
+      
     }
 }

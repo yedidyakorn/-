@@ -39,6 +39,9 @@ namespace PLWPF.HostingUnitWindows
 
         private List<BankBranch> bankBranches = null;
 
+        List<int> branchesNumbersForBank = new List<int>();
+
+
         public HostingUnit(Mode mode)
         {
             SetBankDetails();
@@ -82,10 +85,24 @@ namespace PLWPF.HostingUnitWindows
                 }
             }
 
+            for (var i = 0; i < bnNameBox.Items.Count; i++)
+            {
+                if (bnNameBox.Items[i].ToString() == hostingUnit.Owner.BankBranchDetails.BankName)
+                {
+                    bnNameBox.SelectedIndex = i;
+                }
+            }
+
+            for (var i = 0; i < braNumBox.Items.Count; i++)
+            {
+                if (braNumBox.Items[i].ToString() == hostingUnit.Owner.BankBranchDetails.BankNumber.ToString())
+                {
+                    braNumBox.SelectedIndex = i;
+                }
+            }
+
             updateBtn.Visibility = Visibility.Visible;
-
             findGRBtn.Visibility = Visibility.Visible;
-
             deleteBtn.Visibility = Visibility.Visible;
         }
 
@@ -110,16 +127,6 @@ namespace PLWPF.HostingUnitWindows
 
             hostingUnit.Area = (VecationAreas)areaBox.SelectedItem;
 
-            //int.TryParse(banNumBox.SelectedItem.ToString(), out int bankNum);
-            //hostingUnit.Owner.BankBranchDetails.BankNumber = bankNum;
-
-            //int.TryParse(braNumBox.SelectedItem.ToString(), out int branchNum);
-            //hostingUnit.Owner.BankBranchDetails.BranchNumber = branchNum;
-
-            //hostingUnit.Owner.BankBranchDetails.BankName = bnNameBox.SelectedItem.ToString();
-            //hostingUnit.Owner.BankBranchDetails.BranchAddress = braAddBox.SelectedItem.ToString();
-            //hostingUnit.Owner.BankBranchDetails.BranchCity = braCitiBox.SelectedItem.ToString();
-
         }
 
         public void SetEnumsValues()
@@ -129,6 +136,10 @@ namespace PLWPF.HostingUnitWindows
      
             bnNameBox.ItemsSource = bankBranches.Select(b => b.BankName.Trim()).Distinct().ToList();
             bnNameBox.SelectedIndex = 0;
+
+            braNumBox.ItemsSource = branchesNumbersForBank;
+            braNumBox.SelectedIndex = 0;
+
         }
 
         private void SetBankDetails()
@@ -251,19 +262,27 @@ namespace PLWPF.HostingUnitWindows
         private void bnNameBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             List<BankBranch> bankBranch = bankBranches.Where(b => b.BankName == bnNameBox.SelectedValue.ToString()).ToList();
-            List<int> branches = bankBranch.Select(b => b.BranchNumber).ToList();
-            braNumBox.ItemsSource = branches;
-            braNumBox.SelectedValue = branches.First();
-            braNumBox.Text = branches.First().ToString() ;
+
+            branchesNumbersForBank = bankBranch.Select(b => b.BranchNumber).ToList();
+            braNumBox.ItemsSource = branchesNumbersForBank;
+            braNumBox.SelectedItem = braNumBox.Items[0];
+            braNumBox.SelectedValue = branchesNumbersForBank.First();
+            braNumBox.Text = branchesNumbersForBank.First().ToString();
+           
         }    
 
         private void braNumBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            BankBranch bankBranch = bankBranches.Where(b => b.BankName.Trim() == bnNameBox.SelectedValue.ToString().Trim() && b.BranchNumber.ToString() == braNumBox.SelectedItem.ToString()).FirstOrDefault();
+            if (braNumBox.SelectedItem != null)
+            {
+                BankBranch bankBranch = bankBranches.Where(b => b.BankName.Trim() == bnNameBox.SelectedValue.ToString().Trim() && b.BranchNumber.ToString() == braNumBox.SelectedItem.ToString()).FirstOrDefault();
 
-            hostingUnit.Owner.BankBranchDetails.BankNumber = bankBranch.BankNumber;
-            hostingUnit.Owner.BankBranchDetails.BranchCity = bankBranch.BranchCity;
-            hostingUnit.Owner.BankBranchDetails.BranchAddress = bankBranch.BranchAddress;
+                hostingUnit.Owner.BankBranchDetails.BankName = bankBranch.BankName;
+                hostingUnit.Owner.BankBranchDetails.BankNumber = bankBranch.BankNumber;
+                hostingUnit.Owner.BankBranchDetails.BranchNumber = bankBranch.BranchNumber;
+                hostingUnit.Owner.BankBranchDetails.BranchCity = bankBranch.BranchCity;
+                hostingUnit.Owner.BankBranchDetails.BranchAddress = bankBranch.BranchAddress;
+            }
 
         }
 
