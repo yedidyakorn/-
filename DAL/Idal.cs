@@ -133,6 +133,33 @@ namespace DAL
         /// <returns>Hosting Unit</returns>
         HostingUnit GetHostingUnitByKey(long hostingUnitKey);
 
+        /// <summary>
+        /// GetLastUpdatedOrdersXML
+        /// </summary>
+        /// <param name="GetLastUpdatedOrdersXML"></param>
+        /// <returns>date</returns>
+        DateTime GetLastUpdatedOrdersXML();
+
+        /// <summary>
+        /// GetLastUpdatedGuestRequestXML
+        /// </summary>
+        /// <param name="GetLastUpdatedGuestRequestXML"></param>
+        /// <returns>date</returns>
+        DateTime GetLastUpdatedGuestRequestXML();
+
+        /// <summary>
+        /// SetLastUpdatedOrdersXML
+        /// </summary>
+        /// <param name="SetLastUpdatedOrdersXML"></param>
+        /// <returns></returns>
+        void SetLastUpdatedOrdersXML(DateTime dateTime);
+
+        /// <summary>
+        /// SetLastUpdatedGuestRequestXML
+        /// </summary>
+        /// <param name="SetLastUpdatedGuestRequestXML"></param>
+        /// <returns></returns>
+        void SetLastUpdatedGuestRequestXML(DateTime dateTime);
 
     }
 }

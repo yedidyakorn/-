@@ -7,9 +7,13 @@
         mc:Ignorable="d"
         Title="PersonalArea" Height="450" Width="800">
     <Grid>
-        <Button x:Name="addHobutton" Content="הוספת יחידת אירוח" HorizontalAlignment="Left" Margin="358,85,0,0" VerticalAlignment="Top" Width="155" Click="addHobutton_Click"/>
-        <Button x:Name="updatHoButton" Content="עדכון יחידת אירוח" HorizontalAlignment="Left" Margin="358,177,0,0" VerticalAlignment="Top" Width="155" Click="updatHoButton_Click"/>
+        <Button x:Name="addHobutton" Content="הוספת יחידת אירוח" HorizontalAlignment="Left" Margin="550,277,0,0" VerticalAlignment="Top" Width="181" Click="addHobutton_Click" Height="57"/>
+        <Button x:Name="updatHoButton" Content="עדכון יחידת אירוח" HorizontalAlignment="Left" Margin="301,279,0,0" VerticalAlignment="Top" Width="181" Click="updatHoButton_Click" Height="52"/>
         <Label x:Name="ownerNameLbl" Content="" HorizontalAlignment="Left" Margin="587,50,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="helloLbl" HorizontalContentAlignment="Right" Content=",שלום" HorizontalAlignment="Left" Margin="531,48,0,0" VerticalAlignment="Top" Height="117" Width="200" FontSize="72"/>
+        <Label x:Name="nameLbl"  HorizontalContentAlignment="Right" Content="{Binding Owner.PrivateName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Margin="112,45,0,0" VerticalAlignment="Top" Height="120" Width="395" FontSize="72"/>
+        <Label x:Name="lblDo" Content="?מה ברצונך לעשות" HorizontalAlignment="Left" Margin="380,170,0,0" VerticalAlignment="Top" Height="38" Width="189" FontSize="20"/>
+        <Button x:Name="btnOrdr" Content="עדכן הזמנה" HorizontalAlignment="Left" Margin="65,282,0,0" VerticalAlignment="Top" Width="172" Height="52" Click="btnOrdr_Click"/>
 
     </Grid>
 </Window>

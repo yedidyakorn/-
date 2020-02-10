@@ -252,5 +252,28 @@ namespace DAL
 
         }
 
+        public DateTime GetLastUpdatedOrdersXML()
+        {
+            return DateTime.Parse(DataSourceXml.Orders.Element("lastUpdate").Value);
+        }
+
+        public DateTime GetLastUpdatedGuestRequestXML()
+        {
+            return DateTime.Parse(DataSourceXml.GuestRequests.Element("lastUpdate").Value);
+        }
+
+        public void SetLastUpdatedOrdersXML(DateTime dateTime)
+        {
+            DataSourceXml.Orders.Element("lastUpdate").Value = dateTime.ToString();
+            DataSourceXml.SaveOrders();
+        }
+
+        public void SetLastUpdatedGuestRequestXML(DateTime dateTime)
+        {
+            DataSourceXml.GuestRequests.Element("lastUpdate").Value = dateTime.ToString();
+            DataSourceXml.SaveGuestRequests();
+        }
+
+
     }
 }

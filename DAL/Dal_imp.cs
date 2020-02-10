@@ -240,6 +240,26 @@ namespace DAL
 
         }
 
+        public DateTime GetLastUpdatedOrdersXML()
+        {
+            throw new NotImplementedException();
+        }
+
+        public DateTime GetLastUpdatedGuestRequestXML()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetLastUpdatedOrdersXML(DateTime dateTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetLastUpdatedGuestRequestXML(DateTime dateTime)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 

@@ -1,5 +1,5 @@
-﻿using BE;
-using BL;
+﻿using BL;
+using PLWPF.Orders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,14 +22,12 @@ namespace PLWPF.HostingUnitWindows
     /// </summary>
     public partial class PersonalArea : Window
     {
-        //List<BE.HostingUnit> hostingUnits;
+        BE.HostingUnit hostingUnit = new BE.HostingUnit();
 
-        long Id;
-
-        public PersonalArea(long id)
+        public PersonalArea(BE.HostingUnit HostingUnit)
         {
-            Id = id;
-
+            hostingUnit = HostingUnit;
+            this.DataContext = hostingUnit;
             InitializeComponent();
         }
 
@@ -39,13 +37,13 @@ namespace PLWPF.HostingUnitWindows
             {
                 BE.HostingUnit host = new BE.HostingUnit
                 {
-                    Owner = BL_Singletone.Instance.GetHostingUnitsByOwnerId(Id).First().Owner
+                    Owner = hostingUnit.Owner
                 };
 
-                HostingUnit hostingUnit = new HostingUnit(Mode.Add, host);
-                hostingUnit.ShowDialog();
+                HostingUnit hostingUnitWin = new HostingUnit(Mode.Add, host);
+                hostingUnitWin.ShowDialog();
             }
-            catch (LogicException ex)
+            catch (BE.LogicException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -59,7 +57,7 @@ namespace PLWPF.HostingUnitWindows
         {
             try
             {
-                List<BE.HostingUnit> hostingUnits = BL_Singletone.Instance.GetHostingUnitsByOwnerId(Id);
+                List<BE.HostingUnit> hostingUnits = BL_Singletone.Instance.GetHostingUnitsByOwnerId(hostingUnit.Owner.ID);
 
                 HostUnitGrid hostUnitGrid = new HostUnitGrid(hostingUnits);
                 hostUnitGrid.ShowDialog();
@@ -70,7 +68,7 @@ namespace PLWPF.HostingUnitWindows
                     hostingUnit.ShowDialog();
                 }
             }
-            catch (LogicException ex)
+            catch (BE.LogicException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -78,6 +76,35 @@ namespace PLWPF.HostingUnitWindows
             {
                 MessageBox.Show("general error");
             }
+        }
+
+        private void btnOrdr_Click(object sender, RoutedEventArgs e)
+        {
+            List<BE.Order> Orders = new List<BE.Order>();
+
+            try { 
+
+            List<BE.HostingUnit> hostingUnits = BL_Singletone.Instance.GetHostingUnitsByOwnerId(hostingUnit.Owner.ID);
+
+             Orders = BL_Singletone.Instance.GetOrderList().Where(o =>
+            {
+                return hostingUnits.Any(hu => hu.HostingUnitKey == o.HostingUnitKey);
+            }).ToList();
+            }
+            catch(BE.LogicException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            OrdersGrid ordersGrid = new OrdersGrid(Orders);
+            ordersGrid.ShowDialog();
+
+            if (ordersGrid.DialogResult == true)
+            {
+                Order order = new Order(Mode.Update, ordersGrid.selectedOrder);
+                order.ShowDialog();
+            }
+
         }
     }
 }

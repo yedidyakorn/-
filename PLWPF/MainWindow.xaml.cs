@@ -36,8 +36,8 @@ namespace PLWPF
         // guest request
         private void grBtn_Click(object sender, RoutedEventArgs e)
         {
-            GuestRequestWindows.GuestRequestMng guestRequestMng = new GuestRequestWindows.GuestRequestMng();
-            guestRequestMng.ShowDialog();
+            //GuestRequestWindows.GuestRequestMng guestRequestMng = new GuestRequestWindows.GuestRequestMng();
+            //guestRequestMng.ShowDialog();
         }
 
         //order

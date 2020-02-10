@@ -1,0 +1,19 @@
+﻿<Window x:Class="PLWPF.SiteManager.FeeCalc"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF.SiteManager"
+        mc:Ignorable="d"
+        Title="FeeCalc" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="Lbl" Content="הצג סכום עמלה בין תאריכים" HorizontalAlignment="Left" Margin="395,60,0,0" VerticalAlignment="Top" Height="53" Width="364" FontSize="24"/>
+        <DatePicker x:Name="feeFrom"  HorizontalAlignment="Left" Margin="469,199,0,0" VerticalAlignment="Top" Height="38" Width="206" FontSize="20" SelectedDateChanged="feeFrom_SelectedDateChanged"/>
+        <DatePicker x:Name="feeTo"  HorizontalAlignment="Left" Margin="469,278,0,0" VerticalAlignment="Top" Height="42" Width="206" FontSize="20" SelectedDateChanged="feeTo_SelectedDateChanged"/>
+        <Label x:Name="labelFrom" Content="-החל מ" HorizontalAlignment="Left" Margin="568,168,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelTo" Content="-עד" HorizontalAlignment="Left" Margin="589,242,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.458,3.833"/>
+        <Label x:Name="LblSum" Content="0" HorizontalAlignment="Left" Margin="159,147,0,0" VerticalAlignment="Top" Height="121" Width="182" RenderTransformOrigin="0.132,0.996" FontSize="72"/>
+        <Label x:Name="lblIls" Content="שח" HorizontalAlignment="Left" Margin="80,242,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

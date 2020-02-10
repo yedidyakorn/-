@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace Util
@@ -20,18 +21,24 @@ namespace Util
 
             const string xmlLocalPath = @"atm.xml";
 
-           bankXml = XElement.Load(xmlLocalPath);
-           BANK_BRANCHES = bankXml.Elements("ATM").Select(atm =>atm.ToString().ToObject<BankBranch>()).ToList();
+            const string temp = @"atm1.xml";
 
+            try
+            {
+                bankXml = XElement.Load(temp);
+                BANK_BRANCHES = bankXml.Elements("ATM").Select(atm => atm.ToString().ToObject<BankBranch>()).ToList();
+            }
+            catch { }
 
             WebClient wc = new WebClient();
 
 
             try
-            {
+            {               
                 string xmlServerPath = @"http://www.boi.org.il/he/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/atm.xml";
-                xmlServerPath = @"http://www.jct.ac.il/~coshri/atm.xml";
-                wc.DownloadFile(xmlServerPath, xmlLocalPath);
+                XmlDocument doc = new XmlDocument();
+                doc.Load(xmlServerPath);
+                doc.Save(xmlLocalPath);
             }
             catch
             {
@@ -49,5 +56,6 @@ namespace Util
             atm.ToString().ToObject<BankBranch>()).ToList();
 
         }
+
     }
 }

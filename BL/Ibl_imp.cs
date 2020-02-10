@@ -394,7 +394,6 @@ namespace BL
                 .Select(o => new { status = o.Key.ToString(), count = o.Count() }).ToList<dynamic>();
         }
    
-
         #endregion
 
         #region host unit manager
@@ -584,7 +583,6 @@ namespace BL
             }).ToList(); 
         }
 
-
         public bool hasOpenApprovedOrder(long guestRequestKey, long hostingUnitKey) {
 
          return DAL_Singletone.Instance.GetOrderList().Any(o => o.GuestRequestKey == guestRequestKey && o.HostingUnitKey == hostingUnitKey && o.Status != OrderStatuses.Closed_NoCustomerResponse);
@@ -667,6 +665,16 @@ namespace BL
             }
         }
 
+        public double CalcFeeBetweenDates(DateTime fromDate, DateTime toDate)
+        {
+           return DAL_Singletone.Instance.GetOrderList().Where(o => o.OrderDate <= toDate && o.OrderDate >= fromDate).ToList()
+                .Sum(o =>
+                {
+                    var guestRequest = DAL_Singletone.Instance.GetGuestRequestByKey(o.GuestRequestKey);
+                    return guestRequest!= null ? Config.FEE_RATE * (int)(guestRequest.ReleaseDate - guestRequest.RegistrationDate).TotalDays : 0;
+                });
+        }
+
         #endregion
 
         #region Private methods
@@ -742,8 +750,7 @@ namespace BL
 
         private bool SendMail(string hostesMail , string mailAddress)
         {
-            //ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
-           // ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+   
             MailMessage mail = new MailMessage();
 
             mail.To.Add(mailAddress);
@@ -774,15 +781,28 @@ namespace BL
 
         private void UpdateOrdersStatus()
         {
+            try
+            {
+                if (DAL_Singletone.Instance.GetLastUpdatedOrdersXML() < DateTime.Now)
+                {
+                    DAL_Singletone.Instance.GetOrderList().Where(o => o.OrderDate < DateTime.Now.Date.AddMonths(-1)).ToList()
+                     .ForEach(o => DAL_Singletone.Instance.UpdateOrder(o.OrderKey, OrderStatuses.Closed_NoCustomerResponse));
 
-            DAL_Singletone.Instance.GetOrderList().Where(o => o.OrderDate < DateTime.Now.Date.AddMonths(-1)).ToList()
-                .ForEach(o => DAL_Singletone.Instance.UpdateOrder(o.OrderKey, OrderStatuses.Closed_NoCustomerResponse));
+                    DAL_Singletone.Instance.SetLastUpdatedOrdersXML(DateTime.Now);
+                }
 
-            DAL_Singletone.Instance.GetGuestRequestsList().Where(gr => gr.EntryDate.Date < DateTime.Now.Date)
-                .ToList().ForEach(gr => DAL_Singletone.Instance.UpdateGuestRequestStatus(gr.GuestRequestKey, RequestStatus.Inactive));
 
+                if (DAL_Singletone.Instance.GetLastUpdatedGuestRequestXML() < DateTime.Now)
+                {
+                    DAL_Singletone.Instance.GetGuestRequestsList().Where(gr => gr.EntryDate.Date < DateTime.Now.Date)
+                    .ToList().ForEach(gr => DAL_Singletone.Instance.UpdateGuestRequestStatus(gr.GuestRequestKey, RequestStatus.Inactive));
+
+                    DAL_Singletone.Instance.SetLastUpdatedGuestRequestXML(DateTime.Now);
+                }
+            }
+            catch (Exception) { }
         }
-     
+
         #endregion
 
     }

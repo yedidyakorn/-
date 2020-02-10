@@ -205,5 +205,11 @@ namespace BL
         /// </summary>
         /// <returns></returns>
         void LoadHostingUnitsDairy();
+
+        /// <summary>
+        /// calc manager fee between dates
+        /// </summary>
+        /// <returns></returns>
+        double CalcFeeBetweenDates(DateTime fromDate, DateTime toDate);
     }
 }

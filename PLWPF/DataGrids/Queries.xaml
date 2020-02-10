@@ -7,17 +7,16 @@
         mc:Ignorable="d"
         Title="Queries" Height="450" Width="800">
     <Grid>
-        <Button x:Name="GRArea" Content="הצג יחידות אירוח לפי איזור" HorizontalAlignment="Left" Margin="241,67,0,0" VerticalAlignment="Top" Width="314" Click="GRArea_Click" RenderTransformOrigin="0.5,0.5" Height="52">
+        <Button x:Name="GRArea" Content="הצג יחידות אירוח לפי איזור" HorizontalAlignment="Left" Margin="229,128,0,0" VerticalAlignment="Top" Width="314" Click="GRArea_Click" RenderTransformOrigin="0.5,0.5" Height="52">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="0.423"/>
+                    <RotateTransform Angle="0"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="button" Content="הצג גרף סטטוס הזמנות" HorizontalAlignment="Left" Margin="237,162,0,0" VerticalAlignment="Top" Width="318" Click="button_Click" Height="53"/>
-        <Button x:Name="button1" Content="הצג גרף הזמנות לפי תאריך" HorizontalAlignment="Left" Margin="237,260,0,0" VerticalAlignment="Top" Width="318" Height="61" Click="button1_Click"/>
+        <Button x:Name="btnGRType" Content="הצג יחידות אירוח לפי סוג אירוח" HorizontalAlignment="Left" Margin="225,206,0,0" VerticalAlignment="Top" Width="318" Height="51" Click="btnGRType_Click"/>
     </Grid>
 </Window>

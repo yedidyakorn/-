@@ -7,9 +7,11 @@
         mc:Ignorable="d"
         Title="LogIn" Height="450" Width="800">
     <Grid>
-        <TextBlock x:Name="IdBox" HorizontalAlignment="Left" Margin="286,121,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="43" Width="207"/>
         <Label x:Name="IdLbl" Content="ID" HorizontalAlignment="Left" Margin="329,85,0,0" VerticalAlignment="Top" Height="31" Width="124"/>
         <Button x:Name="LogBtn" Content="הכנס" HorizontalAlignment="Left" Margin="329,273,0,0" VerticalAlignment="Top" Width="124" Height="39" Click="LogBtn_Click"/>
+        <TextBox x:Name="IdBox" HorizontalAlignment="Left" Height="62" Margin="265,144,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="264" FontSize="20"/>
+        <Label x:Name="newUserLbl" Content="?משתמש חדש" HorizontalAlignment="Left" Margin="381,359,0,0" VerticalAlignment="Top" Width="98"/>
+        <Label x:Name="lblSign" Content="הירשם" HorizontalAlignment="Left" Margin="329,359,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.82,0.109" Foreground="#FF3A5FDA" FontWeight="Bold"  MouseLeftButtonUp="lblSign_MouseLeftButtonUp"/>
 
     </Grid>
 </Window>
