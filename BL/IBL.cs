@@ -199,5 +199,11 @@ namespace BL
         /// </summary>
         /// <returns></returns>
         List<GuestRequest> GetAllGuestRequestsForHostUnit(HostingUnit hostingUnit);
+
+        /// <summary>
+        /// Load Hosting Units Dairy
+        /// </summary>
+        /// <returns></returns>
+        void LoadHostingUnitsDairy();
     }
 }

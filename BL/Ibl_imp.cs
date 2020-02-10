@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
 using DAL;
+using Util;
 
 namespace BL
 {
-    public class Ibl_imp : IBL
+    internal class Ibl_imp : IBL
     {
+        internal Ibl_imp()
+        {
+            Jobs jobs = new Jobs(UpdateOrdersStatus);
+        }
 
         #region guest request manager
         
@@ -210,8 +217,7 @@ namespace BL
                 if (guestRequest == null)
                     throw new LogicException($"guest Request {order.GuestRequestKey} does not exist");
 
-                if(DAL_Singletone.Instance.GetOrderList().Any(o => o.GuestRequestKey == order.GuestRequestKey
-                && o.HostingUnitKey == order.HostingUnitKey))
+                if(hasOpenApprovedOrder(guestRequest.GuestRequestKey,hostingUnit.HostingUnitKey))
                     throw new LogicException($"order has been created.");
 
                 DateTime cureentDate = guestRequest.RegistrationDate;
@@ -228,9 +234,14 @@ namespace BL
 
                 order.CreateDate = DateTime.Now;
 
+                order.OrderDate = DateTime.Now.Date;
+
+                SendMail(hostingUnit.Owner.MailAddress, guestRequest.MailAddress);
+
                 DAL_Singletone.Instance.AddOrder(order);
 
-                return SendMail(guestRequest.MailAddress);
+                return true;
+
             }
             catch (LogicException ex)
             {
@@ -268,8 +279,11 @@ namespace BL
             {
                 Order order = DAL_Singletone.Instance.GetOrderByKey(orderKey);
 
-                if (order.OrderKey == 0 || order.Status == OrderStatuses.Closed_ApprovedByCustomer)
+                if (order.OrderKey == 0 )
                     return false;
+
+                if (order.Status == OrderStatuses.Closed_ApprovedByCustomer)
+                    throw new LogicException("Status cannot be updated after order has been approved");
 
                 switch (orderStatuses)
                 {
@@ -539,7 +553,7 @@ namespace BL
 
             try
             {
-                return GetAllHostUnitsByPredicate(delegate (HostingUnit hu) { return hu.HasPool; });
+                return GetAllHostUnitsByPredicate(hu => hu.HasPool);
             }
             catch (LogicException ex)
             {
@@ -557,18 +571,65 @@ namespace BL
             return DAL_Singletone.Instance.GetGuestRequestsList().Where(gr => {
 
                 return gr.Status == RequestStatus.Active
-                 && CheckAdditionRelevance(gr.Pool, hostingUnit.HasPool)
-                 && CheckAdditionRelevance(gr.Jacuzzi, hostingUnit.HasJacuzzi)
-                 && CheckAdditionRelevance(gr.ChildrensAttractions, hostingUnit.HasChildrensAttractions)
-                 && CheckAdditionRelevance(gr.Garden, hostingUnit.HasGarden)
-                 && (gr.Adults + gr.Children) <= hostingUnit.NumberOfBeds
-                 && IsUnitAvailableForDates(hostingUnit, gr.EntryDate, (gr.ReleaseDate - gr.EntryDate).Days)
-                 && gr.Type == hostingUnit.Type
-                 && (gr.Area == hostingUnit.Area || gr.Area == VecationAreas.All);
+             && CheckAdditionRelevance(gr.Pool, hostingUnit.HasPool)
+             && CheckAdditionRelevance(gr.Jacuzzi, hostingUnit.HasJacuzzi)
+             && CheckAdditionRelevance(gr.ChildrensAttractions, hostingUnit.HasChildrensAttractions)
+             && CheckAdditionRelevance(gr.Garden, hostingUnit.HasGarden)
+             && (gr.Adults + gr.Children) <= hostingUnit.NumberOfBeds
+             && IsUnitAvailableForDates(hostingUnit, gr.EntryDate, (gr.ReleaseDate - gr.EntryDate).Days)
+             && gr.Type == hostingUnit.Type
+             && (gr.Area == hostingUnit.Area || gr.Area == VecationAreas.All)
+             && !hasOpenApprovedOrder(gr.GuestRequestKey, hostingUnit.HostingUnitKey);
 
             }).ToList(); 
         }
 
+
+        public bool hasOpenApprovedOrder(long guestRequestKey, long hostingUnitKey) {
+
+         return DAL_Singletone.Instance.GetOrderList().Any(o => o.GuestRequestKey == guestRequestKey && o.HostingUnitKey == hostingUnitKey && o.Status != OrderStatuses.Closed_NoCustomerResponse);
+
+        }
+
+        public void LoadHostingUnitsDairy()
+        {
+                try
+                {
+                    DAL_Singletone.Instance.GetHostingUnitsList().ForEach(h =>
+
+                    DAL_Singletone.Instance.GetOrderList().Where(o => o.Status == BE.OrderStatuses.Closed_ApprovedByCustomer
+                    && o.HostingUnitKey == h.HostingUnitKey).ToList()
+                    .ForEach(o =>
+                    {
+                        var gr = GetGuestRequestsByKey(o.GuestRequestKey);
+
+                        if (gr.EntryDate.Date > DateTime.Now.AddMonths(-1).Date &&
+                        gr.EntryDate.Date < DateTime.Now.AddMonths(11).Date)
+                        {
+                            DateTime cureentDate = gr.EntryDate;
+
+                            while (cureentDate.Date != gr.ReleaseDate.Date.AddDays(1))
+                            {
+                                h.Diary[cureentDate.Month - 1, cureentDate.Day - 1] = true;
+
+                                cureentDate = cureentDate.AddDays(1);
+                            }
+
+                        }
+
+                        BL_Singletone.Instance.UpdateHostingUnit(h);
+                    }));
+                }
+                catch (LogicException ex)
+                {
+                    throw ex;
+                }
+                catch (Exception ex)
+                {
+                    throw new LogicException("General error while loading Hosting Units dairy");
+                }
+            }
+        
         #endregion
 
         #region general
@@ -656,13 +717,13 @@ namespace BL
             return true;
         }
 
-        private delegate bool HostHasPred(HostingUnit hu);
+        private delegate bool Predicate<in T>(HostingUnit hu); 
 
-        private List<HostingUnit> GetAllHostUnitsByPredicate(HostHasPred hostHasPred)
+        private List<HostingUnit> GetAllHostUnitsByPredicate(Predicate<HostingUnit> hostHasPred)
         {
             try
             {
-                return DAL_Singletone.Instance.GetHostingUnitsList().TakeWhile(hu => hostHasPred(hu)).ToList();
+                return DAL_Singletone.Instance.GetHostingUnitsList().TakeWhile(hu =>hostHasPred(hu)).ToList();
             }
             catch (LogicException ex)
             {
@@ -679,11 +740,49 @@ namespace BL
             return ((addition == Additions.Necessary) == hostUnitHas) || (addition == Additions.Possible);
         }
 
-        private bool SendMail(string mailAddress)
+        private bool SendMail(string hostesMail , string mailAddress)
         {
+            //ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+           // ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+            MailMessage mail = new MailMessage();
+
+            mail.To.Add(mailAddress);
+            mail.From = new MailAddress("dovi4344@gmail.com");
+            mail.Subject = "הזמנה ממארח";
+            mail.Body = $"{hostesMail}     :לפרטים";
+            mail.IsBodyHtml = true;     
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("dovi4344@gmail.com","Dov301637");
+            smtp.EnableSsl = true;
+
+            try
+            {
+                smtp.Send(mail);
+               
+            }
+            catch (Exception ex)
+            {
+                throw new LogicException("Error while sending mail");
+            }
+
             return true;
         }
 
+        private void UpdateOrdersStatus()
+        {
+
+            DAL_Singletone.Instance.GetOrderList().Where(o => o.OrderDate < DateTime.Now.Date.AddMonths(-1)).ToList()
+                .ForEach(o => DAL_Singletone.Instance.UpdateOrder(o.OrderKey, OrderStatuses.Closed_NoCustomerResponse));
+
+            DAL_Singletone.Instance.GetGuestRequestsList().Where(gr => gr.EntryDate.Date < DateTime.Now.Date)
+                .ToList().ForEach(gr => DAL_Singletone.Instance.UpdateGuestRequestStatus(gr.GuestRequestKey, RequestStatus.Inactive));
+
+        }
+     
         #endregion
 
     }

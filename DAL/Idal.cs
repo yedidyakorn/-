@@ -132,5 +132,7 @@ namespace DAL
         /// <param name="hostingUnitKey"></param>
         /// <returns>Hosting Unit</returns>
         HostingUnit GetHostingUnitByKey(long hostingUnitKey);
+
+
     }
 }

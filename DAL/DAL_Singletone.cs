@@ -16,7 +16,7 @@ namespace DAL
             {
                 if (_instance == null)
                 {
-                    _instance = new Lazy<IDAL>(() => new Dal_imp());
+                    _instance = new Lazy<IDAL>(() => new DAL_XML_imp());
                 }
                 return _instance.Value;           
             }

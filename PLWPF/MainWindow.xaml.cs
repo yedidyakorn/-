@@ -1,4 +1,5 @@
-﻿using PLWPF.DataGrids;
+﻿using BL;
+using PLWPF.DataGrids;
 using PLWPF.HostingUnitWindows;
 using PLWPF.Orders;
 using System;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Util;
 
 namespace PLWPF
 {
@@ -25,7 +27,8 @@ namespace PLWPF
     {
         public MainWindow()
         {
-            Helpers.Methods.LoadHostingUnitsDairy();
+
+            BL_Singletone.Instance.LoadHostingUnitsDairy();
 
             InitializeComponent();
         }

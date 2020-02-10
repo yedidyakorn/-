@@ -1,10 +1,12 @@
-﻿using System;
+﻿using DS.XML_DATA;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace DS
 {
@@ -12,18 +14,15 @@ namespace DS
     {
         private static string solutionDirectory = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName).FullName;
 
-        private static string filePath = System.IO.Path.Combine(solutionDirectory, "DataSource", "DataXML");
-
+        private static string filePath = System.IO.Path.Combine(solutionDirectory, "DS", "XML_DATA");
 
         private static XElement orderRoot = null;
         private static XElement guestRequestRoot = null;
-        private static XElement hostRoot = null;
         private static XElement hostingUnitRoot = null;
 
 
         private static string orderPath = Path.Combine(filePath, "OrderXml.xml");
         private static string guestRequestPath = Path.Combine(filePath, "GuestRequestXml.xml");
-        private static string hostPath = Path.Combine(filePath, "HostXml.xml");
         private static string hostingUnitPath = Path.Combine(filePath, "HostingUnitXml.xml");
 
 
@@ -37,21 +36,13 @@ namespace DS
 
             if (!File.Exists(orderPath))
             {
-                CreateFile("Orders", orderPath);
-
+                CreateFile(new OrdersXml(), orderPath);
             }
             orderRoot = LoadData(orderPath);
 
-            if (!File.Exists(hostPath))
-            {
-                CreateFile("Hosts", hostPath);
-
-            }
-            hostRoot = LoadData(hostPath);
-
             if (!File.Exists(hostingUnitPath))
             {
-                CreateFile("HostingUnits", hostingUnitPath);
+                CreateFile(new HostingUnitsXml(), hostingUnitPath);
 
             }
             hostingUnitRoot = LoadData(hostingUnitPath);
@@ -59,19 +50,25 @@ namespace DS
 
             if (!File.Exists(guestRequestPath))
             {
-                CreateFile("GuestRequests", guestRequestPath);
-
+                CreateFile(new GuestRequestsXml(), guestRequestPath);
             }
             guestRequestRoot = LoadData(guestRequestPath);
 
-
-
         }
 
-        private static void CreateFile(string typename, string path)
+        private static void CreateFile<T>(T obj, string path)
         {
-            XElement root = new XElement(typename);
-            root.Save(path);
+            using (var memoryStream = new MemoryStream())
+            {
+                using (TextWriter streamWriter = new StreamWriter(memoryStream))
+                {
+                    var xmlSerializer = new XmlSerializer(typeof(T));
+                    xmlSerializer.Serialize(streamWriter, obj);
+                    XElement root = XElement.Parse(Encoding.ASCII.GetString(memoryStream.ToArray()));
+                    root.Save(path);
+                }
+            }    
+          
         }
 
         public static void SaveOrders()
@@ -82,11 +79,6 @@ namespace DS
         public static void SaveHostingUnits()
         {
             hostingUnitRoot.Save(hostingUnitPath);
-        }
-
-        public static void SaveHosts()
-        {
-            hostRoot.Save(hostPath);
         }
 
         public static void SaveGuestRequests()

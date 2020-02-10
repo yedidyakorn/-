@@ -10,24 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PLWPF.Orders
+namespace Utilities
 {
     /// <summary>
-    /// Interaction logic for OrderMng.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class OrderMng : Window
+    public partial class MainWindow : Window
     {
-        public OrderMng()
+        public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void updateBtn_Click(object sender, RoutedEventArgs e)
-        {
-            OrdersSearch ordersSearch = new OrdersSearch();
-            ordersSearch.ShowDialog();
         }
     }
 }
