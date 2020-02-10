@@ -4,9 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibrary1
+namespace Util
 {
-    public class Class1
+
+    public enum Mode
     {
+        Add,
+        Update,
+        Delete,
     }
+   
 }

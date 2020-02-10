@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BE
 {
@@ -14,6 +15,7 @@ namespace BE
        
         public string HostingUnitName { get; set; }
 
+        [XmlIgnore]
         public bool[,] Diary { get; set; } = new bool[12,31];
 
         public VecationAreas Area { get; set; }

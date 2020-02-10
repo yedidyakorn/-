@@ -11,30 +11,22 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Util;
 
-namespace PLWPF.HostingUnitWindows
+namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for Users.xaml
+    /// Interaction logic for LogIn.xaml
     /// </summary>
-    public partial class Users : Window
+    public partial class LogIn : Window
     {
-        public Users()
+        public LogIn()
         {
             InitializeComponent();
         }
 
-        private void newUsButton_Click(object sender, RoutedEventArgs e)
+        private void LogBtn_Click(object sender, RoutedEventArgs e)
         {
-            HostingUnit hostingUnit = new HostingUnit(Mode.Add);
-            hostingUnit.ShowDialog();
-        }
 
-        private void oldUsButton_Click(object sender, RoutedEventArgs e)
-        {
-            Id id = new Id();
-            id.ShowDialog();
         }
     }
 }
