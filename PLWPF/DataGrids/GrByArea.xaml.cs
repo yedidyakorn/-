@@ -21,19 +21,20 @@ namespace PLWPF.DataGrids
     /// </summary>
     public partial class GrByArea : Window
     {
+
         List<GuestRequest> guestRequests = new List<GuestRequest>();
 
-        public GrByArea()
+        public GrByArea(List<GuestRequest> GuestRequests, string groupBy)
         {
             try
             {
-
-                guestRequests = BL_Singletone.Instance.GetGuestRequestsList();
+                //guestRequests = BL_Singletone.Instance.GetGuestRequestsList();
+                guestRequests = GuestRequests;
 
                 InitializeComponent();
 
                 ListCollectionView col = new ListCollectionView(guestRequests);
-                col.GroupDescriptions.Add(new PropertyGroupDescription("Area"));
+                col.GroupDescriptions.Add(new PropertyGroupDescription(groupBy));
 
                 GRdataGrid.ItemsSource = col;
 

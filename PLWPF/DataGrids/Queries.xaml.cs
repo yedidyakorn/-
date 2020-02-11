@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,20 +27,14 @@ namespace PLWPF.DataGrids
 
         private void GRArea_Click(object sender, RoutedEventArgs e)
         {
-            GrByArea grByArea = new GrByArea();
+            GrByArea grByArea = new GrByArea(BL_Singletone.Instance.GetGuestRequestsList(), "Area");
             grByArea.ShowDialog();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void btnGRType_Click(object sender, RoutedEventArgs e)
         {
-            OrdersChart ordersChart = new OrdersChart();
-            ordersChart.ShowDialog();
-        }
-
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            OrdersSumChart ordersSumChart = new OrdersSumChart();
-            ordersSumChart.ShowDialog();
+            GrByArea grByArea = new GrByArea(BL_Singletone.Instance.GetGuestRequestsList(), "Type");
+            grByArea.ShowDialog();
         }
     }
 }

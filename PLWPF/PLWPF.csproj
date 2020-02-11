@@ -66,6 +66,9 @@
     <Compile Include="DataGrids\GrByArea.xaml.cs">
       <DependentUpon>GrByArea.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataGrids\ManagerQueries.xaml.cs">
+      <DependentUpon>ManagerQueries.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataGrids\OrdersChart.xaml.cs">
       <DependentUpon>OrdersChart.xaml</DependentUpon>
     </Compile>
@@ -93,7 +96,20 @@
     <Compile Include="HostingUnitWindows\Users.xaml.cs">
       <DependentUpon>Users.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SignIn.xaml.cs">
+      <DependentUpon>SignIn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SiteManager\FeeCalc.xaml.cs">
+      <DependentUpon>FeeCalc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SiteManager\Menager.xaml.cs">
+      <DependentUpon>Menager.xaml</DependentUpon>
+    </Compile>
     <Page Include="DataGrids\GrByArea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DataGrids\ManagerQueries.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -186,6 +202,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SignIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SiteManager\FeeCalc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SiteManager\Menager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HostingUnitWindows\GRforHU.xaml.cs">
@@ -243,8 +271,6 @@
       <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

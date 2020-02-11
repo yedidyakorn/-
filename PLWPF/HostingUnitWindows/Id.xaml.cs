@@ -52,7 +52,7 @@ namespace PLWPF.HostingUnitWindows
                 return;
             }
 
-            PersonalArea personalArea = new PersonalArea(hostingUnit.Owner.ID);
+            PersonalArea personalArea = new PersonalArea(hostingUnit);
             personalArea.ShowDialog();
 
         }

@@ -47,21 +47,23 @@ namespace Util
         }
         void ScheduleThread(Action func)
         {
+            Thread thread = new Thread(new ThreadStart(func));
 
-            var runAt = DateTime.Today + TimeSpan.FromHours(10);
+            thread.Start();
 
-            if (runAt <= DateTime.Now)
-            {
-                func();
-            }
-            else
-            {
-                var delay = runAt - DateTime.Now;
-                Task.Delay(delay).ContinueWith(_ => func());
-            }
+            //var runAt = DateTime.Today + TimeSpan.FromHours(10);
+
+            //if (runAt <= DateTime.Now)
+            //{
+            //    func();
+            //}
+            //else
+            //{
+            //    var delay = runAt - DateTime.Now;
+            //    Task.Delay(delay).ContinueWith(_ => func());
+            //}
 
         }
-
-      
+    
     }
 }

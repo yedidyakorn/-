@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <OrdersXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <lastSerial>20000012</lastSerial>
+  <lastSerial>20000013</lastSerial>
+  <lastUpdate>11/02/2020 00:58:22</lastUpdate>
   <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostingUnitKey>10000000</HostingUnitKey>
     <GuestRequestKey>1</GuestRequestKey>
@@ -13,9 +14,9 @@
     <HostingUnitKey>345678</HostingUnitKey>
     <GuestRequestKey>5678</GuestRequestKey>
     <OrderKey>20000002</OrderKey>
-    <Status>NotYetAddressed</Status>
+    <Status>Closed_NoCustomerResponse</Status>
     <CreateDate>2019-09-03T23:46:03.9284485+03:00</CreateDate>
-    <OrderDate>2020-02-04T23:46:03.9284485+02:00</OrderDate>
+    <OrderDate>2020-01-02T23:46:03.9284485+02:00</OrderDate>
   </Order>
   <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostingUnitKey>10000001</HostingUnitKey>
@@ -96,5 +97,13 @@
     <Status>MailSent</Status>
     <CreateDate>2020-02-07T15:08:20.5247704+02:00</CreateDate>
     <OrderDate>2020-02-07T00:00:00+02:00</OrderDate>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000006</HostingUnitKey>
+    <GuestRequestKey>20000004</GuestRequestKey>
+    <OrderKey>20000013</OrderKey>
+    <Status>Closed_ApprovedByCustomer</Status>
+    <CreateDate>2020-02-10T22:12:28.9336203+02:00</CreateDate>
+    <OrderDate>2020-02-10T00:00:00+02:00</OrderDate>
   </Order>
 </OrdersXml>

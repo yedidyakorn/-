@@ -12,6 +12,8 @@ namespace DS.XML_DATA
 
         public long lastSerial { get; set; }
 
+        public DateTime lastUpdate { get; set; } = DateTime.Now.AddDays( -1);
+
     }
 
     public class OrdersXml : BaseXML { }
