@@ -24,6 +24,13 @@ namespace DAL
         bool UpdateGuestRequest(GuestRequest guestRequest);
 
         /// <summary>
+        /// Delete Guest Request
+        /// </summary>
+        /// <param name="guestRequestKey"></param>
+        /// <returns>bool</returns>
+        bool DeleteGuestRequestByKey(long guestRequestKey);
+
+        /// <summary>
         /// Update Guest Request Status
         /// </summary>
         /// <param name="GuestRequestKey"></param>
@@ -125,5 +132,34 @@ namespace DAL
         /// <param name="hostingUnitKey"></param>
         /// <returns>Hosting Unit</returns>
         HostingUnit GetHostingUnitByKey(long hostingUnitKey);
+
+        /// <summary>
+        /// GetLastUpdatedOrdersXML
+        /// </summary>
+        /// <param name="GetLastUpdatedOrdersXML"></param>
+        /// <returns>date</returns>
+        DateTime GetLastUpdatedOrdersXML();
+
+        /// <summary>
+        /// GetLastUpdatedGuestRequestXML
+        /// </summary>
+        /// <param name="GetLastUpdatedGuestRequestXML"></param>
+        /// <returns>date</returns>
+        DateTime GetLastUpdatedGuestRequestXML();
+
+        /// <summary>
+        /// SetLastUpdatedOrdersXML
+        /// </summary>
+        /// <param name="SetLastUpdatedOrdersXML"></param>
+        /// <returns></returns>
+        void SetLastUpdatedOrdersXML(DateTime dateTime);
+
+        /// <summary>
+        /// SetLastUpdatedGuestRequestXML
+        /// </summary>
+        /// <param name="SetLastUpdatedGuestRequestXML"></param>
+        /// <returns></returns>
+        void SetLastUpdatedGuestRequestXML(DateTime dateTime);
+
     }
 }

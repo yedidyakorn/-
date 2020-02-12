@@ -1,0 +1,17 @@
+﻿<Window x:Class="PLWPF.Orders.OrdersSearch"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF.Orders"
+        mc:Ignorable="d"
+        Title="OrdersSearch" Height="450" Width="800">
+    <Grid>
+        <Label x:Name="idLbl" Content="תעודת זהות:" HorizontalAlignment="Left" Margin="493,138,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="idBox" HorizontalAlignment="Left" Height="23" Margin="309,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <RadioButton x:Name="hostRadio"  IsChecked = "True" GroupName="searchType" Content="מארח" HorizontalAlignment="Left" Margin="418,251,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="guestRadio" GroupName="searchType" Content="לקוח" HorizontalAlignment="Left" Margin="309,251,0,0" VerticalAlignment="Top" Height="20"/>
+        <Label x:Name="label"  Content="חיפוש לפי:" HorizontalAlignment="Left" Margin="493,205,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="findBtn" Content="חפש" HorizontalAlignment="Left" Margin="372,337,0,0" VerticalAlignment="Top" Width="75" Click="findBtn_Click"/>
+    </Grid>
+</Window>

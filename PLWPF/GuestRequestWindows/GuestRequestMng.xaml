@@ -7,8 +7,11 @@
         mc:Ignorable="d"
         Title="GuestRequestMng" Height="450" Width="800">
     <Grid>
-        <Button x:Name="addBtn" Content="Add" HorizontalAlignment="Left" Margin="330,131,0,0" VerticalAlignment="Top" Width="133" RenderTransformOrigin="0.983,0.424" Click="addBtn_Click"/>
-        <Button x:Name="updateBtn" Content="Update" HorizontalAlignment="Left" Margin="330,207,0,0" VerticalAlignment="Top" Width="133" Click="updateBtn_Click"/>
+        <Button x:Name="addBtn" Content="הוסף בקשת לקוח" HorizontalAlignment="Left" Margin="102,262,0,0" VerticalAlignment="Top" Width="175" RenderTransformOrigin="0.983,0.424" Click="addBtn_Click" Height="54"/>
+        <Button x:Name="updateBtn" Content="עדכן בקשת לקוח" HorizontalAlignment="Left" Margin="472,263,0,0" VerticalAlignment="Top" Width="189" Click="updateBtn_Click" Height="53"/>
+        <Label x:Name="helloLbl" HorizontalContentAlignment="Right" Content=",שלום" HorizontalAlignment="Left" Margin="531,48,0,0" VerticalAlignment="Top" Height="117" Width="200" FontSize="72"/>
+        <Label x:Name="nameLbl" HorizontalContentAlignment="Right" Content="{Binding PrivateName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Margin="102,45,0,0" VerticalAlignment="Top" Height="120" Width="405" FontSize="72"/>
+        <Label x:Name="lblDo" Content="?מה ברצונך לעשות" HorizontalAlignment="Left" Margin="380,170,0,0" VerticalAlignment="Top" Height="38" Width="189" FontSize="20"/>
 
     </Grid>
 </Window>

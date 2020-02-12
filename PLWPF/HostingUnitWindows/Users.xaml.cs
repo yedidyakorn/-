@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Util;
 
 namespace PLWPF.HostingUnitWindows
 {
@@ -26,7 +27,7 @@ namespace PLWPF.HostingUnitWindows
 
         private void newUsButton_Click(object sender, RoutedEventArgs e)
         {
-            HostingUnit hostingUnit = new HostingUnit();
+            HostingUnit hostingUnit = new HostingUnit(Mode.Add);
             hostingUnit.ShowDialog();
         }
 

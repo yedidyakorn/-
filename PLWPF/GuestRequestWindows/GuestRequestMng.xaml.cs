@@ -1,4 +1,4 @@
-﻿using PLWPF.Helpers;
+﻿using BE;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Util;
 
 namespace PLWPF.GuestRequestWindows
 {
@@ -20,20 +21,20 @@ namespace PLWPF.GuestRequestWindows
     /// </summary>
     public partial class GuestRequestMng : Window
     {
-        public GuestRequestMng()
+        GuestRequest guestRequest = new GuestRequest();
+
+        public GuestRequestMng(GuestRequest guestRequest)
         {
+            this.DataContext = guestRequest;
             InitializeComponent();
         }
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
-            GuestRequestWindow guestRequest = new GuestRequestWindow(Mode.Add );
+            GuestRequestWindow guestRequest = new GuestRequestWindow(Mode.Add);
             guestRequest.ShowDialog();
 
-            //if (guestRequest.DialogResult == true)
-            //{
-            //    instance.AddHost(wnd.Host);
-            //}
+          
         }
 
         private void updateBtn_Click(object sender, RoutedEventArgs e)
@@ -41,11 +42,9 @@ namespace PLWPF.GuestRequestWindows
             GuestRequestWindow guestRequest = new GuestRequestWindow(Mode.Update);
             guestRequest.ShowDialog();
 
-            //if (guestRequest.DialogResult == true)
-            //{
-            //    instance.AddHost(wnd.Host);
-            //}
+     
         }
 
+     
     }
 }

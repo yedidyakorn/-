@@ -42,13 +42,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataSource.cs" />
+    <Compile Include="DataSourceXml.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XML_DATA\XmlStructs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">
       <Project>{6AB0E9E9-4347-42AB-A7BE-5C5C0EC9BBE9}</Project>
       <Name>BE</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="XML_DATA\GuestRequestXml.xml" />
+    <Content Include="XML_DATA\HostingUnitXml.xml" />
+    <Content Include="XML_DATA\OrderXml.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

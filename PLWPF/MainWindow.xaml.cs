@@ -1,4 +1,7 @@
-﻿using PLWPF.HostingUnitWindows;
+﻿using BL;
+using PLWPF.DataGrids;
+using PLWPF.HostingUnitWindows;
+using PLWPF.Orders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Util;
 
 namespace PLWPF
 {
@@ -23,26 +27,37 @@ namespace PLWPF
     {
         public MainWindow()
         {
+
+            BL_Singletone.Instance.LoadHostingUnitsDairy();
+
             InitializeComponent();
         }
 
         // guest request
         private void grBtn_Click(object sender, RoutedEventArgs e)
         {
-            GuestRequestWindows.GuestRequestMng guestRequestMng = new GuestRequestWindows.GuestRequestMng();
-            guestRequestMng.ShowDialog();
+            //GuestRequestWindows.GuestRequestMng guestRequestMng = new GuestRequestWindows.GuestRequestMng();
+            //guestRequestMng.ShowDialog();
         }
 
         //order
         private void orderBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            OrderMng orderMng = new OrderMng();
+            orderMng.ShowDialog();
         }
 
+        //host unit
         private void huBtn_Click(object sender, RoutedEventArgs e)
         {
             Users users = new Users();
             users.ShowDialog();
+        }
+
+        private void qrBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Queries queries = new Queries();
+            queries.ShowDialog();
         }
     }
 }

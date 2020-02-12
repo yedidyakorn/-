@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BE
 {
@@ -14,7 +15,8 @@ namespace BE
        
         public string HostingUnitName { get; set; }
 
-        public bool[,] Diary = new bool[12,31];
+        [XmlIgnore]
+        public bool[,] Diary { get; set; } = new bool[12,31];
 
         public VecationAreas Area { get; set; }
 
@@ -22,7 +24,11 @@ namespace BE
 
         public bool HasJacuzzi { get; set; }
 
+        public int NumberOfBeds { get; set; }
+
         public bool HasGarden { get; set; }
+
+        public HostingUnitTypes Type { get; set; }
 
         public bool HasChildrensAttractions { get; set; }
 

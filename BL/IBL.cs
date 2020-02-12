@@ -28,12 +28,25 @@ namespace BL
         /// <returns>bool</returns>
         bool UpdateGuestRequestStatus(long GuestRequestKey, RequestStatus requestStatus);
 
+        /// <summary>
+        /// Delete Guest Request Status
+        /// </summary>
+        /// <param name="GuestRequestKey"></param>
+        /// <param name="requestStatus"></param>
+        /// <returns>bool</returns>
+        bool DeleteGuestRequestsByKey(long key);
 
         /// <summary>
         /// guest request by ID
         /// </summary>
         /// <returns>guest request</returns>
         List<GuestRequest> GetGuestRequestsById(long id);
+
+        /// <summary>
+        /// guest request by Key
+        /// </summary>
+        /// <returns>guest request</returns>
+        GuestRequest GetGuestRequestsByKey(long key);
 
         /// <summary>
         /// Update Guest Request
@@ -83,6 +96,12 @@ namespace BL
         /// <param name="orderStatuses"></param>
         /// <returns>bool</returns>
         bool UpdateOrder(long orderKey, OrderStatuses orderStatuses);
+
+        /// <summary>
+        /// Get Orders Status Count
+        /// </summary>
+        /// <returns>dynamic</returns>
+        List<dynamic> GetOrdersStatusCount();
 
         /// <summary>
         /// Get Hosting Units List
@@ -174,5 +193,23 @@ namespace BL
         /// </summary>
         /// <returns></returns>
         List<HostingUnit> GetAllHostUnitsWithPool();
+
+        /// <summary>
+        /// find all Guest Requests for Host Unit
+        /// </summary>
+        /// <returns></returns>
+        List<GuestRequest> GetAllGuestRequestsForHostUnit(HostingUnit hostingUnit);
+
+        /// <summary>
+        /// Load Hosting Units Dairy
+        /// </summary>
+        /// <returns></returns>
+        void LoadHostingUnitsDairy();
+
+        /// <summary>
+        /// calc manager fee between dates
+        /// </summary>
+        /// <returns></returns>
+        double CalcFeeBetweenDates(DateTime fromDate, DateTime toDate);
     }
 }

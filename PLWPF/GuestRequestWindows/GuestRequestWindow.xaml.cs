@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
 using BL;
-using PLWPF.Helpers;
+using Util;
 
 namespace PLWPF.GuestRequestWindows
 {
@@ -33,19 +33,7 @@ namespace PLWPF.GuestRequestWindows
 
             InitializeComponent();
 
-            areaBox.ItemsSource = Enum.GetValues(typeof(VecationAreas));
-            areaBox.SelectedIndex = 0;
-            typeBox.ItemsSource = Enum.GetValues(typeof(HostingUnitTypes));
-            typeBox.SelectedIndex = 0;
-            poolBox.ItemsSource = Enum.GetValues(typeof(Additions));
-            poolBox.SelectedIndex = 0;
-            jzziBox.ItemsSource = Enum.GetValues(typeof(Additions));
-            jzziBox.SelectedIndex = 0;
-            gardBox.ItemsSource = Enum.GetValues(typeof(Additions));
-            gardBox.SelectedIndex = 0;
-            chilAttrBox.ItemsSource = Enum.GetValues(typeof(Additions));
-            chilAttrBox.SelectedIndex = 0;
-
+            setDataInEnums();
 
             if (mode == Mode.Add)
                 Add();
@@ -70,6 +58,36 @@ namespace PLWPF.GuestRequestWindows
 
             updateBtn.Visibility = Visibility.Visible;
             findBtn.Visibility = Visibility.Visible;
+            delBtn.Visibility = Visibility.Visible;
+
+        }
+
+        private void setDataInEnums()
+        {
+
+            areaBox.ItemsSource = Enum.GetValues(typeof(VecationAreas));
+            areaBox.SelectedIndex = 0;
+            typeBox.ItemsSource = Enum.GetValues(typeof(HostingUnitTypes));
+            typeBox.SelectedIndex = 0;
+            poolBox.ItemsSource = Enum.GetValues(typeof(Additions));
+            poolBox.SelectedIndex = 0;
+            jzziBox.ItemsSource = Enum.GetValues(typeof(Additions));
+            jzziBox.SelectedIndex = 0;
+            gardBox.ItemsSource = Enum.GetValues(typeof(Additions));
+            gardBox.SelectedIndex = 0;
+            chilAttrBox.ItemsSource = Enum.GetValues(typeof(Additions));
+            chilAttrBox.SelectedIndex = 0;
+
+        }
+
+        public void getDataFromEnums() {
+
+            guestRequest.Area = (VecationAreas)areaBox.SelectedItem;
+            guestRequest.Type = (HostingUnitTypes)typeBox.SelectedItem;
+            guestRequest.Pool = (Additions)poolBox.SelectedItem;
+            guestRequest.Jacuzzi = (Additions)jzziBox.SelectedItem;
+            guestRequest.Garden = (Additions)gardBox.SelectedItem;
+            guestRequest.ChildrensAttractions = (Additions)chilAttrBox.SelectedItem;
 
         }
 
@@ -79,12 +97,7 @@ namespace PLWPF.GuestRequestWindows
         {
             try
             {
-                guestRequest.Area = (VecationAreas)areaBox.SelectedItem;
-                guestRequest.Type = (HostingUnitTypes)typeBox.SelectedItem;
-                guestRequest.Pool = (Additions)poolBox.SelectedItem;
-                guestRequest.Jacuzzi = (Additions)jzziBox.SelectedItem;
-                guestRequest.Garden = (Additions)gardBox.SelectedItem;
-                guestRequest.ChildrensAttractions = (Additions)chilAttrBox.SelectedItem;
+                getDataFromEnums();
 
                 DialogResult = BL_Singletone.Instance.AddGuestRequest(guestRequest);
 
@@ -94,6 +107,10 @@ namespace PLWPF.GuestRequestWindows
             {
                 MessageBox.Show(ex.Message, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
+            }
 
         }
 
@@ -101,12 +118,7 @@ namespace PLWPF.GuestRequestWindows
         {
             try
             {
-                guestRequest.Area = (VecationAreas)areaBox.SelectedItem;
-                guestRequest.Type = (HostingUnitTypes)typeBox.SelectedItem;
-                guestRequest.Pool = (Additions)poolBox.SelectedItem;
-                guestRequest.Jacuzzi = (Additions)jzziBox.SelectedItem;
-                guestRequest.Garden = (Additions)gardBox.SelectedItem;
-                guestRequest.ChildrensAttractions = (Additions)chilAttrBox.SelectedItem;
+                getDataFromEnums();
 
                 DialogResult = BL_Singletone.Instance.UpdateGuestRequest(guestRequest);
 
@@ -116,6 +128,10 @@ namespace PLWPF.GuestRequestWindows
             catch (LogicException ex)
             {
                 MessageBox.Show(ex.Message, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
             }
 
         }
@@ -201,7 +217,10 @@ namespace PLWPF.GuestRequestWindows
             {
                 MessageBox.Show(ex.Message, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
+            }
         }
 
         private void Validation_OnError(object sender, ValidationErrorEventArgs e)
@@ -211,10 +230,34 @@ namespace PLWPF.GuestRequestWindows
             else
                 _errors.Remove(e.Error);
 
-            addBtn.IsEnabled = !_errors.Any();
+            addBtn.IsEnabled = updateBtn.IsEnabled = !_errors.Any();
+
+        }
+
+        private void delBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (guestRequest.GuestRequestKey == 0)
+                return;
+
+            try
+            {
+                BL_Singletone.Instance.DeleteGuestRequestsByKey(guestRequest.GuestRequestKey);
+
+                MessageBox.Show("guest request successfully deleted.");
+
+                Close();
+            }
+            catch (LogicException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
+            }      
+     
         }
 
         #endregion
-
     }
 }

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GuestRequestsXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <lastSerial>20000005</lastSerial>
+  <lastUpdate>11/02/2020 00:58:23</lastUpdate>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <GuestRequestKey>20000001</GuestRequestKey>
+    <Id>0</Id>
+    <PrivateName>Dooobi</PrivateName>
+    <FamilyName>goldberg</FamilyName>
+    <MailAddress>dovi4344@gmail.com</MailAddress>
+    <Status>Active</Status>
+    <RegistrationDate>2020-02-03T23:46:03.9264553+02:00</RegistrationDate>
+    <EntryDate>2020-02-11T23:46:03.9244598+02:00</EntryDate>
+    <ReleaseDate>2020-02-13T23:46:03.9264553+02:00</ReleaseDate>
+    <Area>All</Area>
+    <Type>Hotel</Type>
+    <Adults>2</Adults>
+    <Children>15</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>NotInterested</ChildrensAttractions>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <GuestRequestKey>20000002</GuestRequestKey>
+    <Id>204282560</Id>
+    <PrivateName>Chaya</PrivateName>
+    <FamilyName>goldberg</FamilyName>
+    <MailAddress>chaya1771@gmail.com</MailAddress>
+    <Status>Inactive</Status>
+    <RegistrationDate>2020-02-03T23:46:03.9264553+02:00</RegistrationDate>
+    <EntryDate>2020-01-29T23:46:03.9264553+02:00</EntryDate>
+    <ReleaseDate>2020-02-10T23:46:03.9264553+02:00</ReleaseDate>
+    <Area>North</Area>
+    <Type>Hotel</Type>
+    <Adults>2</Adults>
+    <Children>10</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>NotInterested</ChildrensAttractions>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <GuestRequestKey>20000003</GuestRequestKey>
+    <Id>2222222</Id>
+    <PrivateName>Chaya</PrivateName>
+    <FamilyName>goldberg</FamilyName>
+    <MailAddress>chaya1771@gmail.com</MailAddress>
+    <Status>Inactive</Status>
+    <RegistrationDate>2020-02-03T23:46:03.9264553+02:00</RegistrationDate>
+    <EntryDate>2020-02-10T23:46:03.9264553+02:00</EntryDate>
+    <ReleaseDate>2020-02-16T23:46:03.9264553+02:00</ReleaseDate>
+    <Area>North</Area>
+    <Type>Zimmer</Type>
+    <Adults>2</Adults>
+    <Children>10</Children>
+    <Pool>Possible</Pool>
+    <Jacuzzi>Possible</Jacuzzi>
+    <Garden>Possible</Garden>
+    <ChildrensAttractions>Possible</ChildrensAttractions>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <GuestRequestKey>20000004</GuestRequestKey>
+    <Id>204282560</Id>
+    <PrivateName>Chaya</PrivateName>
+    <FamilyName>goldberg</FamilyName>
+    <MailAddress>chaya1771@gmail.com</MailAddress>
+    <Status>Inactive</Status>
+    <RegistrationDate>2020-02-03T23:46:03.9264553+02:00</RegistrationDate>
+    <EntryDate>2020-02-10T23:46:03.9264553+02:00</EntryDate>
+    <ReleaseDate>2020-02-16T23:46:03.9264553+02:00</ReleaseDate>
+    <Area>All</Area>
+    <Type>Zimmer</Type>
+    <Adults>2</Adults>
+    <Children>10</Children>
+    <Pool>Possible</Pool>
+    <Jacuzzi>Possible</Jacuzzi>
+    <Garden>Possible</Garden>
+    <ChildrensAttractions>Possible</ChildrensAttractions>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <GuestRequestKey>20000005</GuestRequestKey>
+    <Id>2042825601</Id>
+    <PrivateName>אא</PrivateName>
+    <FamilyName>בבבב</FamilyName>
+    <MailAddress>dovi4344@gmail.com</MailAddress>
+    <Status>Inactive</Status>
+    <RegistrationDate>2020-02-07T12:21:50.3820784+02:00</RegistrationDate>
+    <EntryDate>2020-02-10T00:00:00</EntryDate>
+    <ReleaseDate>2020-02-13T00:00:00</ReleaseDate>
+    <Area>North</Area>
+    <Type>Zimmer</Type>
+    <Adults>2</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+  </GuestRequest>
+</GuestRequestsXml>

@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OrdersXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <lastSerial>20000013</lastSerial>
+  <lastUpdate>11/02/2020 00:58:22</lastUpdate>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>10000000</HostingUnitKey>
+    <GuestRequestKey>1</GuestRequestKey>
+    <OrderKey>20000001</OrderKey>
+    <Status>MailSent</Status>
+    <CreateDate>2020-02-03T23:46:03.9274528+02:00</CreateDate>
+    <OrderDate>2020-02-08T23:46:03.9284485+02:00</OrderDate>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>345678</HostingUnitKey>
+    <GuestRequestKey>5678</GuestRequestKey>
+    <OrderKey>20000002</OrderKey>
+    <Status>Closed_NoCustomerResponse</Status>
+    <CreateDate>2019-09-03T23:46:03.9284485+03:00</CreateDate>
+    <OrderDate>2020-01-02T23:46:03.9284485+02:00</OrderDate>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>10000001</HostingUnitKey>
+    <GuestRequestKey>2</GuestRequestKey>
+    <OrderKey>20000003</OrderKey>
+    <Status>Closed_NoCustomerResponse</Status>
+    <CreateDate>2019-01-03T23:46:03.9284485+03:00</CreateDate>
+    <OrderDate>2020-01-04T23:46:03.9284485+02:00</OrderDate>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>10000001</HostingUnitKey>
+    <GuestRequestKey>2</GuestRequestKey>
+    <OrderKey>20000004</OrderKey>
+    <Status>Closed_ApprovedByCustomer</Status>
+    <CreateDate>2019-04-03T23:46:03.9284485+03:00</CreateDate>
+    <OrderDate>2020-02-04T23:46:03.9284485+02:00</OrderDate>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>10000001</HostingUnitKey>
+    <GuestRequestKey>2</GuestRequestKey>
+    <OrderKey>20000005</OrderKey>
+    <Status>Closed_ApprovedByCustomer</Status>
+    <CreateDate>2020-12-03T23:46:03.9284485+02:00</CreateDate>
+    <OrderDate>2020-02-04T23:46:03.9284485+02:00</OrderDate>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>10000001</HostingUnitKey>
+    <GuestRequestKey>2</GuestRequestKey>
+    <OrderKey>20000006</OrderKey>
+    <Status>Closed_ApprovedByCustomer</Status>
+    <CreateDate>2020-02-03T23:46:03.9284485+02:00</CreateDate>
+    <OrderDate>2020-02-04T23:46:03.9284485+02:00</OrderDate>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000005</HostingUnitKey>
+    <GuestRequestKey>20000005</GuestRequestKey>
+    <OrderKey>20000007</OrderKey>
+    <Status>MailSent</Status>
+    <CreateDate>2020-02-07T13:25:15.365531+02:00</CreateDate>
+    <OrderDate>2020-02-07T00:00:00+02:00</OrderDate>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000005</HostingUnitKey>
+    <GuestRequestKey>20000003</GuestRequestKey>
+    <OrderKey>20000008</OrderKey>
+    <Status>MailSent</Status>
+    <CreateDate>2020-02-07T13:27:42.6620741+02:00</CreateDate>
+    <OrderDate>2020-02-07T00:00:00+02:00</OrderDate>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000005</HostingUnitKey>
+    <GuestRequestKey>20000004</GuestRequestKey>
+    <OrderKey>20000009</OrderKey>
+    <Status>Closed_NoCustomerResponse</Status>
+    <CreateDate>2020-02-07T13:28:13.2166027+02:00</CreateDate>
+    <OrderDate>2020-02-07T00:00:00+02:00</OrderDate>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000002</HostingUnitKey>
+    <GuestRequestKey>20000004</GuestRequestKey>
+    <OrderKey>20000010</OrderKey>
+    <Status>Closed_NoCustomerResponse</Status>
+    <CreateDate>2020-02-07T13:38:22.0057612+02:00</CreateDate>
+    <OrderDate>2020-02-07T00:00:00+02:00</OrderDate>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000005</HostingUnitKey>
+    <GuestRequestKey>20000004</GuestRequestKey>
+    <OrderKey>20000011</OrderKey>
+    <Status>Closed_NoCustomerResponse</Status>
+    <CreateDate>2020-02-07T14:18:54.6483511+02:00</CreateDate>
+    <OrderDate>2020-02-07T00:00:00+02:00</OrderDate>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000005</HostingUnitKey>
+    <GuestRequestKey>20000004</GuestRequestKey>
+    <OrderKey>20000012</OrderKey>
+    <Status>MailSent</Status>
+    <CreateDate>2020-02-07T15:08:20.5247704+02:00</CreateDate>
+    <OrderDate>2020-02-07T00:00:00+02:00</OrderDate>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000006</HostingUnitKey>
+    <GuestRequestKey>20000004</GuestRequestKey>
+    <OrderKey>20000013</OrderKey>
+    <Status>Closed_ApprovedByCustomer</Status>
+    <CreateDate>2020-02-10T22:12:28.9336203+02:00</CreateDate>
+    <OrderDate>2020-02-10T00:00:00+02:00</OrderDate>
+  </Order>
+</OrdersXml>

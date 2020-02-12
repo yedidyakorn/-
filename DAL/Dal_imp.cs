@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using BE;
 using DS;
+using Util;
 
 namespace DAL
 {
     public class Dal_imp : IDAL
     {
-
         #region general
 
         public List<BankBranch> GetBankBranchesList()
@@ -123,7 +123,7 @@ namespace DAL
 
         public List<Order> GetOrderList()
         {
-            return DataSource.orders.Select(o => (Order)Cloning.clone(o)).ToList();
+            return DataSource.orders.Select(o => (Order)o.clone()).ToList();
         }
 
         public Order GetOrderByKey(long orderKey)
@@ -220,7 +220,7 @@ namespace DAL
 
         public List<GuestRequest> GetGuestRequestsList()
         {
-            return DataSource.guestRequests.Select(gr => (GuestRequest)Cloning.clone(gr)).ToList();
+            return DataSource.guestRequests.Select(gr => (GuestRequest)gr.clone()).ToList();
         }
 
         public List<GuestRequest> GetGuestRequestsById(long id)
@@ -229,6 +229,38 @@ namespace DAL
                 .Select(gr => (GuestRequest)gr.clone()).ToList();
         }
 
+        public bool DeleteGuestRequestByKey(long guestRequestKey)
+        {
+            if (!DataSource.guestRequests.Any(gr => gr.GuestRequestKey == guestRequestKey))
+            {
+                throw new LogicException($"Guest Request {guestRequestKey} does not exist");
+            }
+
+            return DataSource.guestRequests.Remove(DataSource.guestRequests.Where(gr => gr.GuestRequestKey == guestRequestKey).FirstOrDefault());
+
+        }
+
+        public DateTime GetLastUpdatedOrdersXML()
+        {
+            throw new NotImplementedException();
+        }
+
+        public DateTime GetLastUpdatedGuestRequestXML()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetLastUpdatedOrdersXML(DateTime dateTime)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetLastUpdatedGuestRequestXML(DateTime dateTime)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
+
 }

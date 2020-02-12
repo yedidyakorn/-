@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HostingUnitsXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <lastSerial>20000006</lastSerial>
+  <lastUpdate>2020-02-03T23:46:03.9274528+02:00</lastUpdate>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000001</HostingUnitKey>
+    <Owner>
+      <ID>1234567894</ID>
+      <HostKey>12345678</HostKey>
+      <PrivateName>Dovi</PrivateName>
+      <FamilyName>Goldberg</FamilyName>
+      <FhoneNumber>527684344</FhoneNumber>
+      <MailAddress>dubon@gmail.com</MailAddress>
+      <BankBranchDetails>
+        <קוד_בנק>10</קוד_בנק>
+        <שם_בנק>לאומי</שם_בנק>
+        <קוד_סניף>856</קוד_סניף>
+        <כתובת_ה-ATM>חזון איש 80</כתובת_ה-ATM>
+        <ישוב>בני ברק</ישוב>
+      </BankBranchDetails>
+      <BankAccountNumber>12345</BankAccountNumber>
+      <CollectionClearance>true</CollectionClearance>
+    </Owner>
+    <HostingUnitName>חלום של צימר</HostingUnitName>
+    <Area>Center</Area>
+    <HasPool>true</HasPool>
+    <HasJacuzzi>false</HasJacuzzi>
+    <NumberOfBeds>0</NumberOfBeds>
+    <HasGarden>false</HasGarden>
+    <Type>Zimmer</Type>
+    <HasChildrensAttractions>false</HasChildrensAttractions>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000002</HostingUnitKey>
+    <Owner>
+      <ID>1234567894</ID>
+      <HostKey>123456789</HostKey>
+      <PrivateName>chaya</PrivateName>
+      <FamilyName>Goldberg</FamilyName>
+      <FhoneNumber>527684344</FhoneNumber>
+      <MailAddress>haya@gmail.com</MailAddress>
+      <BankBranchDetails>
+        <קוד_בנק>31</קוד_בנק>
+        <שם_בנק>הבנק הבינלאומי הראשון לישראל בע"מ</שם_בנק>
+        <קוד_סניף>51</קוד_סניף>
+        <כתובת_ה-ATM>משכית 29 א' </כתובת_ה-ATM>
+        <ישוב>הרצלייה</ישוב>
+      </BankBranchDetails>
+      <BankAccountNumber>12345</BankAccountNumber>
+      <CollectionClearance>true</CollectionClearance>
+    </Owner>
+    <HostingUnitName>לילה בצימר</HostingUnitName>
+    <Area>North</Area>
+    <HasPool>true</HasPool>
+    <HasJacuzzi>true</HasJacuzzi>
+    <NumberOfBeds>20</NumberOfBeds>
+    <HasGarden>true</HasGarden>
+    <Type>Zimmer</Type>
+    <HasChildrensAttractions>true</HasChildrensAttractions>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000003</HostingUnitKey>
+    <Owner>
+      <ID>123456789</ID>
+      <HostKey>123456789</HostKey>
+      <PrivateName>chaya</PrivateName>
+      <FamilyName>Goldberg</FamilyName>
+      <FhoneNumber>527684344</FhoneNumber>
+      <MailAddress>haya@gmail.com</MailAddress>
+      <BankBranchDetails>
+        <קוד_בנק>11</קוד_בנק>
+        <שם_בנק>דיסקונט</שם_בנק>
+        <קוד_סניף>856</קוד_סניף>
+        <כתובת_ה-ATM>השלושה 3</כתובת_ה-ATM>
+        <ישוב>בני ברק</ישוב>
+      </BankBranchDetails>
+      <BankAccountNumber>12345</BankAccountNumber>
+      <CollectionClearance>true</CollectionClearance>
+    </Owner>
+    <HostingUnitName>לילה בצימר</HostingUnitName>
+    <Area>All</Area>
+    <HasPool>false</HasPool>
+    <HasJacuzzi>false</HasJacuzzi>
+    <NumberOfBeds>0</NumberOfBeds>
+    <HasGarden>false</HasGarden>
+    <Type>Zimmer</Type>
+    <HasChildrensAttractions>false</HasChildrensAttractions>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000004</HostingUnitKey>
+    <Owner>
+      <ID>123456789</ID>
+      <HostKey>12345678</HostKey>
+      <PrivateName>Dov</PrivateName>
+      <FamilyName>Goldberg</FamilyName>
+      <FhoneNumber>527684344</FhoneNumber>
+      <MailAddress>dubon@gmail.com</MailAddress>
+      <BankBranchDetails>
+        <קוד_בנק>10</קוד_בנק>
+        <שם_בנק>לאומי</שם_בנק>
+        <קוד_סניף>856</קוד_סניף>
+        <כתובת_ה-ATM>חזון איש 80</כתובת_ה-ATM>
+        <ישוב>בני ברק</ישוב>
+      </BankBranchDetails>
+      <BankAccountNumber>12345</BankAccountNumber>
+      <CollectionClearance>true</CollectionClearance>
+    </Owner>
+    <HostingUnitName>חלום של צימר</HostingUnitName>
+    <Area>All</Area>
+    <HasPool>true</HasPool>
+    <HasJacuzzi>false</HasJacuzzi>
+    <NumberOfBeds>0</NumberOfBeds>
+    <HasGarden>false</HasGarden>
+    <Type>Zimmer</Type>
+    <HasChildrensAttractions>false</HasChildrensAttractions>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000005</HostingUnitKey>
+    <Owner>
+      <ID>1234567894</ID>
+      <HostKey>12345678</HostKey>
+      <PrivateName>Dov</PrivateName>
+      <FamilyName>Goldberg</FamilyName>
+      <FhoneNumber>527684344</FhoneNumber>
+      <MailAddress>dovi4344@gmail.com</MailAddress>
+      <BankBranchDetails>
+        <קוד_בנק>20</קוד_בנק>
+        <שם_בנק>בנק מזרחי טפחות בע"מ</שם_בנק>
+        <קוד_סניף>688</קוד_סניף>
+        <כתובת_ה-ATM>בן גוריון 21 קניון גירון</כתובת_ה-ATM>
+        <ישוב>אשקלון</ישוב>
+      </BankBranchDetails>
+      <BankAccountNumber>12345</BankAccountNumber>
+      <CollectionClearance>true</CollectionClearance>
+    </Owner>
+    <HostingUnitName>חלום של צימר</HostingUnitName>
+    <Area>North</Area>
+    <HasPool>true</HasPool>
+    <HasJacuzzi>true</HasJacuzzi>
+    <NumberOfBeds>15</NumberOfBeds>
+    <HasGarden>true</HasGarden>
+    <Type>Zimmer</Type>
+    <HasChildrensAttractions>true</HasChildrensAttractions>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000006</HostingUnitKey>
+    <Owner>
+      <ID>123456</ID>
+      <HostKey>0</HostKey>
+      <PrivateName>דובון</PrivateName>
+      <FamilyName>בלע</FamilyName>
+      <FhoneNumber>0</FhoneNumber>
+      <MailAddress>dovi4344@gmail.com</MailAddress>
+      <BankBranchDetails>
+        <קוד_בנק>46</קוד_בנק>
+        <שם_בנק>בנק מסד בע"מ</שם_בנק>
+        <קוד_סניף>527</קוד_סניף>
+        <כתובת_ה-ATM>בר יהודה 111 </כתובת_ה-ATM>
+        <ישוב>חיפה</ישוב>
+      </BankBranchDetails>
+      <BankAccountNumber>456456</BankAccountNumber>
+      <CollectionClearance>true</CollectionClearance>
+    </Owner>
+    <HostingUnitName>דוביס</HostingUnitName>
+    <Area>South</Area>
+    <HasPool>true</HasPool>
+    <HasJacuzzi>true</HasJacuzzi>
+    <NumberOfBeds>16</NumberOfBeds>
+    <HasGarden>false</HasGarden>
+    <Type>Zimmer</Type>
+    <HasChildrensAttractions>false</HasChildrensAttractions>
+  </HostingUnit>
+</HostingUnitsXml>
