@@ -3,45 +3,46 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:PLWPF.GuestRequestWindows"
         mc:Ignorable="d"
-        Title="GuestRequestWindow" Height="450" Width="800">
-    <Grid RenderTransformOrigin="0.196,0.406">
-        <Grid.Background>
-            <ImageBrush />
-        </Grid.Background>
-        <Label x:Name="pNameLbl" Content="שם פרטי" HorizontalAlignment="Left" Margin="698,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.497,-0.841"/>
-        <TextBox x:Name="pNameTb" Validation.Error="Validation_OnError" Text="{Binding PrivateName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="521,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="fNameLbl"  Content="שם משפחה" HorizontalAlignment="Left" Margin="683,125,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.093,0.8"/>
-        <TextBox x:Name="fNameTb" Validation.Error="Validation_OnError" Text="{Binding FamilyName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="521,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="mailLbl" Content="דואר אלקטרוני" HorizontalAlignment="Left" Margin="670,180,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="mailTb" Validation.Error="Validation_OnError" Text="{Binding MailAddress, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="521,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="regDtLbl" Content="מתאריך" HorizontalAlignment="Left" Margin="704,236,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="regDtTp" Validation.Error="Validation_OnError" SelectedDate="{Binding EntryDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Margin="521,236,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.755,-0.958" Width="120"/>
-        <Label x:Name="rlsDtLbl" Content="עד לתאריך" HorizontalAlignment="Left" Margin="701,288,0,0" VerticalAlignment="Top" Width="54"/>
-        <DatePicker x:Name="rlsDtTb" Validation.Error="Validation_OnError" SelectedDate="{Binding ReleaseDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Margin="521,290,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.482,1.778" Width="120"/>
-        <Label x:Name="areaLbl" Content="איזור" HorizontalAlignment="Left" Margin="416,68,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="areaBox" HorizontalAlignment="Left" Margin="267,72,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="typeLbl" Content="סוג  נופש" HorizontalAlignment="Left" Margin="416,121,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="typeBox"  HorizontalAlignment="Left" Margin="267,125,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="aduLbl" Content="מבוגרים" HorizontalAlignment="Left" Margin="703,337,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.538,-0.031"/>
-        <TextBox x:Name="aduBox" Validation.Error="Validation_OnError"  Text="{Binding Adults, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="521,340,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
-        <Label x:Name="childLbl" Content="ילדים" HorizontalAlignment="Left" Margin="718,383,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.73,3.038"/>
-        <TextBox x:Name="childBox" Validation.Error="Validation_OnError" Text="{Binding Children, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Height="23" Margin="521,386,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="poolLbl" Content="בריכה" HorizontalAlignment="Left" Margin="425,180,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.61,-0.962"/>
-        <ComboBox x:Name="poolBox" HorizontalAlignment="Left" Margin="267,184,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="jzziLbl"  Content="ג'קוזי" HorizontalAlignment="Left" Margin="430,236,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="jzziBox" HorizontalAlignment="Left" Margin="267,240,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="gardLbl" Content="גינת חצר" HorizontalAlignment="Left" Margin="428,288,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="gardBox" HorizontalAlignment="Left" Margin="267,293,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="chilAttrLbl" Content="אטרקציות ילדים" HorizontalAlignment="Left" Margin="416,337,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="chilAttrBox" HorizontalAlignment="Left" Margin="267,344,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="addBtn" Visibility="Hidden" Content="Add" HorizontalAlignment="Left" Margin="79,152,0,0" VerticalAlignment="Top" Width="75" Click="addBtn_Click"/>
-        <Button x:Name="updateBtn" Visibility="Hidden" IsEnabled="False" Content="Update" HorizontalAlignment="Left" Margin="79,152,0,0" VerticalAlignment="Top" Width="75" Click="updateBtn_Click"/>
-        <Button x:Name="findBtn" Visibility="Hidden" Content="find" HorizontalAlignment="Left" Margin="79,191,0,0" VerticalAlignment="Top" Width="75" Click="findBtn_Click"/>
-        <Button x:Name="delBtn" Visibility="Hidden" Content="delete" IsEnabled="True" HorizontalAlignment="Left" Margin="79,236,0,0" VerticalAlignment="Top" Width="75" Click="delBtn_Click"/>
-        <Label x:Name="IdLbl" Content="מס זהות" HorizontalAlignment="Left" Margin="704,33,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="IdBox" Validation.Error="Validation_OnError"  Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  HorizontalAlignment="Left" Height="23" Margin="521,33,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        Title="GuestRequestWindow" WindowState="Maximized" Width="1000"  Height="600">
+    <Grid >
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\e.jpg"/>
+        <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
+        <Label x:Name="pNameLbl" Content="שם פרטי" HorizontalAlignment="Center" Margin="784,176,150,367" VerticalAlignment="Center" RenderTransformOrigin="0.497,-0.841"/>
+        <TextBox x:Name="pNameTb" Validation.Error="Validation_OnError" Text="{Binding PrivateName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Height="22" Margin="566,180,306,367" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+        <Label x:Name="fNameLbl"  Content="שם משפחה" HorizontalAlignment="Center" Margin="770,249,150,294" VerticalAlignment="Center" RenderTransformOrigin="-0.093,0.8"/>
+        <TextBox x:Name="fNameTb" Validation.Error="Validation_OnError" Text="{Binding FamilyName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Height="22" Margin="566,250,306,297" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+        <Label x:Name="mailLbl" Content="דואר אלקטרוני" HorizontalAlignment="Center" Margin="756,314,150,229" VerticalAlignment="Center"/>
+        <TextBox x:Name="mailTb" Validation.Error="Validation_OnError" Text="{Binding MailAddress, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Height="24" Margin="566,314,306,231" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+        <Label x:Name="regDtLbl" Content="מתאריך" HorizontalAlignment="Center" Margin="791,377,150,166" VerticalAlignment="Center"/>
+        <DatePicker x:Name="regDtTp" Validation.Error="Validation_OnError" SelectedDate="{Binding EntryDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Margin="566,377,306,168" VerticalAlignment="Center" RenderTransformOrigin="0.755,-0.958" Width="120"/>
+        <Label x:Name="rlsDtLbl" Content="עד לתאריך" HorizontalAlignment="Center" Margin="788,445,150,98" VerticalAlignment="Center" Width="54"/>
+        <DatePicker x:Name="rlsDtTb" Validation.Error="Validation_OnError" SelectedDate="{Binding ReleaseDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Margin="566,445,306,100" VerticalAlignment="Center" RenderTransformOrigin="0.482,1.778" Width="120"/>
+        <Label x:Name="areaLbl" Content="איזור" HorizontalAlignment="Center" Margin="356,109,601,434" VerticalAlignment="Center" RenderTransformOrigin="0.486,-0.615"/>
+        <ComboBox x:Name="areaBox" HorizontalAlignment="Center" Margin="134,113,738,434" VerticalAlignment="Center" Width="120"/>
+        <Label x:Name="typeLbl" Content="סוג  נופש" HorizontalAlignment="Center" Margin="339,176,595,367" VerticalAlignment="Center"/>
+        <ComboBox x:Name="typeBox"  HorizontalAlignment="Center" Margin="134,180,738,367" VerticalAlignment="Center" Width="120"/>
+        <Label x:Name="aduLbl" Content="מבוגרים" HorizontalAlignment="Center" Margin="788,511,152,32" VerticalAlignment="Center" RenderTransformOrigin="0.538,-0.031"/>
+        <TextBox x:Name="aduBox" Validation.Error="Validation_OnError"  Text="{Binding Adults, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Height="23" Margin="723,514,231,32" TextWrapping="Wrap"  VerticalAlignment="Center" Width="38" RenderTransformOrigin="1.053,1.217" />
+        <Label x:Name="childLbl" Content="ילדים" HorizontalAlignment="Center" Margin="649,511,306,32" VerticalAlignment="Center" RenderTransformOrigin="1.73,3.038"/>
+        <TextBox x:Name="childBox" Validation.Error="Validation_OnError" Text="{Binding Children, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Height="23" Margin="566,514,387,32" TextWrapping="Wrap"  VerticalAlignment="Center" Width="39"/>
+        <Label x:Name="poolLbl" Content="בריכה" HorizontalAlignment="Center" Margin="350,245,601,298" VerticalAlignment="Center" RenderTransformOrigin="0.61,-0.962"/>
+        <ComboBox x:Name="poolBox" HorizontalAlignment="Center" Margin="134,249,738,298" VerticalAlignment="Center" Width="120"/>
+        <Label x:Name="jzziLbl"  Content="ג'קוזי" HorizontalAlignment="Center" Margin="355,312,601,231" VerticalAlignment="Center" RenderTransformOrigin="0.056,-0.154"/>
+        <ComboBox x:Name="jzziBox" HorizontalAlignment="Center" Margin="134,314,738,233" VerticalAlignment="Center" Width="120"/>
+        <Label x:Name="gardLbl" Content="גינת חצר" HorizontalAlignment="Center" Margin="335,372,601,171" VerticalAlignment="Center"/>
+        <ComboBox x:Name="gardBox" HorizontalAlignment="Center" Margin="134,379,738,168" VerticalAlignment="Center" Width="120"/>
+        <Label x:Name="chilAttrLbl" Content="אטרקציות ילדים" HorizontalAlignment="Center" Margin="299,436,601,107" VerticalAlignment="Center"/>
+        <ComboBox x:Name="chilAttrBox" HorizontalAlignment="Center" Margin="134,440,738,107" VerticalAlignment="Center" Width="120"/>
+        <Button x:Name="updateBtn" Visibility="Hidden" IsEnabled="True" Content="עדכן" HorizontalAlignment="Center" Margin="265,517,622,32" VerticalAlignment="Center" Width="105" Click="updateBtn_Click" RenderTransformOrigin="0.053,1"/>
+        <Button x:Name="delBtn" Visibility="Hidden" Content="מחק" IsEnabled="True" HorizontalAlignment="Center" Margin="99,516,791,33" VerticalAlignment="Center" Width="102" Click="delBtn_Click"/>
+        <Label x:Name="IdLbl" Content="מס זהות" HorizontalAlignment="Center" Margin="788,109,150,434" VerticalAlignment="Center"/>
+        <TextBox x:Name="IdBox" Validation.Error="Validation_OnError"  Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  HorizontalAlignment="Center" Height="22" Margin="566,110,306,437" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120"/>
+        <Button x:Name="addBtn" Visibility="Hidden" IsEnabled="True" Content="הוסף" HorizontalAlignment="Center" Margin="265,517,622,32" VerticalAlignment="Center" Width="105" Click="addBtn_Click" RenderTransformOrigin="0.053,1"/>
+
+        <!--<TextBlock x:Name="test" HorizontalAlignment="Center" Margin="88,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center"/>-->
 
     </Grid>
 </Window>

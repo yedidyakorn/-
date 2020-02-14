@@ -1,4 +1,5 @@
 ﻿using BL;
+using PLWPF.DataGrids;
 using PLWPF.Orders;
 using System;
 using System.Collections.Generic;
@@ -105,6 +106,12 @@ namespace PLWPF.HostingUnitWindows
                 order.ShowDialog();
             }
 
+        }
+
+        private void btnQry_Click(object sender, RoutedEventArgs e)
+        {
+            Queries queries = new Queries();
+            queries.ShowDialog();
         }
     }
 }

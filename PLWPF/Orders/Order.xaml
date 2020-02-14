@@ -3,17 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:PLWPF.Orders"
         mc:Ignorable="d"
-        Title="Order" Height="450" Width="800">
+        Title="Order"  WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Label x:Name="hoKeyLbl" Content="קוד יחידת אירוח" HorizontalAlignment="Left" Margin="601,60,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="guReLbl" Content="קוד בקשת לקוח" HorizontalAlignment="Left" Margin="301,64,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="updateBtn" Content="Update" IsEnabled="True" Visibility="Hidden" HorizontalAlignment="Left" Margin="347,276,0,0" VerticalAlignment="Top" Width="75" Click="updateBtn_Click"/>
-        <Label x:Name="stsLbl" Content="סטטוס" HorizontalAlignment="Left" Margin="463,169,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="stsBox" HorizontalAlignment="Left" Margin="317,173,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="HUKeytxt" IsEnabled="False" Validation.Error="Validation_OnError" HorizontalAlignment="Left" Height="23" Margin="445,60,0,0" TextWrapping="Wrap" Text="{Binding HostingUnitKey, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="RGKeytxt" IsEnabled="False" Validation.Error="Validation_OnError" HorizontalAlignment="Left" Height="23" Margin="123,63,0,0" TextWrapping="Wrap" Text="{Binding GuestRequestKey, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Top" Width="120"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\3930582301.jpeg"/>
+        <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
+        <Label x:Name="hoKeyLbl" Content="קוד יחידת אירוח" HorizontalAlignment="Center" Margin="754,144,146,399" VerticalAlignment="Center" RenderTransformOrigin="1.527,0.635"/>
+        <Label x:Name="guReLbl" Content="קוד בקשת לקוח" HorizontalAlignment="Center" Margin="303,140,597,403" VerticalAlignment="Center"/>
+        <Button x:Name="updateBtn" Content="עדכן" IsEnabled="True" Visibility="Hidden" HorizontalAlignment="Center" Margin="424,432,410,83" VerticalAlignment="Center" Width="158" Click="updateBtn_Click" Height="54"/>
+        <Label x:Name="stsLbl" Content="סטטוס" HorizontalAlignment="Center" Margin="536,306,410,237" VerticalAlignment="Center" RenderTransformOrigin="-2.837,-1.058"/>
+        <ComboBox x:Name="stsBox" HorizontalAlignment="Center" Margin="350,302,522,245" VerticalAlignment="Center" Width="120" RenderTransformOrigin="-1.196,-1.977"/>
+        <TextBox x:Name="HUKeytxt" IsEnabled="False" Validation.Error="Validation_OnError" HorizontalAlignment="Center" Height="23" Margin="587,147,285,399" TextWrapping="Wrap" Text="{Binding HostingUnitKey, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" RenderTransformOrigin="0.583,0.457"/>
+        <TextBox x:Name="RGKeytxt" IsEnabled="False" Validation.Error="Validation_OnError" HorizontalAlignment="Center" Height="22" Margin="132,144,740,403" TextWrapping="Wrap" Text="{Binding GuestRequestKey, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
 
     </Grid>
 </Window>

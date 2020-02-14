@@ -9,6 +9,11 @@ namespace BE
 {
     public class HostingUnit : IClonable
     {
+        public HostingUnit()
+        {
+            Owner = new Host(){};
+        }
+
         public long HostingUnitKey { get; set; }
 
         public Host Owner { get; set; }

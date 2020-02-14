@@ -3,13 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:PLWPF.SiteManager"
         mc:Ignorable="d"
-        Title="Menager" Height="450" Width="800">
+        Title="Menager"  WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Label x:Name="helloLbl" Content=".שלום , מנהל" HorizontalAlignment="Left" Height="129" Margin="288,33,0,0" VerticalAlignment="Top" Width="448" FontSize="72"/>
-        <Button x:Name="btnQur" Content="צפה בנתונים לפי שאילתות" HorizontalAlignment="Left" Margin="480,289,0,0" VerticalAlignment="Top" Width="201" Height="48" Click="btnQur_Click"/>
-        <Label x:Name="lblDo" Content="?מה תרצה לעשות" HorizontalAlignment="Left" Margin="407,162,0,0" VerticalAlignment="Top" Height="38" Width="171" FontSize="20"/>
-        <Button x:Name="btnFee" Content="בצע חישובי עמלה" HorizontalAlignment="Left" Margin="121,289,0,0" VerticalAlignment="Top" Width="201" Height="46" Click="btnFee_Click"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\as.gif"/>
+        <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
+        <Label x:Name="helloLbl" Content=".שלום , מנהל" HorizontalAlignment="Center" Height="128" Margin="427,77,117,364" VerticalAlignment="Center" Width="448" FontSize="72"/>
+        <Button x:Name="btnQur" Content="צפה בנתונים לפי שאילתות" HorizontalAlignment="Center" Margin="617,382,175,116" VerticalAlignment="Center" Width="200" Height="71" Click="btnQur_Click"/>
+        <Label x:Name="lblDo" Content="?מה תרצה לעשות" HorizontalAlignment="Center" Margin="427,233,394,298" VerticalAlignment="Center" Height="38" Width="171" FontSize="20" RenderTransformOrigin="0.38,1"/>
+        <Button x:Name="btnFee" Content="בצע חישובי עמלה" HorizontalAlignment="Center" Margin="194,382,597,116" VerticalAlignment="Center" Width="201" Height="71" Click="btnFee_Click"/>
     </Grid>
 </Window>

@@ -8,6 +8,11 @@ namespace BE
 {
     public class Host
     {
+        public Host()
+        {
+            BankBranchDetails = new BankBranch() { };
+        }
+
         public long ID { get; set; }
 
         public long HostKey { get; set; }

@@ -28,19 +28,13 @@ namespace PLWPF.HostingUnitWindows
     public partial class HostingUnit : Window
     {
 
-        BE.HostingUnit hostingUnit = new BE.HostingUnit() {
-            Owner = new Host()
-            {
-                BankBranchDetails = new BankBranch()
-            }
-        };
+        BE.HostingUnit hostingUnit = new BE.HostingUnit();
 
         public List<ValidationError> _errors = new List<ValidationError>();
 
         private List<BankBranch> bankBranches = null;
 
         List<int> branchesNumbersForBank = new List<int>();
-
 
         public HostingUnit(Mode mode)
         {
@@ -108,7 +102,7 @@ namespace PLWPF.HostingUnitWindows
 
         public void SetTakenDatesInCalender()
         {
-            DateTime curDate = DateTime.Now;
+            DateTime curDate = DateTime.Now.Date;
 
             for (var i = 0; i < 12; i++)
             {

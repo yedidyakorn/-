@@ -32,8 +32,9 @@ namespace PLWPF.DataGrids
         {
             try
             {
-                var points = BL_Singletone.Instance.GetOrderList()
-                    .GroupBy(o => o.CreateDate.Date).Select(o => new { date = o.Key, count = o.Count() }).OrderBy(o => o.date).ToList();
+
+                var points = BL_Singletone.Instance.GetOrdersGroupByCreateDate().Select(o => new { date = o.Key, count = o.Count() }).OrderBy(o => o.date).ToList();
+
 
                 var model = new PlotModel { Title = "גרף הזמנות לפי תאריך" };
                 var minValue = DateTimeAxis.ToDouble(points.First().date.AddMonths(-1));

@@ -3,17 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:PLWPF.HostingUnitWindows"
         mc:Ignorable="d"
-        Title="PersonalArea" Height="450" Width="800">
+        Title="PersonalArea"  WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Button x:Name="addHobutton" Content="הוספת יחידת אירוח" HorizontalAlignment="Left" Margin="550,277,0,0" VerticalAlignment="Top" Width="181" Click="addHobutton_Click" Height="57"/>
-        <Button x:Name="updatHoButton" Content="עדכון יחידת אירוח" HorizontalAlignment="Left" Margin="301,279,0,0" VerticalAlignment="Top" Width="181" Click="updatHoButton_Click" Height="52"/>
-        <Label x:Name="ownerNameLbl" Content="" HorizontalAlignment="Left" Margin="587,50,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="helloLbl" HorizontalContentAlignment="Right" Content=",שלום" HorizontalAlignment="Left" Margin="531,48,0,0" VerticalAlignment="Top" Height="117" Width="200" FontSize="72"/>
-        <Label x:Name="nameLbl"  HorizontalContentAlignment="Right" Content="{Binding Owner.PrivateName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Margin="112,45,0,0" VerticalAlignment="Top" Height="120" Width="395" FontSize="72"/>
-        <Label x:Name="lblDo" Content="?מה ברצונך לעשות" HorizontalAlignment="Left" Margin="380,170,0,0" VerticalAlignment="Top" Height="38" Width="189" FontSize="20"/>
-        <Button x:Name="btnOrdr" Content="עדכן הזמנה" HorizontalAlignment="Left" Margin="65,282,0,0" VerticalAlignment="Top" Width="172" Height="52" Click="btnOrdr_Click"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\yy.jpg"/>
+        <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
+        <Button x:Name="addHobutton" Content="הוספת יחידת אירוח" HorizontalAlignment="Center" Margin="598,393,150,119" VerticalAlignment="Center" Width="244" Click="addHobutton_Click" Height="57"/>
+        <Button x:Name="updatHoButton" Content="עדכון יחידת אירוח" HorizontalAlignment="Center" Margin="598,484,150,28" VerticalAlignment="Center" Width="244" Click="updatHoButton_Click" Height="57"/>
+        <Label x:Name="helloLbl" HorizontalContentAlignment="Center" Content=",שלום" HorizontalAlignment="Center" Margin="542,48,50,254" VerticalAlignment="Center" Height="117" Width="200" FontSize="72"/>
+        <Label x:Name="nameLbl" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Right" Content="{Binding Owner.PrivateName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  Margin="220,120,376,329"  Height="120" Width="396" FontSize="72"/>
+        <Label x:Name="lblDo" Content="?מה ברצונך לעשות" HorizontalAlignment="Center" Margin="363,195,241,186" VerticalAlignment="Center" Height="38" Width="188" FontSize="20"/>
+        <Button x:Name="btnOrdr" Content="עדכן הזמנה" HorizontalAlignment="Center" Margin="152,392,596,119" VerticalAlignment="Center" Width="244" Height="57" Click="btnOrdr_Click"/>
+        <Button x:Name="btnQry" Content="בצע שאילתות" HorizontalAlignment="Center" Margin="152,483,596,28" VerticalAlignment="Center" Width="244" Click="btnQry_Click" Height="57"/>
 
     </Grid>
 </Window>

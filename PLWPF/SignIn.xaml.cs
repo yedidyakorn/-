@@ -32,8 +32,11 @@ namespace PLWPF
         {
             if (validate())
             {
-                GuestRequestWindow guestRequest = new GuestRequestWindow(Mode.Add);
+
+                GuestRequestWindow guestRequest = new GuestRequestWindow(Mode.Add,new BE.GuestRequest() { Id = long.Parse(txtId.Text) });
                 guestRequest.ShowDialog();
+                Close();
+
             }
         }
 
@@ -42,8 +45,10 @@ namespace PLWPF
             if (validate())
             {
 
-                HostingUnit hostingUnit = new HostingUnit(Mode.Add);
+                HostingUnit hostingUnit = new HostingUnit(Mode.Add, new BE.HostingUnit() { Owner = new BE.Host() { ID = long.Parse(txtId.Text) } });
                 hostingUnit.ShowDialog();
+                Close();
+
             }
         }
 
