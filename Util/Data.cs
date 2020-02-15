@@ -19,9 +19,9 @@ namespace Util
 
             XElement bankXml;
 
-            const string xmlLocalPath = @"atm.xml";
+             string xmlLocalPath = @"atm.xml";
 
-            const string temp = @"atm1.xml";
+             string temp = @"atm1.xml";
 
             try
             {
@@ -47,6 +47,12 @@ namespace Util
             }
             finally
             {
+                try
+                {
+                    xmlLocalPath = temp;
+                }
+                catch { }
+
                 wc.Dispose();
             }
 

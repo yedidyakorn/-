@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Queries"  WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\rr.jpg"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource=".././image/rr.jpg"/>
         <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
         <Button x:Name="GRArea" Content="הצג בקשות לקוח לפי איזור" HorizontalAlignment="Center" Margin="357,208,321,309" VerticalAlignment="Center" Width="314" Click="GRArea_Click" RenderTransformOrigin="0.5,0.5" Height="52">
             <Button.RenderTransform>

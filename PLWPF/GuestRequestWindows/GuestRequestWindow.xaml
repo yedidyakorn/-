@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="GuestRequestWindow" WindowState="Maximized" Width="1000"  Height="600">
     <Grid >
-        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\e.jpg"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource=".././image/e.jpg"/>
         <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
         <Label x:Name="pNameLbl" Content="שם פרטי" HorizontalAlignment="Center" Margin="784,176,150,367" VerticalAlignment="Center" RenderTransformOrigin="0.497,-0.841"/>
         <TextBox x:Name="pNameTb" Validation.Error="Validation_OnError" Text="{Binding PrivateName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Center" Height="22" Margin="566,180,306,367" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
@@ -42,7 +42,6 @@
         <TextBox x:Name="IdBox" Validation.Error="Validation_OnError"  Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  HorizontalAlignment="Center" Height="22" Margin="566,110,306,437" TextWrapping="Wrap"  VerticalAlignment="Center" Width="120"/>
         <Button x:Name="addBtn" Visibility="Hidden" IsEnabled="True" Content="הוסף" HorizontalAlignment="Center" Margin="265,517,622,32" VerticalAlignment="Center" Width="105" Click="addBtn_Click" RenderTransformOrigin="0.053,1"/>
 
-        <!--<TextBlock x:Name="test" HorizontalAlignment="Center" Margin="88,65,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center"/>-->
 
     </Grid>
 </Window>

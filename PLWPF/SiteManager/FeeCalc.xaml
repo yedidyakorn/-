@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="FeeCalc" WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\afr.jpg"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource=".././image/afr.jpg"/>
         <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
         <Label x:Name="Lbl" Content="הצג סכום עמלה בין תאריכים" HorizontalAlignment="Center" Margin="347,109,281,407" VerticalAlignment="Center" Height="53" Width="364" FontSize="24"/>
         <DatePicker x:Name="feeFrom"  HorizontalAlignment="Center" Margin="654,272,132,259" VerticalAlignment="Center" Height="38" Width="206" FontSize="20" SelectedDateChanged="feeFrom_SelectedDateChanged"/>

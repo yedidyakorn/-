@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="PersonalArea"  WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\yy.jpg"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource=".././image/yy.jpg"/>
         <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
         <Button x:Name="addHobutton" Content="הוספת יחידת אירוח" HorizontalAlignment="Center" Margin="598,393,150,119" VerticalAlignment="Center" Width="244" Click="addHobutton_Click" Height="57"/>
         <Button x:Name="updatHoButton" Content="עדכון יחידת אירוח" HorizontalAlignment="Center" Margin="598,484,150,28" VerticalAlignment="Center" Width="244" Click="updatHoButton_Click" Height="57"/>

@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         Title="OrdersChart"   WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\chart.jpeg"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource=".././image/chart.jpeg"/>
         <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
 
         <oxy:PlotView  Model="{Binding PieModel}"   Margin="165,125,156,116"/>

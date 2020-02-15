@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="ManagerQueries"  WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\8766.gif"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource=".././image/8766.gif"/>
         <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
 
         <Button x:Name="btnOrderSts" Content="הצג גרף סטטוס הזמנות" HorizontalAlignment="Center" Margin="246,264,228,102" VerticalAlignment="Center" Width="318" Click="btnOrderSts_Click" Height="53"/>

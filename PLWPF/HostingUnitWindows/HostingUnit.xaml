@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="HostingUnit"  WindowState="Maximized" Width="1000"  Height="600">
     <Grid >
-        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\fcf.gif"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource=".././image/fcf.gif"/>
         <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
         <Label x:Name="hoNameLbl" Content="שם יחידת אירוח" HorizontalAlignment="Center" Margin="801,79,0,475" VerticalAlignment="Center"/>
         <TextBox x:Name="hoNameBox" Validation.Error="Validation_OnError" HorizontalAlignment="Center" Height="22" Margin="689,83,183,475" TextWrapping="Wrap" Text="{Binding HostingUnitName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  VerticalAlignment="Center" Width="120"/>

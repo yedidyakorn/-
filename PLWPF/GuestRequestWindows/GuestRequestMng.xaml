@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="GuestRequestMng" WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\a.jpg"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource=".././image/a.jpg"/>
         <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
         <Button x:Name="addBtn" Content="הוסף בקשת לקוח" HorizontalAlignment="Center" Margin="154,390,624,85" VerticalAlignment="Center" Width="214" RenderTransformOrigin="0.983,0.424" Click="addBtn_Click" Height="94"/>
         <Button x:Name="updateBtn" Content="עדכן בקשת לקוח" HorizontalAlignment="Center" Margin="602,390,166,85" VerticalAlignment="Center" Width="224" Click="updateBtn_Click" Height="94"/>

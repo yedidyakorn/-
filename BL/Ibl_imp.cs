@@ -16,7 +16,7 @@ namespace BL
     {
         internal Ibl_imp()
         {
-            Jobs jobs = new Jobs(UpdateOrdersStatus);
+            Jobs jobs = new Jobs(loadData);
         }
 
         #region guest request manager
@@ -626,8 +626,12 @@ namespace BL
                             }
 
                         }
+                        try
+                        {
+                            BL_Singletone.Instance.UpdateHostingUnit(h);
 
-                        BL_Singletone.Instance.UpdateHostingUnit(h);
+                        }
+                        catch { }
                     }));
                 }
                 catch (LogicException ex)
@@ -790,8 +794,14 @@ namespace BL
             return true;
         }
 
-        private void UpdateOrdersStatus()
+        private void loadData()
         {
+            try {
+
+                LoadHostingUnitsDairy();
+            }
+            catch { }
+
             try
             {
                 if (DAL_Singletone.Instance.GetLastUpdatedOrdersXML() < DateTime.Now)

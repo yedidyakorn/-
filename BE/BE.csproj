@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankBranch.cs" />
+    <Compile Include="Ext.cs" />
     <Compile Include="LogicException.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="GuestRequest.cs" />

@@ -11,7 +11,7 @@
         <ImageBrush />
     </Window.Background>
     <Grid >
-        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\proj.gif"></Image>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="Image/proj.gif"></Image>
         <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
 
         <Label x:Name="IdLbl" Content="הכנס את מספר הזהות שלך" HorizontalAlignment="Center" Margin="389,152,374,386" VerticalAlignment="Center" Height="31" Width="229" FontSize="18"/>

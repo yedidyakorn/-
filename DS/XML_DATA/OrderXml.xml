@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <OrdersXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <lastSerial>20000016</lastSerial>
-  <lastUpdate>14/02/2020 15:53:16</lastUpdate>
+  <lastSerial>20000017</lastSerial>
+  <lastUpdate>15/02/2020 20:07:29</lastUpdate>
   <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostingUnitKey>10000000</HostingUnitKey>
     <GuestRequestKey>1</GuestRequestKey>
@@ -129,5 +129,13 @@
     <Status>Closed_ApprovedByCustomer</Status>
     <CreateDate>2020-02-14T15:33:09.5145606+02:00</CreateDate>
     <OrderDate>2020-02-14T00:00:00+02:00</OrderDate>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000005</HostingUnitKey>
+    <GuestRequestKey>20000007</GuestRequestKey>
+    <OrderKey>20000017</OrderKey>
+    <Status>Closed_ApprovedByCustomer</Status>
+    <CreateDate>2020-02-15T00:00:00+02:00</CreateDate>
+    <OrderDate>2020-02-15T00:00:00+02:00</OrderDate>
   </Order>
 </OrdersXml>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <GuestRequestsXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <lastSerial>20000008</lastSerial>
-  <lastUpdate>14/02/2020 15:53:16</lastUpdate>
+  <lastSerial>20000009</lastSerial>
+  <lastUpdate>15/02/2020 20:07:29</lastUpdate>
   <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <GuestRequestKey>20000001</GuestRequestKey>
     <Id>0</Id>
@@ -101,9 +101,9 @@
     <GuestRequestKey>20000007</GuestRequestKey>
     <Id>12345</Id>
     <PrivateName>ישראל</PrivateName>
-    <FamilyName>aaa</FamilyName>
-    <MailAddress>do@</MailAddress>
-    <Status>Active</Status>
+    <FamilyName>aaaa</FamilyName>
+    <MailAddress>chaya1771@gmail.com</MailAddress>
+    <Status>Inactive</Status>
     <RegistrationDate>2020-02-13T21:51:42.8402121+02:00</RegistrationDate>
     <EntryDate>2020-02-26T00:00:00</EntryDate>
     <ReleaseDate>2020-02-27T00:00:00</ReleaseDate>
@@ -134,5 +134,24 @@
     <Jacuzzi>Possible</Jacuzzi>
     <Garden>Possible</Garden>
     <ChildrensAttractions>Possible</ChildrensAttractions>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <GuestRequestKey>20000009</GuestRequestKey>
+    <Id>12345</Id>
+    <PrivateName>ישראל</PrivateName>
+    <FamilyName>aaaa</FamilyName>
+    <MailAddress>chaya1771@gmail.com</MailAddress>
+    <Status>Active</Status>
+    <RegistrationDate>2020-02-15T00:00:00+02:00</RegistrationDate>
+    <EntryDate>2020-02-20T00:00:00</EntryDate>
+    <ReleaseDate>2020-03-20T00:00:00</ReleaseDate>
+    <Area>North</Area>
+    <Type>Zimmer</Type>
+    <Adults>2</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
   </GuestRequest>
 </GuestRequestsXml>
