@@ -274,6 +274,38 @@
       <Name>Util</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Image\1178722.jpg" />
+    <Resource Include="Image\1207245932.jpeg" />
+    <Resource Include="Image\2012240537.jpeg" />
+    <Resource Include="Image\3930582301.jpeg" />
+    <Resource Include="Image\445q.gif" />
+    <Resource Include="Image\617306.jpg" />
+    <Resource Include="Image\8766.gif" />
+    <Resource Include="Image\a.jpg" />
+    <Resource Include="Image\aa.gif" />
+    <Resource Include="Image\ad.gif" />
+    <Resource Include="Image\adf.gif" />
+    <Resource Include="Image\afr.jpg" />
+    <Resource Include="Image\Animated-Image-Wallpapers-040.jpg" />
+    <Resource Include="Image\as.gif" />
+    <Resource Include="Image\at.gif" />
+    <Resource Include="Image\bb.gif" />
+    <Resource Include="Image\bbb.gif" />
+    <Resource Include="Image\chart.jpeg" />
+    <Resource Include="Image\dd.gif" />
+    <Resource Include="Image\e.jpg" />
+    <Resource Include="Image\fcf.gif" />
+    <Resource Include="Image\GR.jpg" />
+    <Resource Include="Image\images.jpg" />
+    <Resource Include="Image\proj.gif" />
+    <Resource Include="Image\proj2.gif" />
+    <Resource Include="Image\rr.jpg" />
+    <Resource Include="Image\tenor.gif" />
+    <Resource Include="Image\unnamed.gif" />
+    <Resource Include="Image\waterfall.gif" />
+    <Resource Include="Image\Winter-Desktop-Wallpaper-04443.jpg" />
+    <Resource Include="Image\yy.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

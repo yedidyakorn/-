@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Order"  WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\3930582301.jpeg"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource=".././image/3930582301.jpeg"/>
         <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
         <Label x:Name="hoKeyLbl" Content="קוד יחידת אירוח" HorizontalAlignment="Center" Margin="754,144,146,399" VerticalAlignment="Center" RenderTransformOrigin="1.527,0.635"/>
         <Label x:Name="guReLbl" Content="קוד בקשת לקוח" HorizontalAlignment="Center" Margin="303,140,597,403" VerticalAlignment="Center"/>

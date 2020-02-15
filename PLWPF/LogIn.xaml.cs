@@ -29,6 +29,11 @@ namespace PLWPF
         {
             InitializeComponent();
 
+            try {
+              //  BL_Singletone.Instance.LoadHostingUnitsDairy();
+            }
+            catch { }
+
             SetGreeting();
         }
 

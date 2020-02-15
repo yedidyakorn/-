@@ -10,7 +10,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OrdersSumChart"   WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\chart.jpeg"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource=".././image/chart.jpeg"/>
         <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
 
         <oxy:PlotView  Model="{Binding modelTest}" Margin="160,123,175,120"/>
@@ -19,6 +19,7 @@
                 <oxy:LinearAxis Position="Bottom" Minimum="-20" Maximum="80" />
                 <oxy:LinearAxis Position="Left" Minimum="-10" Maximum="10" />
             </oxy:Plot.Axes>
-        </oxy:Plot>-->
+        </oxy:Plot>-->
+
     </Grid>
 </Window>

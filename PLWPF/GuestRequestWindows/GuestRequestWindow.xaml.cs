@@ -36,7 +36,7 @@ namespace PLWPF.GuestRequestWindows
 
             InitializeComponent();
 
-            //test.Text = BL_Singletone.Instance.GetGuestRequestsById(guestRequest.Id).First().FamilyName;
+            
 
             if(guestRequest.Id != 0)
             {

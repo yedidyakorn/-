@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Menager"  WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\as.gif"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource=".././image/as.gif"/>
         <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
         <Label x:Name="helloLbl" Content=".שלום , מנהל" HorizontalAlignment="Center" Height="128" Margin="427,77,117,364" VerticalAlignment="Center" Width="448" FontSize="72"/>
         <Button x:Name="btnQur" Content="צפה בנתונים לפי שאילתות" HorizontalAlignment="Center" Margin="617,382,175,116" VerticalAlignment="Center" Width="200" Height="71" Click="btnQur_Click"/>

@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="SignIn"  WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\1207245932.jpeg"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource=".././image/1207245932.jpeg"/>
         <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
         <Button x:Name="btnGuest" Content="הרשם כאורח" HorizontalAlignment="Center" Margin="664,368,142,115" VerticalAlignment="Center" Width="186" Height="86" Click="btnGuest_Click"/>
         <Button x:Name="btnHost" Content="הרשם כמארח" HorizontalAlignment="Center" Margin="188,368,630,115" VerticalAlignment="Center" Width="174" RenderTransformOrigin="1.589,-4.456" Height="86" Click="btnHost_Click"/>
