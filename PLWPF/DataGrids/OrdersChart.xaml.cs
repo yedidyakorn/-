@@ -39,7 +39,7 @@ namespace PLWPF.DataGrids
                     System.Type type = o.GetType();
                     string status = ((OrderStatuses)type.GetProperty("status").GetValue(o, null)).ToString();
                     int count = (int)type.GetProperty("count").GetValue(o, null);
-                
+                //הוספה של מידע ל גרף
                     ps.Slices.Add(new PieSlice(status, count) { IsExploded = true });
 
                 });
