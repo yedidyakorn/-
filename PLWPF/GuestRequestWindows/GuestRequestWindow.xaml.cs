@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -28,10 +29,19 @@ namespace PLWPF.GuestRequestWindows
 
         public List<ValidationError> _errors = new List<ValidationError>();
 
-        public GuestRequestWindow(Mode mode)
+        public GuestRequestWindow(Mode mode, [Optional] GuestRequest GuestRequest)
         {
+            
+            guestRequest = GuestRequest ?? guestRequest;
 
             InitializeComponent();
+
+            //test.Text = BL_Singletone.Instance.GetGuestRequestsById(guestRequest.Id).First().FamilyName;
+
+            if(guestRequest.Id != 0)
+            {
+                IdBox.IsEnabled = false;
+            }
 
             setDataInEnums();
 
@@ -49,15 +59,64 @@ namespace PLWPF.GuestRequestWindows
 
             addBtn.Visibility = Visibility.Visible;
 
-            guestRequest.EntryDate = DateTime.Now;
-            guestRequest.ReleaseDate = DateTime.Now.AddDays(1);
+            guestRequest.EntryDate = DateTime.Now.Date;
+            guestRequest.ReleaseDate = DateTime.Now.AddDays(1).Date;
 
         }
 
         public void Update() {
 
+            for (var i = 0; i < areaBox.Items.Count; i++)
+            {
+                if ((VecationAreas)areaBox.Items[i] == guestRequest.Area)
+                {
+                    areaBox.SelectedIndex = i;
+                }
+            }
+
+            for (var i = 0; i < typeBox.Items.Count; i++)
+            {
+                if ((HostingUnitTypes)typeBox.Items[i] == guestRequest.Type)
+                {
+                    typeBox.SelectedIndex = i;
+                }
+            }
+
+            for (var i = 0; i < poolBox.Items.Count; i++)
+            {
+                if ((Additions)poolBox.Items[i] == guestRequest.Pool)
+                {
+                    poolBox.SelectedIndex = i;
+                }
+            }
+
+            for (var i = 0; i < jzziBox.Items.Count; i++)
+            {
+                if ((Additions)jzziBox.Items[i] == guestRequest.Jacuzzi)
+                {
+                    jzziBox.SelectedIndex = i;
+                }
+            }
+
+            for (var i = 0; i < gardBox.Items.Count; i++)
+            {
+                if ((Additions)gardBox.Items[i] == guestRequest.Garden)
+                {
+                    gardBox.SelectedIndex = i;
+                }
+            }
+
+            for (var i = 0; i < chilAttrBox.Items.Count; i++)
+            {
+                if ((Additions)chilAttrBox.Items[i] == guestRequest.ChildrensAttractions)
+                {
+                    chilAttrBox.SelectedIndex = i;
+                }
+            }
+
+
             updateBtn.Visibility = Visibility.Visible;
-            findBtn.Visibility = Visibility.Visible;
+           // findBtn.Visibility = Visibility.Visible;
             delBtn.Visibility = Visibility.Visible;
 
         }
@@ -91,17 +150,50 @@ namespace PLWPF.GuestRequestWindows
 
         }
 
+        public bool ValidateBeforeAddOrUpdate() {
+
+            if (guestRequest.Id == 0) {
+                MessageBox.Show("יש להזין מספר זהות");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(guestRequest.PrivateName))
+            {
+                MessageBox.Show("יש להזין שם");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(guestRequest.MailAddress))
+            {
+                MessageBox.Show("יש להזין כתובת מייל");
+                return false;
+            }
+
+            if (guestRequest.Adults < 1 )
+            {
+                MessageBox.Show("יש לציין מבוגר אחד לפחות");
+                return false;
+            }
+
+            return true;
+
+        }
+
         #region events
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                if (ValidateBeforeAddOrUpdate() == false)
+                    return;
+
                 getDataFromEnums();
 
                 DialogResult = BL_Singletone.Instance.AddGuestRequest(guestRequest);
 
                 Close();
+
             }
             catch (LogicException ex)
             {
@@ -118,6 +210,9 @@ namespace PLWPF.GuestRequestWindows
         {
             try
             {
+                if (ValidateBeforeAddOrUpdate() == false)
+                    return;
+
                 getDataFromEnums();
 
                 DialogResult = BL_Singletone.Instance.UpdateGuestRequest(guestRequest);

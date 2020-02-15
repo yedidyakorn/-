@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF.DataGrids"
         xmlns:oxy="clr-namespace:OxyPlot.Wpf;assembly=OxyPlot.Wpf"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="OrdersChart" Height="450" Width="800">
+        Title="OrdersChart"   WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <oxy:PlotView  Model="{Binding PieModel}" Margin="94,72,97,83"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\chart.jpeg"/>
+        <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
+
+        <oxy:PlotView  Model="{Binding PieModel}"   Margin="165,125,156,116"/>
     </Grid>
 </Window>

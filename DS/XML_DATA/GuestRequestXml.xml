@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <GuestRequestsXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <lastSerial>20000005</lastSerial>
-  <lastUpdate>11/02/2020 00:58:23</lastUpdate>
+  <lastSerial>20000008</lastSerial>
+  <lastUpdate>14/02/2020 15:53:16</lastUpdate>
   <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <GuestRequestKey>20000001</GuestRequestKey>
     <Id>0</Id>
     <PrivateName>Dooobi</PrivateName>
     <FamilyName>goldberg</FamilyName>
     <MailAddress>dovi4344@gmail.com</MailAddress>
-    <Status>Active</Status>
+    <Status>Inactive</Status>
     <RegistrationDate>2020-02-03T23:46:03.9264553+02:00</RegistrationDate>
     <EntryDate>2020-02-11T23:46:03.9244598+02:00</EntryDate>
     <ReleaseDate>2020-02-13T23:46:03.9264553+02:00</ReleaseDate>
@@ -96,5 +96,43 @@
     <Jacuzzi>Necessary</Jacuzzi>
     <Garden>Necessary</Garden>
     <ChildrensAttractions>Necessary</ChildrensAttractions>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <GuestRequestKey>20000007</GuestRequestKey>
+    <Id>12345</Id>
+    <PrivateName>ישראל</PrivateName>
+    <FamilyName>aaa</FamilyName>
+    <MailAddress>do@</MailAddress>
+    <Status>Active</Status>
+    <RegistrationDate>2020-02-13T21:51:42.8402121+02:00</RegistrationDate>
+    <EntryDate>2020-02-26T00:00:00</EntryDate>
+    <ReleaseDate>2020-02-27T00:00:00</ReleaseDate>
+    <Area>North</Area>
+    <Type>Zimmer</Type>
+    <Adults>2</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <GuestRequestKey>20000008</GuestRequestKey>
+    <Id>123</Id>
+    <PrivateName>חיה</PrivateName>
+    <FamilyName>גולדברג</FamilyName>
+    <MailAddress>chaya1771@gmail.com</MailAddress>
+    <Status>Inactive</Status>
+    <RegistrationDate>2020-02-14T15:05:50.059183+02:00</RegistrationDate>
+    <EntryDate>2020-02-14T15:04:46.4118555+02:00</EntryDate>
+    <ReleaseDate>2020-02-16T00:00:00</ReleaseDate>
+    <Area>All</Area>
+    <Type>Zimmer</Type>
+    <Adults>2</Adults>
+    <Children>0</Children>
+    <Pool>Possible</Pool>
+    <Jacuzzi>Possible</Jacuzzi>
+    <Garden>Possible</Garden>
+    <ChildrensAttractions>Possible</ChildrensAttractions>
   </GuestRequest>
 </GuestRequestsXml>

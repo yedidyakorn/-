@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HostingUnitsXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <lastSerial>20000006</lastSerial>
+  <lastSerial>20000007</lastSerial>
   <lastUpdate>2020-02-03T23:46:03.9274528+02:00</lastUpdate>
   <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostingUnitKey>20000001</HostingUnitKey>
@@ -49,7 +49,7 @@
       <BankAccountNumber>12345</BankAccountNumber>
       <CollectionClearance>true</CollectionClearance>
     </Owner>
-    <HostingUnitName>לילה בצימר</HostingUnitName>
+    <HostingUnitName>לילה בצימר3</HostingUnitName>
     <Area>North</Area>
     <HasPool>true</HasPool>
     <HasJacuzzi>true</HasJacuzzi>
@@ -166,6 +166,34 @@
     <HasPool>true</HasPool>
     <HasJacuzzi>true</HasJacuzzi>
     <NumberOfBeds>16</NumberOfBeds>
+    <HasGarden>false</HasGarden>
+    <Type>Zimmer</Type>
+    <HasChildrensAttractions>false</HasChildrensAttractions>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostingUnitKey>20000007</HostingUnitKey>
+    <Owner>
+      <ID>1234567</ID>
+      <HostKey>0</HostKey>
+      <PrivateName>נחמן</PrivateName>
+      <FamilyName>ישראלי</FamilyName>
+      <FhoneNumber>527658964</FhoneNumber>
+      <MailAddress>ccc@gmail.com</MailAddress>
+      <BankBranchDetails>
+        <קוד_בנק>12</קוד_בנק>
+        <שם_בנק>בנק הפועלים בע"מ</שם_בנק>
+        <קוד_סניף>782</קוד_סניף>
+        <כתובת_ה-ATM>עזה 38 </כתובת_ה-ATM>
+        <ישוב>ירושלים</ישוב>
+      </BankBranchDetails>
+      <BankAccountNumber>12456789</BankAccountNumber>
+      <CollectionClearance>true</CollectionClearance>
+    </Owner>
+    <HostingUnitName>יחידה חדשה</HostingUnitName>
+    <Area>South</Area>
+    <HasPool>false</HasPool>
+    <HasJacuzzi>true</HasJacuzzi>
+    <NumberOfBeds>2</NumberOfBeds>
     <HasGarden>false</HasGarden>
     <Type>Zimmer</Type>
     <HasChildrensAttractions>false</HasChildrensAttractions>

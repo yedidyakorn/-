@@ -3,12 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:PLWPF.DataGrids"
         mc:Ignorable="d"
-        Title="ManagerQueries" Height="450" Width="800">
+        Title="ManagerQueries"  WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Button x:Name="btnOrderSts" Content="הצג גרף סטטוס הזמנות" HorizontalAlignment="Left" Margin="237,127,0,0" VerticalAlignment="Top" Width="318" Click="btnOrderSts_Click" Height="53"/>
-        <Button x:Name="btnOrderDate" Content="הצג גרף הזמנות לפי תאריך" HorizontalAlignment="Left" Margin="237,212,0,0" VerticalAlignment="Top" Width="318" Height="61" Click="btnOrderDate_Click"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\8766.gif"/>
+        <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
+
+        <Button x:Name="btnOrderSts" Content="הצג גרף סטטוס הזמנות" HorizontalAlignment="Center" Margin="246,264,228,102" VerticalAlignment="Center" Width="318" Click="btnOrderSts_Click" Height="53"/>
+        <Button x:Name="btnOrderDate" Content="הצג גרף הזמנות לפי תאריך" HorizontalAlignment="Center" Margin="246,151,228,207" VerticalAlignment="Center" Width="318" Height="61" Click="btnOrderDate_Click"/>
 
     </Grid>
 </Window>

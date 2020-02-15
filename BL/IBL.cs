@@ -187,7 +187,7 @@ namespace BL
         /// </summary>
         /// <returns>get hosting units grouped by area</returns>
         List<IGrouping<VecationAreas, HostingUnit>> GetHUListGroupByArea();
-   
+
         /// <summary>
         /// get all host units with pool
         /// </summary>
@@ -211,5 +211,17 @@ namespace BL
         /// </summary>
         /// <returns></returns>
         double CalcFeeBetweenDates(DateTime fromDate, DateTime toDate);
+
+        /// <summary>
+        /// get orders by status
+        /// </summary>
+        /// <returns>IEnumerable<dynamic></returns>
+        IEnumerable<object> GetOrdersGroupByStatus();
+
+        /// <summary>
+        ///GetOrdersGroupByCreateDate
+        /// </summary>
+        /// <returns>IEnumerable<dynamic></returns>
+        IEnumerable<IGrouping<DateTime, Order>> GetOrdersGroupByCreateDate();
     }
 }

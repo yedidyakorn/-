@@ -51,7 +51,7 @@ namespace PLWPF.HostingUnitWindows
                 GuestRequestKey = guestRequest.GuestRequestKey,
                 HostingUnitKey = HostUnitKey,
                 Status = OrderStatuses.MailSent,
-                OrderDate = DateTime.Now
+                OrderDate = DateTime.Now.Date
 
             };
 

@@ -34,9 +34,14 @@ namespace PLWPF.DataGrids
 
                 var ps = new PieSeries();
 
-                BL_Singletone.Instance.GetOrderList().GroupBy(o => o.Status).Select(o => new { status = o.Key, count = o.Count() }).ToList().ForEach(o =>
-                {
-                    ps.Slices.Add(new PieSlice(o.status.ToString(), o.count) { IsExploded = true });
+                BL_Singletone.Instance.GetOrdersGroupByStatus().ToList().ForEach(o => {
+
+                    System.Type type = o.GetType();
+                    string status = ((OrderStatuses)type.GetProperty("status").GetValue(o, null)).ToString();
+                    int count = (int)type.GetProperty("count").GetValue(o, null);
+                
+                    ps.Slices.Add(new PieSlice(status, count) { IsExploded = true });
+
                 });
 
                 ps.InnerDiameter = 0;

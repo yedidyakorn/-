@@ -3,15 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="SignIn" Height="450" Width="800">
+        Title="SignIn"  WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Button x:Name="btnGuest" Content="הרשם כאורח" HorizontalAlignment="Left" Margin="491,252,0,0" VerticalAlignment="Top" Width="185" Height="86" Click="btnGuest_Click"/>
-        <Button x:Name="btnHost" Content="הרשם כמארח" HorizontalAlignment="Left" Margin="157,252,0,0" VerticalAlignment="Top" Width="174" RenderTransformOrigin="1.589,-4.456" Height="86" Click="btnHost_Click"/>
-        <Label x:Name="lblMeet" Content=":) נעים להכיר" HorizontalAlignment="Left" Margin="554,41,0,0" VerticalAlignment="Top" Height="44" Width="122" FontSize="20"/>
-        <Label x:Name="lblId" Content="?מהו מספר הזהות שלך" HorizontalAlignment="Left" Margin="357,98,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtId" HorizontalAlignment="Left" Height="54" Margin="325,147,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="191" RenderTransformOrigin="0.358,0.747"/>
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\1207245932.jpeg"/>
+        <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
+        <Button x:Name="btnGuest" Content="הרשם כאורח" HorizontalAlignment="Center" Margin="664,368,142,115" VerticalAlignment="Center" Width="186" Height="86" Click="btnGuest_Click"/>
+        <Button x:Name="btnHost" Content="הרשם כמארח" HorizontalAlignment="Center" Margin="188,368,630,115" VerticalAlignment="Center" Width="174" RenderTransformOrigin="1.589,-4.456" Height="86" Click="btnHost_Click"/>
+        <Label x:Name="lblMeet" Content=":) נעים להכיר" HorizontalAlignment="Center" Margin="664,105,206,420" VerticalAlignment="Center" Height="44" Width="122" FontSize="20" RenderTransformOrigin="0.591,-3.618"/>
+        <Label x:Name="lblId" Content="?מהו מספר הזהות שלך" HorizontalAlignment="Center" Margin="416,192,385,342" VerticalAlignment="Center" FontSize="18" Height="35" Width="191"/>
+        <TextBox x:Name="txtId" HorizontalAlignment="Center" Width="264" Height="62" Margin="380,242,348,265" TextWrapping="Wrap"  VerticalAlignment="Center"  RenderTransformOrigin="0.358,0.747"/>
 
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
 ﻿using BE;
+using BL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,26 +24,67 @@ namespace PLWPF.GuestRequestWindows
     {
         GuestRequest guestRequest = new GuestRequest();
 
-        public GuestRequestMng(GuestRequest guestRequest)
+        public GuestRequestMng(GuestRequest GuestRequest)
         {
+            guestRequest = GuestRequest;
             this.DataContext = guestRequest;
             InitializeComponent();
         }
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
-            GuestRequestWindow guestRequest = new GuestRequestWindow(Mode.Add);
-            guestRequest.ShowDialog();
+            guestRequest = BL_Singletone.Instance.GetGuestRequestsById(guestRequest.Id).First();
+
+            var newGuestRequest = new GuestRequest()
+            {
+                Id = guestRequest.Id,
+                PrivateName = guestRequest.PrivateName,
+                FamilyName = guestRequest.FamilyName,
+                MailAddress = guestRequest.MailAddress
+            };
+
+            GuestRequestWindow guestRequestWin = new GuestRequestWindow(Mode.Add, newGuestRequest);
+
+            guestRequestWin.ShowDialog();
 
           
         }
 
         private void updateBtn_Click(object sender, RoutedEventArgs e)
         {
-            GuestRequestWindow guestRequest = new GuestRequestWindow(Mode.Update);
-            guestRequest.ShowDialog();
+            try
+            {
+                var grList = BL_Singletone.Instance.GetGuestRequestsById(guestRequest.Id);
 
-     
+            if (grList.Count() == 0)
+            {
+                MessageBox.Show("No Items Found", "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            GuestRequestGrid guestRequestGrid = new GuestRequestGrid(grList);
+            guestRequestGrid.ShowDialog();
+
+                if (guestRequestGrid.DialogResult == true)
+                {
+                    var guestRequestToUpdate = guestRequestGrid.selectedGR;
+                    GuestRequestWindow guestRequestWindow = new GuestRequestWindow(Mode.Update, guestRequestToUpdate);
+                    guestRequestWindow.ShowDialog();
+                }
+            }
+            catch (LogicException ex)
+            {
+                MessageBox.Show(ex.Message, "Alert", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("general error");
+            }
+
+            // GuestRequestWindow guestRequest = new GuestRequestWindow(Mode.Update);
+            // guestRequest.ShowDialog();
+
+
         }
 
      

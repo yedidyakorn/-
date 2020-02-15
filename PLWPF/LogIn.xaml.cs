@@ -24,9 +24,46 @@ namespace PLWPF
     /// </summary>
     public partial class LogIn : Window
     {
+
         public LogIn()
         {
             InitializeComponent();
+
+            SetGreeting();
+        }
+
+
+        private void SetGreeting()
+        {
+            string smily = " (: ";
+            string partOfDay = "";
+            TimeSpan morning = new TimeSpan(5,0,0);
+            TimeSpan noon = new TimeSpan(12, 0, 0);
+            TimeSpan evening = new TimeSpan(17, 0, 0);
+            TimeSpan night = new TimeSpan(21, 0, 0);
+
+            var currentTime = DateTime.Now.TimeOfDay;
+
+            if (currentTime < morning || currentTime >= night)
+            {
+
+                partOfDay = "לילה טוב";
+
+            }
+            else if (currentTime >= morning && currentTime < noon)
+            {
+                partOfDay = "בוקר טוב";
+            }
+            else if (currentTime >= noon && currentTime < evening)
+            {
+                partOfDay = "צהריים טובים";
+            }
+            else if (currentTime >= evening)
+            {
+                partOfDay = "ערב טוב";
+            }
+            lblTime.Content = smily + partOfDay;
+
         }
 
         private void LogBtn_Click(object sender, RoutedEventArgs e)
@@ -44,18 +81,27 @@ namespace PLWPF
             var guestRequests = BL_Singletone.Instance.GetGuestRequestsById(id);
 
             if (id == 301637922) {
+
                 Menager menager = new Menager();
                 menager.ShowDialog();
+                Close();
+
             }
             else if(hosts.Count > 0)
             {
+
                 PersonalArea personalArea = new PersonalArea(hosts.First());
                 personalArea.ShowDialog();
+                Close();
+
             }
             else if (guestRequests.Count > 0)
             {
+
                 GuestRequestMng guestRequestMng = new GuestRequestMng(guestRequests.First());
                 guestRequestMng.ShowDialog();
+                Close();
+
             }
             else
             {
@@ -66,8 +112,10 @@ namespace PLWPF
         }
 
         private void lblSign_MouseLeftButtonUp(object sender, RoutedEventArgs e) {
+
             SignIn signIn = new SignIn();
             signIn.ShowDialog();
+
         }
     }
 }

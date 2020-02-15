@@ -3,15 +3,23 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="LogIn" Height="450" Width="800">
-    <Grid>
-        <Label x:Name="IdLbl" Content="ID" HorizontalAlignment="Left" Margin="329,85,0,0" VerticalAlignment="Top" Height="31" Width="124"/>
-        <Button x:Name="LogBtn" Content="הכנס" HorizontalAlignment="Left" Margin="329,273,0,0" VerticalAlignment="Top" Width="124" Height="39" Click="LogBtn_Click"/>
-        <TextBox x:Name="IdBox" HorizontalAlignment="Left" Height="62" Margin="265,144,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="264" FontSize="20"/>
-        <Label x:Name="newUserLbl" Content="?משתמש חדש" HorizontalAlignment="Left" Margin="381,359,0,0" VerticalAlignment="Top" Width="98"/>
-        <Label x:Name="lblSign" Content="הירשם" HorizontalAlignment="Left" Margin="329,359,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.82,0.109" Foreground="#FF3A5FDA" FontWeight="Bold"  MouseLeftButtonUp="lblSign_MouseLeftButtonUp"/>
+        Title="LogIn"  WindowState="Maximized" Width="1000"  Height="600">
+    <Window.Background>
+        <ImageBrush />
+    </Window.Background>
+    <Grid >
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\proj.gif"></Image>
+        <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
+
+        <Label x:Name="IdLbl" Content="הכנס את מספר הזהות שלך" HorizontalAlignment="Center" Margin="389,152,374,386" VerticalAlignment="Center" Height="31" Width="229" FontSize="18"/>
+        <Button x:Name="LogBtn" Content="הכנס" HorizontalAlignment="Center" Margin="432,298,436,232" VerticalAlignment="Center" Width="124" Height="39" Click="LogBtn_Click"/>
+        <TextBox x:Name="IdBox" HorizontalAlignment="Center" Height="62" Margin="367,208,361,299" TextWrapping="Wrap"  VerticalAlignment="Center" Width="264" FontSize="20"/>
+        <Label x:Name="newUserLbl" Content="?משתמש חדש" HorizontalAlignment="Center" Margin="508,465,386,78" VerticalAlignment="Center" Width="98" RenderTransformOrigin="0.514,0.691"/>
+        <Label x:Name="lblSign" Content="הירשם" HorizontalAlignment="Center" Margin="432,465,513,78" VerticalAlignment="Center" RenderTransformOrigin="1.82,0.109" Foreground="#FF3A5FDA" FontWeight="Bold"  MouseLeftButtonUp="lblSign_MouseLeftButtonUp"/>
+        <Label x:Name="lblTime" Content="" HorizontalAlignment="Center" Margin="763,34,219,461" VerticalAlignment="Center" FontSize="48"/>
 
     </Grid>
 </Window>

@@ -25,7 +25,7 @@ namespace BL
         {
             try
             {
-                guestRequest.RegistrationDate = DateTime.Now;
+                guestRequest.RegistrationDate = DateTime.Now.Date;
 
                 if (guestRequest.EntryDate.Date < DateTime.Now.Date)
                     throw new LogicException("guestRequest.EntryDate", "Date not valid");
@@ -207,10 +207,10 @@ namespace BL
                 var hostingUnit = DAL_Singletone.Instance.GetHostingUnitByKey(order.HostingUnitKey);
 
                 if (hostingUnit == null)
-                    throw new LogicException($"host unit {order.HostingUnitKey} does not exist");
+                    throw new LogicException($"יחידה {order.HostingUnitKey} לא קיימת ");
 
                 if (hostingUnit.Owner.CollectionClearance == false)
-                    return false;
+                    throw new LogicException($"יש לאשר עמלה לפני שליחת הזמנה");
 
                 var guestRequest = DAL_Singletone.Instance.GetGuestRequestByKey(order.GuestRequestKey);
 
@@ -218,7 +218,7 @@ namespace BL
                     throw new LogicException($"guest Request {order.GuestRequestKey} does not exist");
 
                 if(hasOpenApprovedOrder(guestRequest.GuestRequestKey,hostingUnit.HostingUnitKey))
-                    throw new LogicException($"order has been created.");
+                    throw new LogicException($".הזמנה נשלחה בעבר");
 
                 DateTime cureentDate = guestRequest.RegistrationDate;
 
@@ -232,7 +232,7 @@ namespace BL
                     cureentDate = cureentDate.AddDays(1);
                 }
 
-                order.CreateDate = DateTime.Now;
+                order.CreateDate = DateTime.Now.Date;
 
                 order.OrderDate = DateTime.Now.Date;
 
@@ -392,6 +392,18 @@ namespace BL
             return DAL_Singletone.Instance.GetOrderList()
                 .GroupBy(o => o.Status)
                 .Select(o => new { status = o.Key.ToString(), count = o.Count() }).ToList<dynamic>();
+        }
+
+        public IEnumerable<IGrouping<DateTime, Order>> GetOrdersGroupByCreateDate()
+        {
+            return DAL_Singletone.Instance.GetOrderList()
+                               .GroupBy(o => o.CreateDate.Date);
+                             
+        }
+
+        public IEnumerable<object> GetOrdersGroupByStatus()
+        {
+           return  DAL_Singletone.Instance.GetOrderList().GroupBy(o => o.Status).Select(o => new { status = o.Key, count = o.Count()});
         }
    
         #endregion
@@ -667,11 +679,12 @@ namespace BL
 
         public double CalcFeeBetweenDates(DateTime fromDate, DateTime toDate)
         {
-           return DAL_Singletone.Instance.GetOrderList().Where(o => o.OrderDate <= toDate && o.OrderDate >= fromDate).ToList()
+           return DAL_Singletone.Instance.GetOrderList().Where(o => (o.OrderDate <= toDate && o.OrderDate >= fromDate )
+           &&( o.Status == OrderStatuses.Closed_ApprovedByCustomer)).ToList()
                 .Sum(o =>
                 {
                     var guestRequest = DAL_Singletone.Instance.GetGuestRequestByKey(o.GuestRequestKey);
-                    return guestRequest!= null ? Config.FEE_RATE * (int)(guestRequest.ReleaseDate - guestRequest.RegistrationDate).TotalDays : 0;
+                    return guestRequest!= null ? Config.FEE_RATE * (int)(guestRequest.ReleaseDate - guestRequest.EntryDate).TotalDays : 0;
                 });
         }
 
@@ -724,8 +737,6 @@ namespace BL
             }
             return true;
         }
-
-        private delegate bool Predicate<in T>(HostingUnit hu); 
 
         private List<HostingUnit> GetAllHostUnitsByPredicate(Predicate<HostingUnit> hostHasPred)
         {

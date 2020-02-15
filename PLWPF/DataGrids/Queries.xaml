@@ -3,11 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:PLWPF.DataGrids"
         mc:Ignorable="d"
-        Title="Queries" Height="450" Width="800">
+        Title="Queries"  WindowState="Maximized" Width="1000"  Height="600">
     <Grid>
-        <Button x:Name="GRArea" Content="הצג יחידות אירוח לפי איזור" HorizontalAlignment="Left" Margin="229,128,0,0" VerticalAlignment="Top" Width="314" Click="GRArea_Click" RenderTransformOrigin="0.5,0.5" Height="52">
+        <Image Stretch="Fill"  gif:ImageBehavior.AnimatedSource="C:\Users\דובי גולדברג\Downloads\rr.jpg"/>
+        <Rectangle HorizontalAlignment="Center" Height="559"  VerticalAlignment="Center" Width="982" Opacity="0.7" Fill="White"/>
+        <Button x:Name="GRArea" Content="הצג בקשות לקוח לפי איזור" HorizontalAlignment="Center" Margin="357,208,321,309" VerticalAlignment="Center" Width="314" Click="GRArea_Click" RenderTransformOrigin="0.5,0.5" Height="52">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -17,6 +20,6 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button x:Name="btnGRType" Content="הצג יחידות אירוח לפי סוג אירוח" HorizontalAlignment="Left" Margin="225,206,0,0" VerticalAlignment="Top" Width="318" Height="51" Click="btnGRType_Click"/>
+        <Button x:Name="btnGRType" Content="הצג בקשות לקוח לפי סוג אירוח" HorizontalAlignment="Center" Margin="357,342,317,176" VerticalAlignment="Center" Width="318" Height="51" Click="btnGRType_Click"/>
     </Grid>
 </Window>
