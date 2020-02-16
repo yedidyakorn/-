@@ -120,7 +120,7 @@ namespace DAL
                 result = findGuestRequest.ToString().ToObject<GuestRequest>();
             }
 
-            return result;
+            return result.cloneT();
         }
 
         public List<GuestRequest> GetGuestRequestsById(long id)
@@ -128,14 +128,14 @@ namespace DAL
 
             return (from gr in DataSourceXml.GuestRequests.Elements("GuestRequest")
                     where Int32.Parse(gr.Element("Id").Value) == id
-                    select gr.ToString().ToObject<GuestRequest>()).ToList();
+                    select gr.ToString().ToObject<GuestRequest>().cloneT()).ToList();
 
         }
 
         public List<GuestRequest> GetGuestRequestsList()
         {
             return (from gr in DataSourceXml.GuestRequests.Elements("GuestRequest")
-                    select gr.ToString().ToObject<GuestRequest>()).ToList();
+                    select gr.ToString().ToObject<GuestRequest>().cloneT()).ToList();
         }
 
         public HostingUnit GetHostingUnitByKey(long hostingUnitKey)
@@ -150,21 +150,21 @@ namespace DAL
                 result = findHostUnit.ToString().ToObject<HostingUnit>();
             }
 
-            return result;
+            return result.cloneT();
         }
 
         public List<HostingUnit> GetHostingUnitsByOwnerId(long id)
         {
             return (from hu in DataSourceXml.HostingUnits.Elements("HostingUnit")
                     where Int32.Parse(hu.Element("Owner").Element("ID").Value) == id
-                    select hu.ToString().ToObject<HostingUnit>()).ToList();
+                    select hu.ToString().ToObject<HostingUnit>().cloneT()).ToList();
 
         }
 
         public List<HostingUnit> GetHostingUnitsList()
         {
             return (from hu in DataSourceXml.HostingUnits.Elements("HostingUnit")
-                    select hu.ToString().ToObject<HostingUnit>()).ToList();
+                    select hu.ToString().ToObject<HostingUnit>().cloneT()).ToList();
         }
 
         public Order GetOrderByKey(long orderKey)
@@ -179,13 +179,13 @@ namespace DAL
                 result = findOrder.ToString().ToObject<Order>();
             }
 
-            return result;
+            return result.cloneT();
         }
 
         public List<Order> GetOrderList()
         {
             return (from o in DataSourceXml.Orders.Elements("Order")
-                    select o.ToString().ToObject<Order>()).ToList();
+                    select o.ToString().ToObject<Order>().cloneT()).ToList();
         }
 
         public bool UpdateGuestRequest(GuestRequest guestRequest)

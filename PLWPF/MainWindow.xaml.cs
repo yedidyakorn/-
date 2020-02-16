@@ -28,7 +28,7 @@ namespace PLWPF
         public MainWindow()
         {
 
-            BL_Singletone.Instance.LoadHostingUnitsDairy();
+           // BL_Singletone.Instance.LoadHostingUnitsDairy();
 
             InitializeComponent();
         }
