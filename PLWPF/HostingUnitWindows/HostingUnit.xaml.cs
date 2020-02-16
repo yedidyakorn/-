@@ -110,8 +110,14 @@ namespace PLWPF.HostingUnitWindows
                 {
                     if (hostingUnit.Diary[i, j])
                     {
-                        int calcYear = i > curDate.Month ? curDate.Year + 1 : curDate.Year;
-                        clndr.BlackoutDates.Add(new CalendarDateRange(new DateTime(calcYear, i + 1, j + 1)));
+                        try
+                        {
+                            int calcYear = i > curDate.Month ? curDate.Year + 1 : curDate.Year;
+                            clndr.BlackoutDates.Add(new CalendarDateRange(new DateTime(calcYear, i + 1, j + 1)));
+                        }catch(Exception ex)
+                        {
+
+                        }
                     }
                 }
             }

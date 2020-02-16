@@ -220,14 +220,14 @@ namespace BL
                 if(hasOpenApprovedOrder(guestRequest.GuestRequestKey,hostingUnit.HostingUnitKey))
                     throw new LogicException($".הזמנה נשלחה בעבר");
 
-                DateTime cureentDate = guestRequest.RegistrationDate;
+                DateTime cureentDate = guestRequest.EntryDate;
 
                 while (cureentDate.Date != guestRequest.ReleaseDate.Date.AddDays(1))
                 {
 
                     if (hostingUnit.Diary[cureentDate.Month - 1, cureentDate.Day - 1] == true)
 
-                        return false;
+                        throw new LogicException($"תארכים תפוסים");
 
                     cureentDate = cureentDate.AddDays(1);
                 }
@@ -352,6 +352,7 @@ namespace BL
 
         }
 
+        //מספר הזמנות ליחידה
         public int GetOrdersNumForGR(GuestRequest guestRequest)
         {
             try
@@ -405,7 +406,8 @@ namespace BL
         {
            return  DAL_Singletone.Instance.GetOrderList().GroupBy(o => o.Status).Select(o => new { status = o.Key, count = o.Count()});
         }
-   
+
+
         #endregion
 
         #region host unit manager
@@ -564,6 +566,7 @@ namespace BL
 
             try
             {
+                //שליחה לפונקציה שמקבלת דליגיט מסוג פרדיקיט
                 return GetAllHostUnitsByPredicate(hu => hu.HasPool);
             }
             catch (LogicException ex)
@@ -724,11 +727,12 @@ namespace BL
         {
             try
             {
-                while (daysNum != 0)
+                while (daysNum > -1)
                 {
                     var currDate = startDate.AddDays(daysNum--);
                     if (hu.Diary[currDate.Month - 1, currDate.Day - 1] == true)
                         return false;
+
                 }
             }
             catch (LogicException ex)
@@ -798,7 +802,7 @@ namespace BL
         {
             try {
 
-                LoadHostingUnitsDairy();
+               // LoadHostingUnitsDairy();
             }
             catch { }
 

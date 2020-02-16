@@ -27,7 +27,7 @@ namespace BE
         public bool[] DiaryDto
         {
             get { return Diary.Flatten(); }
-            set { Diary = value.Expand(31); } //5 is the number of roes in the matrix
+            set { Diary = value.Expand(12); } //5 is the number of roes in the matrix
         }
 
         public VecationAreas Area { get; set; }

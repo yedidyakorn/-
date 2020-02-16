@@ -14,12 +14,12 @@ namespace BE
             int rows = arr.GetLength(0);
             int columns = arr.GetLength(1);
             T[] arrFlattened = new T[rows * columns];
-            for (int j = 0; j < columns; j++)
+            for (int j = 0; j < rows; j++)
             {
-                for (int i = 0; i < rows; i++)
+                for (int i = 0; i < columns; i++)
                 {
-                    var test = arr[i, j];
-                    arrFlattened[i + j * rows] = arr[i, j];
+                    var test = arr[j, i];
+                    arrFlattened[i + j * rows] = arr[j, i];
                 }
             }
             return arrFlattened;
@@ -29,15 +29,15 @@ namespace BE
         {
             int length = arr.GetLength(0);
             int columns = length / rows;
-            T[,] arrExpanded = new T[ columns, rows];
+            T[,] arrExpanded = new T[rows, columns];
             for (int j = 0; j < rows; j++)
             {
                 for (int i = 0; i < columns; i++)
                 {
-                    arrExpanded[i, j] = arr[j + i * rows];
+                    arrExpanded[j,i] = arr[i + j * rows];
                 }
             }
             return arrExpanded;
-        }
+        }
     }
 }
