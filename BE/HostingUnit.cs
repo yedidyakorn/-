@@ -23,11 +23,15 @@ namespace BE
         [XmlIgnore]
         public bool[,] Diary { get; set; } = new bool[12,31];
 
+        private bool[] _DiaryDto;
+
         [XmlArray("Diary")]
         public bool[] DiaryDto
         {
             get { return Diary.Flatten(); }
-            set { Diary = value.Expand(12); } //5 is the number of roes in the matrix
+            set { Diary = value.Expand(12);
+                _DiaryDto = value;
+            } //5 is the number of roes in the matrix
         }
 
         public VecationAreas Area { get; set; }
